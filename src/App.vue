@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-auto">
                     <Progress></Progress>
                 </div>
-                <div class="col">
-                    <HelloWorld></HelloWorld>
+                <div class="col page">
+                    <Page1></Page1>
                 </div>
             </div>
         </div>
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
+    import Page1 from './components/Page1.vue'
     import Progress from './components/Progress.vue'
 
     export default {
         name: 'App',
         components: {
-            HelloWorld,
+            Page1,
             Progress
         }
     }
@@ -34,7 +34,9 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        background-color: beige;
+    }
+    .page{
+        background-color: #F8F8F8;
     }
 
 </style>
