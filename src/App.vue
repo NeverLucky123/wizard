@@ -2,7 +2,7 @@
     <div>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" v-on:click="open_modal">
-            Setup 
+            Setup
         </button>
 
         <!-- Modal -->
@@ -18,17 +18,17 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-auto">
-                                    <Progress ref='progress'></Progress>
+                                <div class="col-sm-auto no-gutters">
+                                    <Progress v-on:goto="goto"></Progress>
                                 </div>
                                 <div class="col page">
-                                    <Page ref='page'></Page>
+                                    <Page></Page>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <PageNav v-on:skip="skip" v-on:next="next"></PageNav>
+                        <PageNav v-on:skip="skip" v-on:back="back" v-on:next="next" v-on:done="done"></PageNav>
                     </div>
                 </div>
             </div>
@@ -49,31 +49,123 @@
             PageNav
         },
         methods: {
-            hello: function() {
-                console.log('hello')
-            },
             skip: function() {
-                this.$refs.page.next()
-                this.$refs.progress.next()
+                this.index++;
+                if (this.index > this.pages.length) {
+                    this.index = this.pages.length;
+                }
             },
             next: function() {
-                this.$refs.page.next()
-                this.$refs.progress.next()
+                this.index++;
+                console.log(this.pages)
+                console.log(this.pages.length)
+
+                if (this.index > this.pages.length) {
+                    this.index = this.pages.length;
+                }
             },
-            open_modal() {
+            back: function() {
+                this.index--;
+                if (this.index < 1) {
+                    this.index = 1;
+                }
+            },
+            goto: function(index) {
+                this.index = index
+            },
+            done: function() {
+                this.close_modal()
+            },
+            open_modal: function() {
                 document.getElementById("Modal").style.display = "block";
                 document.getElementById("Modal").className += "show"
             },
-            close_modal() {
+            close_modal: function() {
                 document.getElementById("Modal").style.display = "none";
                 document.getElementById("exampleModal").className.replace("show", "");
             }
+        },
+        data: function() {
+            return {
+                index: 1,
+                pages: [{
+                        name: "Business Settings",
+                        options: {
+                            opening: "",
+                            closing: "",
+                            closing_this_season: false
+                        }
+                    },
+                    {
+                        name: "Activity Settings",
+                        options: {
+                            auto_create_invoice: true,
+                            address_required: false,
+                            //sign_box if false, advanced waiver if true
+                            customer_input: 0,
+                            waiver: 0,
+                            //when doing inventory checks
+                            consider_size: true,
+                            //allow customers to see availibility calendar
+                            avail_cal: true,
+                            //typo?
+                            reorder: true,
+                            //per piece of equipment
+                            multi_participant: true
+                        }
+                    },
+                    {
+                        name: "Payment",
+                        options: {
+                            //0 full amount, 1 deposit, 2 delay payment
+                            credit_card: {
+                                online: 0,
+                                walk_in: 0,
+                                backend: 0,
+                                phone: 0
+                            },
+                            delay_payment: {
+                                backend: true,
+                                walk_in: true
+                            }
+                        }
+                    },
+                    {
+                        name: "Terms and conditions",
+                        options: {
+                            waiver: ""
+                            //fields?
+                        }
+                    },
+                    {
+                        name: "Subcategories",
+                        //static link and images, no data
+                        options: null
+
+                    },
+                    {
+                        name: "Pricing",
+                        options: null
+
+                    },
+                    {
+                        name: "Booking",
+                        options: null
+                    }
+                ]
+            }
         }
+
     }
 
 </script>
 
 <style>
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
