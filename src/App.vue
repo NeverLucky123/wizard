@@ -7,7 +7,7 @@
 
         <!-- Modal -->
         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Setup</h5>
@@ -88,64 +88,221 @@
         data: function() {
             return {
                 index: 1,
+                /*
+                ---------------------------------------------------
+                For attributes bound to Checkbox, always put the false  
+                item as first member of array, [0].
+                ---------------------------------------------------
+                */
                 pages: [{
                         name: "Business Settings",
-                        options: {
+                        fields: {
                             opening: "",
-                            closing: "",
-                            closing_this_season: false
+                            closing: ""
                         }
                     },
                     {
                         name: "Activity Settings",
-                        options: {
-                            auto_create_invoice: true,
-                            address_required: false,
+                        fields: {
+                            auto_create_invoice: {
+                                options: [{
+                                    value: "0",
+                                    text: "Show Finish Page"
+                                }, {
+                                    value: "1",
+                                    text: "Preview Invoice"
+                                }],
+                                current: "1"
+                            },
+                            address_required: {
+                                options: [{
+                                    value: "0",
+                                    text: "No"
+                                }, {
+                                    value: "1",
+                                    text: "Yes"
+                                }],
+                                current: "0"
+                            },
+                            //single renter only
+                            customer_input: {
+                                options: [{
+                                    value: "order_page",
+                                    text: "At Beginning"
+                                }, {
+                                    value: "checkout_page",
+                                    text: "At Checkout"
+                                }],
+                                current: "checkout_page"
+                            },
                             //sign_box if false, advanced waiver if true
-                            customer_input: 0,
-                            waiver: 0,
+                            waiver: {
+                                options: [{
+                                    value: "enhanced_waiver",
+                                    text: "Advanced Waiver"
+                                }, {
+                                    value: "sign",
+                                    text: "Sign Box"
+                                }],
+                                current: "enhanced_waiver"
+                            },
                             //when doing inventory checks
-                            consider_size: true,
+                            consider_size: {
+                                options: [{
+                                    value: "no",
+                                    text: "yes"
+                                }, {
+                                    value: "size",
+                                    text: "Yes"
+                                }],
+                                current: "size"
+                            },
                             //allow customers to see availibility calendar
-                            avail_cal: true,
-                            //typo?
-                            reorder: true,
-                            //per piece of equipment
-                            multi_participant: 1
+                            avail_cal: {
+                                options: [{
+                                    value: "0",
+                                    text: "No"
+                                }, {
+                                    value: "1",
+                                    text: "Yes"
+                                }],
+                                current: "1"
+                            },
+                            //multi_setting
+                            reorder: {
+                                options: [{
+                                    value: "0",
+                                    text: "No"
+                                }, {
+                                    value: "1",
+                                    text: "Yes"
+                                }],
+                                current: "0"
+                            },
+                            //per piece of equipment;
+                            //multi_setting
+                            multi_participant: {
+                                options: [{
+                                    value: "0",
+                                    text: "Placeholder"
+                                }, {
+                                    value: "1",
+                                    text: "multiple fields?"
+                                }],
+                                current: "1"
+                            }
                         }
                     },
                     {
                         name: "Payment",
-                        options: {
+                        fields: {
                             //0 full amount, 1 deposit, 2 delay payment
                             credit_card: {
-                                online: 0,
-                                walk_in: 0,
-                                backend: 0,
-                                phone: 0
+                                online: {
+                                    options: [{
+                                        value: "none",
+                                        text: "None"
+                                    }, {
+                                        value: "validate",
+                                        text: "Validate"
+                                    }, {
+                                        value: "charge_reservation",
+                                        text: "Charge Reservation Fee"
+                                    }, {
+                                        value: "charge_full",
+                                        text: "Charge Full Amount"
+                                    }],
+                                    current: "charge_full"
+                                },
+                                walk_in: {
+                                    options: [{
+                                        value: "none",
+                                        text: "None"
+                                    }, {
+                                        value: "validate",
+                                        text: "Validate"
+                                    }, {
+                                        value: "charge_reservation",
+                                        text: "Charge Reservation Fee"
+                                    }, {
+                                        value: "charge_full",
+                                        text: "Charge Full Amount"
+                                    }],
+                                    current: "charge_full"
+                                },
+                                backend: {
+                                    options: [{
+                                        value: "none",
+                                        text: "None"
+                                    }, {
+                                        value: "validate",
+                                        text: "Validate"
+                                    }, {
+                                        value: "charge_reservation",
+                                        text: "Charge Reservation Fee"
+                                    }, {
+                                        value: "charge_full",
+                                        text: "Charge Full Amount"
+                                    }],
+                                    current: "charge_full"
+                                },
+                                phone: {
+                                    options: [{
+                                        value: "none",
+                                        text: "None"
+                                    }, {
+                                        value: "validate",
+                                        text: "Validate"
+                                    }, {
+                                        value: "charge_reservation",
+                                        text: "Charge Reservation Fee"
+                                    }, {
+                                        value: "charge_full",
+                                        text: "Charge Full Amount"
+                                    }],
+                                    current: "charge_full"
+                                }
                             },
                             delay_payment: {
-                                backend: true,
-                                walk_in: true
+                                walk_in: {
+                                    options: [{
+                                        value: "no",
+                                        text: "No"
+                                    }, {
+                                        value: "yes",
+                                        text: "Yes"
+                                    }, {
+                                        value: "admin",
+                                        text: "Admin"
+                                    }],
+                                    current: "admin"
+                                },
+                                backend: {
+                                    options: [{
+                                        value: "no",
+                                        text: "No"
+                                    }, {
+                                        value: "yes",
+                                        text: "Yes"
+                                    }],
+                                    current: "yes"
+                                }
                             }
                         }
                     },
                     {
                         name: "Terms and conditions",
-                        options: {
-                            waiver: ""
-                            //fields?
-                        }
+                        fields: null
                     },
                     {
                         name: "Subcategories",
                         //static link and images, no data
-                        options: null
+                        fields: null
 
                     },
                     {
                         name: "Pricing",
-                        options: null
+                        fields: null
 
                     },
                     {
@@ -172,6 +329,7 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
+
     }
 
     .page {
