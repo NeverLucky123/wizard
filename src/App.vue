@@ -149,11 +149,11 @@
                             //when doing inventory checks
                             consider_size: {
                                 options: [{
-                                    value: "no",
-                                    text: "yes"
+                                    value: "yes",
+                                    text: "no"
                                 }, {
                                     value: "size",
-                                    text: "Yes"
+                                    text: "yes"
                                 }],
                                 current: "size"
                             },
@@ -273,7 +273,7 @@
                                         text: "Yes"
                                     }, {
                                         value: "admin",
-                                        text: "Admin"
+                                        text: "Require staff"
                                     }],
                                     current: "admin"
                                 },
