@@ -111,7 +111,7 @@
                             //typo?
                             reorder: true,
                             //per piece of equipment
-                            multi_participant: true
+                            multi_participant: 1
                         }
                     },
                     {
