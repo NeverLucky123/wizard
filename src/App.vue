@@ -346,7 +346,6 @@
     .page {
         padding-right: 0px !important;
         height: 600px;
-        overflow-y: scroll;
         overflow-x: hidden;
         background-color: #F8F8F8;
     }

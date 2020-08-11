@@ -6,7 +6,7 @@
                 <form>
                     <div class="row">
                         <TimeInput v-on:update="fields.opening=$event" v-bind:time="fields.opening" label="Opening time"></TimeInput>
-                         <TimeInput v-on:update="fields.closing=$event" v-bind:time="fields.closing" label="Closing time"></TimeInput>
+                        <TimeInput v-on:update="fields.closing=$event" v-bind:time="fields.closing" label="Closing time"></TimeInput>
                     </div>
                     <br>
                 </form>
@@ -33,9 +33,11 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     page1 {}
- label{
+
+    label {
         font-weight: bold;
     }
+
     .form-row {
         margin-bottom: 2em;
     }
