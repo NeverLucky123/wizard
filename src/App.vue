@@ -7,22 +7,22 @@
 
         <!-- Modal -->
         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Setup</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><img src="https://dev.rentrax.io/images/site_logo" style="width:auto; height:40px"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close_modal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="container">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-auto no-gutters">
                                     <Progress v-on:goto="goto"></Progress>
                                 </div>
                                 <div class="col page">
-                                    <Page></Page>
+                                    <Page class="w-100"></Page>
                                 </div>
                             </div>
                         </div>
@@ -96,13 +96,15 @@
                 */
                 pages: [{
                         name: "Business Settings",
+                        icon: "chart-pie",
                         fields: {
-                            opening: "",
-                            closing: ""
+                            opening: "09:00",
+                            closing: "17:00"
                         }
                     },
                     {
                         name: "Activity Settings",
+                        icon: "snowboarding",
                         fields: {
                             auto_create_invoice: {
                                 options: [{
@@ -195,6 +197,7 @@
                     },
                     {
                         name: "Payment",
+                        icon: "calculator",
                         fields: {
                             //0 full amount, 1 deposit, 2 delay payment
                             credit_card: {
@@ -292,21 +295,26 @@
                     },
                     {
                         name: "Terms and conditions",
+                        icon: "pen",
                         fields: null
                     },
                     {
                         name: "Subcategories",
+                        icon: "sitemap",
                         //static link and images, no data
                         fields: null
 
                     },
                     {
                         name: "Pricing",
+                        icon: "money-check-alt",
+
                         fields: null
 
                     },
                     {
                         name: "Booking",
+                        icon: "shopping-cart",
                         options: null
                     }
                 ]
@@ -318,8 +326,12 @@
 </script>
 
 <style>
+    .close {
+        transform: translateY(12%);
+    }
+
     .no-gutters {
-        margin-right: 0;
+        margin-right: 0 !important;
         margin-left: 0;
     }
 
@@ -329,10 +341,13 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-
     }
 
     .page {
+        padding-right: 0px !important;
+        height: 600px;
+        overflow-y: scroll;
+        overflow-x: hidden;
         background-color: #F8F8F8;
     }
 

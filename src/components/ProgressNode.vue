@@ -24,7 +24,7 @@
         name: 'Page',
         components: {},
         methods: {
-            
+
         },
         props: {
             title: String,
@@ -57,25 +57,28 @@
         background-color: #EBEBEB;
         border-radius: 50%;
     }
-  
+
 
     .complete {
         color: white;
-        background-color: #28A745;
+        background-color: #44B6AE;
     }
 
     .complete_label {
-        color: #28A745;
+        color: #44B6AE;
         background-color: transparent;
     }
 
     .active {
-        color: white;
-        background-color: #4966B1;
+        line-height: 42px;
+        border-width: 4px;
+        border-style: inset;
+        color: #44B6AE;
+        border-color: #44B6AE;
     }
 
     .active_label {
-        color: #4966B1;
+        color: #44B6AE;
         background-color: transparent;
     }
 

@@ -1,10 +1,19 @@
 <template>
     <div class="page">
-        <h3>{{title}}</h3>
+        <div class="container title">
+            <div class="row align-items-center">
+                <div class="col-auto no-gutters">
+                    <font-awesome-icon size="lg" v-bind:icon="icon">
+                    </font-awesome-icon>
+                </div>
+                <div class="col no-gutters">
+                    <h4>{{title}}</h4>
+                </div>
+            </div>
+        </div>
         <Page1 v-if="$parent.index===1"></Page1>
         <Page2 v-if="$parent.index===2"></Page2>
         <Page3 v-if="$parent.index===3"></Page3>
-
     </div>
 </template>
 
@@ -23,6 +32,9 @@
         computed: {
             title: function() {
                 return this.$parent.pages[this.$parent.index - 1].name
+            },
+            icon: function() {
+                return this.$parent.pages[this.$parent.index - 1].icon
             }
         }
     }
@@ -31,32 +43,26 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    page {
-        overflow: scroll;
+    .page {
+        height: 100%;
+        padding: 20px;
     }
 
-    input {
-        margin: 100px;
+    .no-gutters {
+        padding: 0 !important;
     }
 
 
-    ul {
-        list-style-type: none;
-        padding: 0;
+    h4 {
+        margin-left: 10px;
+        margin-bottom: 0;
+        color: #44B6AE;
+
     }
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    }
-
-    h3 {
-        margin-top: 40px;
-        margin-bottom: 40px;
+    .title {
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 
 </style>
