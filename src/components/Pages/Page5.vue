@@ -4,10 +4,10 @@
         <br>
         <br>
         <ol>
-            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" role="button">
+            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="home"></font-awesome-icon> Dashboard
                 </a></li>
-            <li>Click on <a class="btn btn-dark" href="/admin/products/categories" role="button">
+            <li>Click on <a class="btn btn-dark" href="/admin/products/categories" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="sitemap"></font-awesome-icon> Categories
                 </a></li>
             <li>Let's create a category called "Bikes". Click <a class="btn btn-dark" href="#" role="button"> +</a> on the <a class="btn btn-dark" href="#" role="button">Rental Groups</a> bar. Input "Bikes" as the Group Name.

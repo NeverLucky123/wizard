@@ -35,7 +35,7 @@
     }
 
     .timeinput {
-        margin-bottom: 2em;
+        margin-bottom: 1em;
     }
 
     .form-row {

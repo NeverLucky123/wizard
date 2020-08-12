@@ -6,20 +6,23 @@
         <br>
         <ol>
             <li>Lets create a new pricing tier for the subcategory you just created.</li>
-            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" role="button">
+            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="home"></font-awesome-icon> Dashboard
                 </a></li>
             <li>Hover over <a class="btn btn-dark" href="#" role="button">
                     <font-awesome-icon size="xs" icon="cog" /> Configurations</a>
-                on the the side bar</li> and click <a class="btn btn-dark" href="/admin/prices" role="button">
+                on the the side bar</li> and click <a class="btn btn-dark" href="/admin/prices" target="_blank" role="button">
                 <font-awesome-icon size="xs" icon="calculator" /> Price Settings</a>
-            <li>Scroll to the bottom of the page and click <a class="btn btn-dark" href="#" role="button">+ New xxxx Pricing</a></li>
+            <li>Scroll to the bottom of the page and click <a class="btn btn-dark" href="#" target="_blank" role="button">+ New xxxx Pricing</a></li>
             <li>Put in "E-Bikes" for the template name
                 <ul>
-                    <li><a class="btn btn-dark" href="/admin/prices/1/edit" role="button">
-                            <font-awesome-icon size="xs" icon="pen" /> Edit</a> E-Bikes pricing.</li>
-                    <li>Set <a class="btn btn-dark" href="#" role="button">Pricing Model</a> to <a class="btn btn-dark" href="#" role="button">Linear</a></li>
-                    <li>Set <a class="btn btn-dark" href="#" role="button">Duration Model</a> to <a class="btn btn-dark" href="#" role="button">Integer Days</a> or <a class="btn btn-dark" href="#" role="button">Integer Hours</a></li>
+                    <li><a class="btn btn-dark" href="/admin/prices/1/edit" target="_blank" role="button">
+                            <font-awesome-icon size="xs" icon="pen" /> Edit</a> E-Bikes pricing.
+                    </li>
+                    <li>Set <a class="btn btn-dark" href="#" role="button">Pricing Model</a> to <a class="btn btn-dark" href="#" role="button">Linear</a>
+                    </li>
+                    <li>Set <a class="btn btn-dark" href="#" role="button">Duration Model</a> to <a class="btn btn-dark" href="#" role="button">Integer Days</a> or <a class="btn btn-dark" href="#" role="button">Integer Hours</a>
+                    </li>
                 </ul>
             </li>
             <li>Set <a class="btn btn-dark" href="#" role="button">Stop Calc at Plan Finish</a> to <a class="btn btn-dark" href="#" role="button">Enabled</a>

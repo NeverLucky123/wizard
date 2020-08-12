@@ -5,9 +5,9 @@
         <br>
         <br>
         <ol>
-            <li>Click <a class="btn btn-dark" href="/admin/orders/rents" role="button">
+            <li>Click <a class="btn btn-dark" href="/admin/orders/rents" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="calendar-alt" /> Rent Orders</a></li>
-            <li>Click <a class="btn btn-dark" href="/reservations/1?source=back_end" role="button">
+            <li>Click <a class="btn btn-dark" href="/reservations/1?source=back_end" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="plus-circle" /> Reservation</a>
                 <ul>
                     <li>Set the <a class="btn btn-dark" href="#" role="button">Rental Period</a></li>

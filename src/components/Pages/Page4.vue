@@ -6,10 +6,10 @@
         <br>
         <ol>
 
-            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" role="button">
+            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="home"></font-awesome-icon> Dashboard
                 </a></li>
-            <li>Click on <a class="btn btn-dark" href="/admin/rental-types" role="button">
+            <li>Click on <a class="btn btn-dark" href="/admin/rental-types" target="_blank" role="button">
                     <font-awesome-icon size="xs" icon="cogs"></font-awesome-icon>
                     Activity Settings </a>, then click <a class="btn btn-dark" href="#" role="button">
                         <font-awesome-icon size="xs" icon="cog"></font-awesome-icon>
