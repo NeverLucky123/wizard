@@ -12,8 +12,17 @@
                 </kbd></li>
             <li>Let's create a category called "Bikes". Click <kbd> +</kbd> on the <kbd>Rental Groups</kbd> bar. Input "Bikes" as the Group Name.
             </li>
-            <li>Now we need to create a subcategory, like “Ebikes”.
+            <li>Now let's create a subcategory, “E-Bikes”. Click <kbd> +</kbd> on the <kbd>Bike</kbd> category. Input "E-Bikes" as the Category Name.
             </li>
+            <li>Click <kbd>
+                    <font-awesome-icon size="xs" icon="cog"></font-awesome-icon>
+                </kbd> </li>
+            <li>Here you can add a customer-facing description and picture to this type of product.</li>
+            <li>Set <kbd>Product Size Required</kbd> to <kbd>Yes</kbd> if you want customers to be able to choose their size.</li>
+            <li>Check <kbd>Is SKU-based?</kbd> if you want to keep track of inventory individually.</li>
+            <li>Press <kbd>
+                    <font-awesome-icon size="xs" icon="save"></font-awesome-icon>
+                Save</kbd> </li>
         </ol>
     </div>
 </template>

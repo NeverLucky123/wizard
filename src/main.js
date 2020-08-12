@@ -13,14 +13,19 @@ import {
     faMoneyCheckAlt,
     faShoppingCart,
     faCogs,
-    faHome
+    faHome,
+    faCog,
+    faSave,
+    faMoneyBillAlt,
+    faCalendarAlt,
+    faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
     FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faChartPie, faSnowboarding, faCalculator, faPen, faSitemap, faMoneyCheckAlt, faShoppingCart, faCogs, faHome)
+library.add(faChartPie, faSnowboarding, faCalculator, faPen, faSitemap, faMoneyCheckAlt, faShoppingCart, faCogs, faHome, faCog, faSave, faMoneyBillAlt, faCalendarAlt, faPlusCircle)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
