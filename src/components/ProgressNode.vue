@@ -11,7 +11,7 @@
             </div>
             <div class="row no-gutters">
                 <div class="col-4">
-                    <div class="node_link" v-if="!last"></div>
+                    <div class="node_link" v-bind:class="{active_link:index<active}" v-if="!last"></div>
                 </div>
                 <div class="col"></div>
             </div>
@@ -87,6 +87,11 @@
         height: 40px;
         width: 3px;
         background-color: #EBEBEB;
+    }
+    
+    
+    .active_link {
+        background-color: #44B6AE;
     }
 
 </style>

@@ -172,26 +172,121 @@
                             },
                             //multi_setting
                             reorder: {
-                                options: [{
-                                    value: "0",
-                                    text: "No"
-                                }, {
-                                    value: "1",
-                                    text: "Yes"
-                                }],
-                                current: "0"
+                                online: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "0"
+                                },
+                                walk_in: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "0"
+                                },
+                                backend: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "0"
+                                },
+                                phone: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "0"
+                                },
                             },
                             //per piece of equipment;
                             //multi_setting
                             multi_participant: {
-                                options: [{
-                                    value: "0",
-                                    text: "Placeholder"
-                                }, {
-                                    value: "1",
-                                    text: "multiple fields?"
-                                }],
-                                current: "1"
+                                online: {
+                                    options: [{
+                                            value: "no",
+                                            text: "Single Renter"
+                                        }, {
+                                            value: "yes",
+                                            text: "Multiple Renters"
+                                        },
+                                        {
+                                            value: "waiver",
+                                            text: "Multiple Participants (Waiver)"
+                                        },
+                                        {
+                                            value: "both",
+                                            text: "Multiple Renters/Participants"
+                                        }
+
+                                    ],
+                                    current: "yes"
+                                },
+                                walk_in: {
+                                    options: [{
+                                            value: "no",
+                                            text: "Single Renter"
+                                        }, {
+                                            value: "yes",
+                                            text: "Multiple Renters"
+                                        },
+                                        {
+                                            value: "waiver",
+                                            text: "Multiple Participants (Waiver)"
+                                        },
+                                        {
+                                            value: "both",
+                                            text: "Multiple Renters/Participants"
+                                        }
+
+                                    ],
+                                    current: "yes"
+                                },
+                                backend: {
+                                    options: [{
+                                            value: "no",
+                                            text: "Single Renter"
+                                        }, {
+                                            value: "yes",
+                                            text: "Multiple Renters"
+                                        },
+                                        {
+                                            value: "waiver",
+                                            text: "Multiple Participants (Waiver)"
+                                        },
+                                        {
+                                            value: "both",
+                                            text: "Multiple Renters/Participants"
+                                        }
+
+                                    ],
+                                    current: "yes"
+                                },
+                                phone: {
+                                    options: [{
+                                            value: "no",
+                                            text: "Single Renter"
+                                        }, {
+                                            value: "yes",
+                                            text: "Multiple Renters"
+                                        }
+                                    ],
+                                    current: "yes"
+                                }
                             }
                         }
                     },

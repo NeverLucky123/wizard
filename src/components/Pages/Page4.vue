@@ -13,7 +13,7 @@
                     Activity Settings
                 </kbd></li>
             <li>Navigate to <kbd>
-                    <font-awesome-icon size="xs" icon="pen"></font-awesome-icon> Terms and Conditions
+                    <font-awesome-icon size="xs" icon="pen"></font-awesome-icon> {{Sign_Tab_Name}}
                 </kbd></li>
             <li>Paste in your waiver (.docs or .text). Feel free to press <kbd>></kbd> in the wizard if you don't have it on hand.</li>
             <li>Move your mouse to where the initials field should be on the waiver.</li>
@@ -28,10 +28,17 @@
     export default {
         name: 'Page4',
         components: {},
-        methods: {
+        computed: {
+            Sign_Tab_Name: function() {
+                if (this.$root.$children[0].pages[1].fields.waiver.current === "enhanced_waiver") {
+                    return "Enhanced Waiver"
+                } else {
+                    return "Terms and Conditions"
+                }
+            }
+        }
 
-        },
-        data: function() {}
+
     }
 
 </script>
@@ -47,6 +54,5 @@
     label {
         font-weight: bold;
     }
-
 
 </style>
