@@ -3,13 +3,8 @@
         <form>
             <div class="form-group">
                 <label for="formControlRange">Business hours</label>
-                <form>
-                    <div class="row">
-                        <TimeInput v-on:update="fields.opening=$event" v-bind:time="fields.opening" label="Opening time"></TimeInput>
-                        <TimeInput v-on:update="fields.closing=$event" v-bind:time="fields.closing" label="Closing time"></TimeInput>
-                    </div>
-                    <br>
-                </form>
+                <TimeInput class="timeinput" v-on:update="fields.opening=$event" v-bind:time="fields.opening" label="Opening time"></TimeInput>
+                <TimeInput class="timeinput" v-on:update="fields.closing=$event" v-bind:time="fields.closing" label="Closing time"></TimeInput>
             </div>
         </form>
     </div>
@@ -36,6 +31,11 @@
 
     label {
         font-weight: bold;
+        margin-bottom: 2em;
+    }
+
+    .timeinput {
+        margin-bottom: 2em;
     }
 
     .form-row {

@@ -5,19 +5,19 @@
         <br>
         <br>
         <ol>
-            <li>Click <kbd>
-                    <font-awesome-icon size="xs" icon="calendar-alt" /> Rent Orders</kbd> from the top row</li>
-            <li>Click <kbd>
-                    <font-awesome-icon size="xs" icon="plus-circle" /> Reservation</kbd>
+            <li>Click <a class="btn btn-dark" href="/admin/orders/rents" role="button">
+                    <font-awesome-icon size="xs" icon="calendar-alt" /> Rent Orders</a></li>
+            <li>Click <a class="btn btn-dark" href="/reservations/1?source=back_end" role="button">
+                    <font-awesome-icon size="xs" icon="plus-circle" /> Reservation</a>
                 <ul>
-                    <li>Set the <kbd>Rental Period</kbd></li>
-                    <li>Enter the test information in <kbd>Customer Info</kbd></li>
+                    <li>Set the <a class="btn btn-dark" href="#" role="button">Rental Period</a></li>
+                    <li>Enter the test information in <a class="btn btn-dark" href="#" role="button">Customer Info</a></li>
                     <li>Select "E-Bikes", which was just created</li>
-                    <li>Click <kbd>CHECKOUT</kbd></li>
+                    <li>Click <a class="btn btn-dark" href="#" role="button">CHECKOUT</a></li>
                 </ul>
             </li>
             <li>Sign the waiver</li>
-            <li>Enter <kbd>411111111</kbd> <kbd>04/21</kbd> and <kbd>111</kbd> for payment info
+            <li>Enter <a class="btn btn-dark" href="#" role="button">411111111</a>, <a class="btn btn-dark" href="#" role="button">04/21</a> and <a class="btn btn-dark" href="#" role="button">111</a> for payment info
             </li>
             <li>Pay full amount</li>
         </ol>
@@ -33,6 +33,14 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     page7 {}
+
+    .btn-dark {
+        font-size: 14 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
 
     ol {
         line-height: 2em;

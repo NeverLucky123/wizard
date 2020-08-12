@@ -1,10 +1,11 @@
 <template>
-    <div class="col">
-        <input v-on:change="$emit('update',$event.target.value)" :value="time" type="time" class="form-control">
-        <small id="passwordHelpBlock" class="form-text text-muted">
-            {{label}}
-        </small>
-
+    <div class="row align-items-center">
+        <div class="col-6">
+            <label>{{label}}</label>
+        </div>
+        <div class="col-6">
+            <input v-on:change="$emit('update',$event.target.value)" :value="time" type="time" class="form-control">
+        </div>
     </div>
 </template>
 <script>
@@ -18,8 +19,10 @@
 
 </script>
 <style scoped>
-    select {
-        margin-left: 1em;
+    input {}
+
+    label {
+        margin: 0 !important;
     }
 
 </style>

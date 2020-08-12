@@ -6,28 +6,28 @@
         <br>
         <ol>
             <li>Lets create a new pricing tier for the subcategory you just created.</li>
-            <li>Begin from the <kbd>
+            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" role="button">
                     <font-awesome-icon size="xs" icon="home"></font-awesome-icon> Dashboard
-                </kbd></li>
-            <li>Hover over <kbd>
-                    <font-awesome-icon size="xs" icon="cog" /> Configurations</kbd>
-                on the the side bar</li> and click <kbd>
-                <font-awesome-icon size="xs" icon="calculator" /> Price Settings</kbd>
-            <li>Scroll to the bottom of the page and click <kbd>+ New xxxx Pricing</kbd></li>
+                </a></li>
+            <li>Hover over <a class="btn btn-dark" href="#" role="button">
+                    <font-awesome-icon size="xs" icon="cog" /> Configurations</a>
+                on the the side bar</li> and click <a class="btn btn-dark" href="/admin/prices" role="button">
+                <font-awesome-icon size="xs" icon="calculator" /> Price Settings</a>
+            <li>Scroll to the bottom of the page and click <a class="btn btn-dark" href="#" role="button">+ New xxxx Pricing</a></li>
             <li>Put in "E-Bikes" for the template name
                 <ul>
-                    <li><kbd>
-                            <font-awesome-icon size="xs" icon="pen" /> Edit</kbd> E-Bikes pricing.</li>
-                    <li>Set <kbd>Pricing Model</kbd> to <kbd>Linear</kbd></li>
-                    <li>Set <kbd>Duration Model</kbd> to <kbd>Integer Days</kbd> or <kbd>Integer Hours</kbd></li>
+                    <li><a class="btn btn-dark" href="/admin/prices/1/edit" role="button">
+                            <font-awesome-icon size="xs" icon="pen" /> Edit</a> E-Bikes pricing.</li>
+                    <li>Set <a class="btn btn-dark" href="#" role="button">Pricing Model</a> to <a class="btn btn-dark" href="#" role="button">Linear</a></li>
+                    <li>Set <a class="btn btn-dark" href="#" role="button">Duration Model</a> to <a class="btn btn-dark" href="#" role="button">Integer Days</a> or <a class="btn btn-dark" href="#" role="button">Integer Hours</a></li>
                 </ul>
             </li>
-            <li>Set <kbd>Stop Calc at Plan Finish</kbd> to <kbd>Enabled</kbd>
+            <li>Set <a class="btn btn-dark" href="#" role="button">Stop Calc at Plan Finish</a> to <a class="btn btn-dark" href="#" role="button">Enabled</a>
             </li>
-            <li>Go to the <kbd>
-                    <font-awesome-icon size="xs" icon="money-bill-alt" /> Price Table</kbd> tab
+            <li>Go to the <a class="btn btn-dark" href="#" role="button">
+                    <font-awesome-icon size="xs" icon="money-bill-alt" /> Price Table</a> tab
                     <ul>
-                        <li>Let's set the first duration. Set the <kbd>Cost Type</kbd> to total (flat), and enter the amount for this range of time.
+                        <li>Let's set the first duration. Set the <a class="btn btn-dark" href="#" role="button">Cost Type</a> to total (flat), and enter the amount for this range of time.
                             </li>
                     </ul>
     
@@ -46,6 +46,13 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     page6 {}
+     .btn-dark {
+        font-size: 14 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
     ol {
         line-height: 2em;
     }

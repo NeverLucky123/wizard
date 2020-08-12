@@ -5,17 +5,18 @@
             </div>
             <div class="row justify-content-between">
                 <div class="col">
-                    <button type="button" class="btn btn-secondary btn-lg" v-on:click="save">                        <font-awesome-icon size="md" icon="save"></font-awesome-icon>
+                    <button type="button" class="btn btn-secondary btn-lg" v-on:click="save">
+                        <font-awesome-icon size="lg" icon="save"></font-awesome-icon>
                     </button>
                 </div>
                 <div class="col-md-auto">
                     <button type="button" class="btn btn-secondary btn-lg" v-on:click="back">
-                        <font-awesome-icon size="md" icon="chevron-left"></font-awesome-icon>
+                        <font-awesome-icon size="lg" icon="chevron-left"></font-awesome-icon>
                     </button>
                     <button type="button" class="btn btn-forward btn-lg" v-on:click="done" v-if="$parent.index===$parent.pages.length">Done
                     </button>
                     <button type="button" class="btn btn-forward btn-lg" v-on:click="next" v-else>
-                        <font-awesome-icon size="md" icon="chevron-right" inverse></font-awesome-icon>
+                        <font-awesome-icon size="lg" icon="chevron-right" inverse></font-awesome-icon>
                     </button>
                 </div>
             </div>
@@ -42,8 +43,7 @@
             save: function() {
                 this.$emit('save')
             }
-        },
-        data: function() {}
+        }
     }
 
 </script>

@@ -57,9 +57,6 @@
             },
             next: function() {
                 this.index++;
-                console.log(this.pages)
-                console.log(this.pages.length)
-
                 if (this.index > this.pages.length) {
                     this.index = this.pages.length;
                 }

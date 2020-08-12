@@ -6,10 +6,14 @@
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="fields.credit_card.online" label="Online"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
                 <Toggle v-bind:options="fields.credit_card.walk_in" label="Walk In"></Toggle>
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="fields.credit_card.backend" label="Backend"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
                 <Toggle v-bind:options="fields.credit_card.phone" label="Phone"></Toggle>
             </div>
             <br>
@@ -18,7 +22,9 @@
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="fields.delay_payment.walk_in" label="Walk In"></Toggle>
-                <Toggle v-bind:options="fields.delay_payment.backend" label="Backend"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="fields.delay_payment.backend" style="margin-bottom:0" label="Backend"></Toggle>
             </div>
         </form>
     </div>
@@ -53,7 +59,7 @@
     }
 
     .form-row {
-        margin-bottom: 2em;
+        margin-bottom: 1.5em;
     }
 
 </style>
