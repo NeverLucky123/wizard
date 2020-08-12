@@ -5,17 +5,17 @@
             </div>
             <div class="row justify-content-between">
                 <div class="col">
-                    <button type="button" class="btn btn-outline-success btn-lg" v-on:click="save"><img class="icon mx-auto d-block" src="../assets/open-iconic/svg/file.svg">
+                    <button type="button" class="btn btn-secondary btn-lg" v-on:click="save">                        <font-awesome-icon size="md" icon="save"></font-awesome-icon>
                     </button>
                 </div>
                 <div class="col-md-auto">
                     <button type="button" class="btn btn-secondary btn-lg" v-on:click="back">
-                        <img class="icon mx-auto d-block" src="../assets/open-iconic/svg/chevron-left.svg">
+                        <font-awesome-icon size="md" icon="chevron-left"></font-awesome-icon>
                     </button>
                     <button type="button" class="btn btn-forward btn-lg" v-on:click="done" v-if="$parent.index===$parent.pages.length">Done
                     </button>
                     <button type="button" class="btn btn-forward btn-lg" v-on:click="next" v-else>
-                        <img class="icon mx-auto d-block" src="../assets/open-iconic/svg/chevron-right.svg">
+                        <font-awesome-icon size="md" icon="chevron-right" inverse></font-awesome-icon>
                     </button>
                 </div>
             </div>
@@ -54,17 +54,16 @@
         line-height: 100%;
         margin: 5px;
     }
-    
-    .btn-forward, .btn-forward:hover, .btn-forward:active, .btn-forward:visited {
+
+    .btn-forward,
+    .btn-forward:hover,
+    .btn-forward:active,
+    .btn-forward:visited {
         background-color: #44B6AE !important;
     }
+
     .page_nav {
         width: 100%;
-    }
-
-    .icon {
-        width: 16px;
-        height: 16px;
     }
 
 </style>

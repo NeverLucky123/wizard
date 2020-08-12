@@ -17,9 +17,9 @@
                 </kbd></li>
             <li>Paste in your waiver (.docs or .text). Feel free to press <kbd>></kbd> in the wizard if you don't have it on hand.</li>
             <li>Move your mouse to where the initials field should be on the waiver.</li>
-            <li>Type in <kbd>@whatever macro intial is, ask Al</kbd></li>
+            <li>Type in <kbd>@initials</kbd></li>
             <li>Move your mouse to where the signature field should be on the waiver.</li>
-            <li>Type in <kbd>@full_name</kbd></li>
+            <li>Type in <kbd>@signature</kbd></li>
         </ol>
     </div>
 </template>
