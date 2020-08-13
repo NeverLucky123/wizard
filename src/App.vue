@@ -10,7 +10,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><img src="https://dev.rentrax.io/images/site_logo" style="width:auto; height:40px"></h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><img src="./assets/site_logo.png" style="width:auto; height:40px"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close_modal">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -84,7 +84,7 @@
         },
         data: function() {
             return {
-                index: 1,                
+                index: 1,
                 /*
                 ---------------------------------------------------
                 For attributes bound to Checkbox, always put the false  
@@ -151,9 +151,6 @@
                                 }, {
                                     value: "AU$",
                                     text: "AU$ - Australian dollar"
-                                }, {
-                                    value: "AUD",
-                                    text: "Australian Dollar"
                                 }, {
                                     value: "R",
                                     text: "R - South Africa Rand"
@@ -256,17 +253,22 @@
                         icon: "snowboarding",
                         fields: [{
                                 activity_name: "Biking",
-                                auto_create_invoice: {
+                                create_invoice: {
                                     options: [{
-                                        value: "0",
-                                        text: "Show Finish Page"
-                                    }, {
-                                        value: "1",
-                                        text: "Preview Invoice"
-                                    }],
-                                    current: "1"
+                                            value: "reservation",
+                                            text: "At Reservation (automated)"
+                                        }, {
+                                            value: "delivery",
+                                            text: "At Delivery (automated)"
+                                        },
+                                        {
+                                            value: "return",
+                                            text: "After Return"
+                                        }
+                                    ],
+                                    current: "return"
                                 },
-                                address_required: {
+                                pre_auth: {
                                     options: [{
                                         value: "0",
                                         text: "No"
@@ -274,38 +276,49 @@
                                         value: "1",
                                         text: "Yes"
                                     }],
-                                    current: "0"
+                                    current: "1"
+                                },
+                                confirm_res: {
+                                    options: [{
+                                        value: "manual",
+                                        text: "Manually Confirm"
+                                    }, {
+                                        value: "automatic",
+                                        text: "Automatically Confirm"
+                                    }],
+                                    current: "automatic"
+                                },
+                                close_res: {
+                                    options: [{
+                                        value: "manual",
+                                        text: "Manually Close"
+                                    }, {
+                                        value: "automatic",
+                                        text: "Automatically Close"
+                                    }],
+                                    current: "automatic"
+                                },
+                                product_option: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "1"
                                 },
                                 //single renter only
-                                customer_input: {
+                                check_product_avail: {
                                     options: [{
-                                        value: "order_page",
-                                        text: "At Beginning"
+                                        value: "no",
+                                        text: "No"
                                     }, {
-                                        value: "checkout_page",
-                                        text: "At Checkout"
-                                    }],
-                                    current: "checkout_page"
-                                },
-                                //sign_box if false, advanced waiver if true
-                                waiver: {
-                                    options: [{
-                                        value: "enhanced_waiver",
-                                        text: "Advanced Waiver"
-                                    }, {
-                                        value: "sign",
-                                        text: "Sign Box"
-                                    }],
-                                    current: "enhanced_waiver"
-                                },
-                                //when doing inventory checks
-                                consider_size: {
-                                    options: [{
                                         value: "yes",
-                                        text: "no"
+                                        text: "Yes"
                                     }, {
                                         value: "size",
-                                        text: "yes"
+                                        text: "Consider Size"
                                     }],
                                     current: "size"
                                 },
@@ -319,6 +332,16 @@
                                         text: "Yes"
                                     }],
                                     current: "1"
+                                },
+                                order_time_unit: {
+                                    options: [{
+                                        value: "hour",
+                                        text: "Hour"
+                                    }, {
+                                        value: "day",
+                                        text: "Day"
+                                    }],
+                                    current: "hour"
                                 },
                                 //multi_setting
                                 reorder: {
@@ -440,17 +463,22 @@
                             },
                             {
                                 activity_name: "Skiing",
-                                auto_create_invoice: {
+                                create_invoice: {
                                     options: [{
-                                        value: "0",
-                                        text: "Show Finish Page"
-                                    }, {
-                                        value: "1",
-                                        text: "Preview Invoice"
-                                    }],
-                                    current: "1"
+                                            value: "reservation",
+                                            text: "At Reservation (automated)"
+                                        }, {
+                                            value: "delivery",
+                                            text: "At Delivery (automated)"
+                                        },
+                                        {
+                                            value: "return",
+                                            text: "After Return"
+                                        }
+                                    ],
+                                    current: "return"
                                 },
-                                address_required: {
+                                pre_auth: {
                                     options: [{
                                         value: "0",
                                         text: "No"
@@ -458,38 +486,49 @@
                                         value: "1",
                                         text: "Yes"
                                     }],
-                                    current: "0"
+                                    current: "1"
+                                },
+                                confirm_res: {
+                                    options: [{
+                                        value: "manual",
+                                        text: "Manually Confirm"
+                                    }, {
+                                        value: "automatic",
+                                        text: "Automatically Confirm"
+                                    }],
+                                    current: "automatic"
+                                },
+                                close_res: {
+                                    options: [{
+                                        value: "manual",
+                                        text: "Manually Close"
+                                    }, {
+                                        value: "automatic",
+                                        text: "Automatically Close"
+                                    }],
+                                    current: "automatic"
+                                },
+                                product_option: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "1"
                                 },
                                 //single renter only
-                                customer_input: {
+                                check_product_avail: {
                                     options: [{
-                                        value: "order_page",
-                                        text: "At Beginning"
+                                        value: "no",
+                                        text: "No"
                                     }, {
-                                        value: "checkout_page",
-                                        text: "At Checkout"
-                                    }],
-                                    current: "checkout_page"
-                                },
-                                //sign_box if false, advanced waiver if true
-                                waiver: {
-                                    options: [{
-                                        value: "enhanced_waiver",
-                                        text: "Advanced Waiver"
-                                    }, {
-                                        value: "sign",
-                                        text: "Sign Box"
-                                    }],
-                                    current: "enhanced_waiver"
-                                },
-                                //when doing inventory checks
-                                consider_size: {
-                                    options: [{
                                         value: "yes",
-                                        text: "no"
+                                        text: "Yes"
                                     }, {
                                         value: "size",
-                                        text: "yes"
+                                        text: "Consider Size"
                                     }],
                                     current: "size"
                                 },
@@ -503,6 +542,16 @@
                                         text: "Yes"
                                     }],
                                     current: "1"
+                                },
+                                order_time_unit: {
+                                    options: [{
+                                        value: "hour",
+                                        text: "Hour"
+                                    }, {
+                                        value: "day",
+                                        text: "Day"
+                                    }],
+                                    current: "hour"
                                 },
                                 //multi_setting
                                 reorder: {
@@ -621,7 +670,7 @@
                                         current: "yes"
                                     }
                                 }
-                            },
+                            }
                         ]
                     },
                     {

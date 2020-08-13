@@ -2,41 +2,49 @@
     <div class="activity">
         <form>
             <div class="form-group">
-                <label for="formControlRange">Customer Information</label>
+                <label for="formControlRange">General Settings</label>
             </div>
             <div class="form-row align-items-center">
-                <Checkbox v-bind:options="auto_create_invoice" label="Auto-create invoice"></Checkbox>
-            </div>
-
-            <div class="form-row align-items-center">
-                <Checkbox v-bind:options="consider_size" label="Customer Choose Equipment Size"></Checkbox>
+                <Checkbox v-bind:options="pre_auth" label=" Pre-Auth Security Deposit at Delivery "></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Checkbox v-bind:options="address_required" label="Require Customer address"></Checkbox>
+                <Toggle v-bind:options="create_invoice" label="Create Invoice"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Checkbox v-bind:options="avail_cal" label="Show availibility calendar"></Checkbox>
+                <Toggle v-bind:options="confirm_res" label="How To Confirm Reservation"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="customer_input" label="Customer Input"></Toggle>
+                <Toggle v-bind:options="confirm_res" label="How to Close Reservation"></Toggle>
+            </div>
+            <div class="form-group">
+                <label for="formControlRange">Order Settings</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="waiver" label="Sign with"></Toggle>
+                <Checkbox v-bind:options="avail_cal" label="Show Availability Calendar"></Checkbox>
+            </div>
+            <div class="form-row align-items-center">
+                <CheckBox v-bind:options="product_option" label="Show Product Option in Order"></CheckBox>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="check_product_avail" label="Check Product Availability"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="order_time_unit" label="Order Time Unit"></Toggle>
             </div>
             <div class="form-group">
                 <label for="formControlRange">Offer Reorder</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="reorder.online" label="Online"></Toggle>
+                <Checkbox v-bind:options="reorder.online" label="Online"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="reorder.walk_in" label="Walk In"></Toggle>
+                <Checkbox v-bind:options="reorder.walk_in" label="Walk In"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="reorder.backend" label="Backend"></Toggle>
+                <Checkbox v-bind:options="reorder.backend" label="Backend"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="reorder.phone" label="Phone"></Toggle>
+                <Checkbox v-bind:options="reorder.phone" label="Phone"></Checkbox>
             </div>
             <div class="form-group">
                 <label for="formControlRange">Multiple Renters</label>

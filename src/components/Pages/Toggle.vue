@@ -16,10 +16,6 @@
     }
 </script>
 <style scoped>
-    .no-gutters {
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
     select {
         width: 50% !important;
     }

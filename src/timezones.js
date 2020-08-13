@@ -8,8 +8,8 @@ const timezones=[
         text: "Africa/Accra"
     },
     {
-        value: "Africa/Addis",
-        text: "Africa/Addis"
+        value: "Africa/Addis_Ababa",
+        text: "Africa/Addis_Ababa"
     },
     {
         value: "Africa/Algiers",
@@ -68,8 +68,8 @@ const timezones=[
         text: "Africa/Dakar"
     },
     {
-        value: "Africa/Dar",
-        text: "Africa/Dar"
+        value: "Africa/Dar_es_Salaam",
+        text: "Africa/Dar_es_Salaam"
     },
     {
         value: "Africa/Djibouti",
@@ -80,8 +80,8 @@ const timezones=[
         text: "Africa/Douala"
     },
     {
-        value: "Africa/El",
-        text: "Africa/El"
+        value: "Africa/El_Aaiun",
+        text: "Africa/El_Aaiun"
     },
     {
         value: "Africa/Freetown",
@@ -188,12 +188,12 @@ const timezones=[
         text: "Africa/Ouagadougou"
     },
     {
-        value: "Africa/Porto",
-        text: "Africa/Porto"
+        value: "Africa/Porto-Novo",
+        text: "Africa/Porto-Novo"
     },
     {
-        value: "Africa/Sao",
-        text: "Africa/Sao"
+        value: "Africa/Sao_Tome",
+        text: "Africa/Sao_Tome"
     },
     {
         value: "Africa/Tripoli",
@@ -228,52 +228,52 @@ const timezones=[
         text: "America/Araguaina"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Buenos_Aires",
+        text: "America/Argentina/Buenos_Aires"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Catamarca",
+        text: "America/Argentina/Catamarca"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Cordoba",
+        text: "America/Argentina/Cordoba"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Jujuy",
+        text: "America/Argentina/Jujuy"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/La_Rioja",
+        text: "America/Argentina/La_Rioja"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Mendoza",
+        text: "America/Argentina/Mendoza"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Rio_Gallegos",
+        text: "America/Argentina/Rio_Gallegos"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Salta",
+        text: "America/Argentina/Salta"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/San_Juan",
+        text: "America/Argentina/San_Juan"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/San_Luis",
+        text: "America/Argentina/San_Luis"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Tucuman",
+        text: "America/Argentina/Tucuman"
     },
     {
-        value: "America/Argentina",
-        text: "America/Argentina"
+        value: "America/Argentina/Ushuaia",
+        text: "America/Argentina/Ushuaia"
     },
     {
         value: "America/Aruba",
@@ -292,8 +292,8 @@ const timezones=[
         text: "America/Bahia"
     },
     {
-        value: "America/Bahia",
-        text: "America/Bahia"
+        value: "America/Bahia_Banderas",
+        text: "America/Bahia_Banderas"
     },
     {
         value: "America/Barbados",
@@ -308,12 +308,12 @@ const timezones=[
         text: "America/Belize"
     },
     {
-        value: "America/Blanc",
-        text: "America/Blanc"
+        value: "America/Blanc-Sablon",
+        text: "America/Blanc-Sablon"
     },
     {
-        value: "America/Boa",
-        text: "America/Boa"
+        value: "America/Boa_Vista",
+        text: "America/Boa_Vista"
     },
     {
         value: "America/Bogota",
@@ -324,12 +324,12 @@ const timezones=[
         text: "America/Boise"
     },
     {
-        value: "America/Cambridge",
-        text: "America/Cambridge"
+        value: "America/Cambridge_Bay",
+        text: "America/Cambridge_Bay"
     },
     {
-        value: "America/Campo",
-        text: "America/Campo"
+        value: "America/Campo_Grande",
+        text: "America/Campo_Grande"
     },
     {
         value: "America/Cancun",
@@ -356,8 +356,8 @@ const timezones=[
         text: "America/Chihuahua"
     },
     {
-        value: "America/Costa",
-        text: "America/Costa"
+        value: "America/Costa_Rica",
+        text: "America/Costa_Rica"
     },
     {
         value: "America/Creston",
@@ -380,8 +380,8 @@ const timezones=[
         text: "America/Dawson"
     },
     {
-        value: "America/Dawson",
-        text: "America/Dawson"
+        value: "America/Dawson_Creek",
+        text: "America/Dawson_Creek"
     },
     {
         value: "America/Denver",
@@ -404,32 +404,32 @@ const timezones=[
         text: "America/Eirunepe"
     },
     {
-        value: "America/El",
-        text: "America/El"
+        value: "America/El_Salvador",
+        text: "America/El_Salvador"
     },
     {
-        value: "America/Fort",
-        text: "America/Fort"
+        value: "America/Fort_Nelson",
+        text: "America/Fort_Nelson"
     },
     {
         value: "America/Fortaleza",
         text: "America/Fortaleza"
     },
     {
-        value: "America/Glace",
-        text: "America/Glace"
+        value: "America/Glace_Bay",
+        text: "America/Glace_Bay"
     },
     {
         value: "America/Godthab",
         text: "America/Godthab"
     },
     {
-        value: "America/Goose",
-        text: "America/Goose"
+        value: "America/Goose_Bay",
+        text: "America/Goose_Bay"
     },
     {
-        value: "America/Grand",
-        text: "America/Grand"
+        value: "America/Grand_Turk",
+        text: "America/Grand_Turk"
     },
     {
         value: "America/Grenada",
@@ -464,36 +464,36 @@ const timezones=[
         text: "America/Hermosillo"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Indianapolis",
+        text: "America/Indiana/Indianapolis"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Knox",
+        text: "America/Indiana/Knox"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Marengo",
+        text: "America/Indiana/Marengo"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Petersburg",
+        text: "America/Indiana/Petersburg"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Tell_City",
+        text: "America/Indiana/Tell_City"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Vevay",
+        text: "America/Indiana/Vevay"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Vincennes",
+        text: "America/Indiana/Vincennes"
     },
     {
-        value: "America/Indiana",
-        text: "America/Indiana"
+        value: "America/Indiana/Winamac",
+        text: "America/Indiana/Winamac"
     },
     {
         value: "America/Inuvik",
@@ -512,32 +512,32 @@ const timezones=[
         text: "America/Juneau"
     },
     {
-        value: "America/Kentucky",
-        text: "America/Kentucky"
+        value: "America/Kentucky/Louisville",
+        text: "America/Kentucky/Louisville"
     },
     {
-        value: "America/Kentucky",
-        text: "America/Kentucky"
+        value: "America/Kentucky/Monticello",
+        text: "America/Kentucky/Monticello"
     },
     {
         value: "America/Kralendijk",
         text: "America/Kralendijk"
     },
     {
-        value: "America/La",
-        text: "America/La"
+        value: "America/La_Paz",
+        text: "America/La_Paz"
     },
     {
         value: "America/Lima",
         text: "America/Lima"
     },
     {
-        value: "America/Los",
-        text: "America/Los"
+        value: "America/Los_Angeles",
+        text: "America/Los_Angeles"
     },
     {
-        value: "America/Lower",
-        text: "America/Lower"
+        value: "America/Lower_Princes",
+        text: "America/Lower_Princes"
     },
     {
         value: "America/Maceio",
@@ -580,8 +580,8 @@ const timezones=[
         text: "America/Metlakatla"
     },
     {
-        value: "America/Mexico",
-        text: "America/Mexico"
+        value: "America/Mexico_City",
+        text: "America/Mexico_City"
     },
     {
         value: "America/Miquelon",
@@ -608,8 +608,8 @@ const timezones=[
         text: "America/Nassau"
     },
     {
-        value: "America/New",
-        text: "America/New"
+        value: "America/New_York",
+        text: "America/New_York"
     },
     {
         value: "America/Nipigon",
@@ -624,16 +624,16 @@ const timezones=[
         text: "America/Noronha"
     },
     {
-        value: "America/North",
-        text: "America/North"
+        value: "America/North_Dakota/Beulah",
+        text: "America/North_Dakota/Beulah"
     },
     {
-        value: "America/North",
-        text: "America/North"
+        value: "America/North_Dakota/Center",
+        text: "America/North_Dakota/Center"
     },
     {
-        value: "America/North",
-        text: "America/North"
+        value: "America/North_Dakota/New_Salem",
+        text: "America/North_Dakota/New_Salem"
     },
     {
         value: "America/Ojinaga",
@@ -656,32 +656,32 @@ const timezones=[
         text: "America/Phoenix"
     },
     {
-        value: "America/Port",
-        text: "America/Port"
+        value: "America/Port-au-Prince",
+        text: "America/Port-au-Prince"
     },
     {
-        value: "America/Port",
-        text: "America/Port"
+        value: "America/Port_of_Spain",
+        text: "America/Port_of_Spain"
     },
     {
-        value: "America/Porto",
-        text: "America/Porto"
+        value: "America/Porto_Velho",
+        text: "America/Porto_Velho"
     },
     {
-        value: "America/Puerto",
-        text: "America/Puerto"
+        value: "America/Puerto_Rico",
+        text: "America/Puerto_Rico"
     },
     {
-        value: "America/Punta",
-        text: "America/Punta"
+        value: "America/Punta_Arenas",
+        text: "America/Punta_Arenas"
     },
     {
-        value: "America/Rainy",
-        text: "America/Rainy"
+        value: "America/Rainy_River",
+        text: "America/Rainy_River"
     },
     {
-        value: "America/Rankin",
-        text: "America/Rankin"
+        value: "America/Rankin_Inlet",
+        text: "America/Rankin_Inlet"
     },
     {
         value: "America/Recife",
@@ -696,8 +696,8 @@ const timezones=[
         text: "America/Resolute"
     },
     {
-        value: "America/Rio",
-        text: "America/Rio"
+        value: "America/Rio_Branco",
+        text: "America/Rio_Branco"
     },
     {
         value: "America/Santarem",
@@ -708,12 +708,12 @@ const timezones=[
         text: "America/Santiago"
     },
     {
-        value: "America/Santo",
-        text: "America/Santo"
+        value: "America/Santo_Domingo",
+        text: "America/Santo_Domingo"
     },
     {
-        value: "America/Sao",
-        text: "America/Sao"
+        value: "America/Sao_Paulo",
+        text: "America/Sao_Paulo"
     },
     {
         value: "America/Scoresbysund",
@@ -724,32 +724,32 @@ const timezones=[
         text: "America/Sitka"
     },
     {
-        value: "America/St",
-        text: "America/St"
+        value: "America/St_Barthelemy",
+        text: "America/St_Barthelemy"
     },
     {
-        value: "America/St",
-        text: "America/St"
+        value: "America/St_Johns",
+        text: "America/St_Johns"
     },
     {
-        value: "America/St",
-        text: "America/St"
+        value: "America/St_Kitts",
+        text: "America/St_Kitts"
     },
     {
-        value: "America/St",
-        text: "America/St"
+        value: "America/St_Lucia",
+        text: "America/St_Lucia"
     },
     {
-        value: "America/St",
-        text: "America/St"
+        value: "America/St_Thomas",
+        text: "America/St_Thomas"
     },
     {
-        value: "America/St",
-        text: "America/St"
+        value: "America/St_Vincent",
+        text: "America/St_Vincent"
     },
     {
-        value: "America/Swift",
-        text: "America/Swift"
+        value: "America/Swift_Current",
+        text: "America/Swift_Current"
     },
     {
         value: "America/Tegucigalpa",
@@ -760,8 +760,8 @@ const timezones=[
         text: "America/Thule"
     },
     {
-        value: "America/Thunder",
-        text: "America/Thunder"
+        value: "America/Thunder_Bay",
+        text: "America/Thunder_Bay"
     },
     {
         value: "America/Tijuana",
@@ -952,12 +952,12 @@ const timezones=[
         text: "Asia/Hebron"
     },
     {
-        value: "Asia/Ho",
-        text: "Asia/Ho"
+        value: "Asia/Ho_Chi_Minh",
+        text: "Asia/Ho_Chi_Minh"
     },
     {
-        value: "Asia/Hong",
-        text: "Asia/Hong"
+        value: "Asia/Hong_Kong",
+        text: "Asia/Hong_Kong"
     },
     {
         value: "Asia/Hovd",
@@ -1008,8 +1008,8 @@ const timezones=[
         text: "Asia/Krasnoyarsk"
     },
     {
-        value: "Asia/Kuala",
-        text: "Asia/Kuala"
+        value: "Asia/Kuala_Lumpur",
+        text: "Asia/Kuala_Lumpur"
     },
     {
         value: "Asia/Kuching",
@@ -1060,8 +1060,8 @@ const timezones=[
         text: "Asia/Oral"
     },
     {
-        value: "Asia/Phnom",
-        text: "Asia/Phnom"
+        value: "Asia/Phnom_Penh",
+        text: "Asia/Phnom_Penh"
     },
     {
         value: "Asia/Pontianak",
@@ -1144,8 +1144,8 @@ const timezones=[
         text: "Asia/Urumqi"
     },
     {
-        value: "Asia/Ust",
-        text: "Asia/Ust"
+        value: "Asia/Ust-Nera",
+        text: "Asia/Ust-Nera"
     },
     {
         value: "Asia/Vientiane",
@@ -1184,8 +1184,8 @@ const timezones=[
         text: "Atlantic/Canary"
     },
     {
-        value: "Atlantic/Cape",
-        text: "Atlantic/Cape"
+        value: "Atlantic/Cape_Verde",
+        text: "Atlantic/Cape_Verde"
     },
     {
         value: "Atlantic/Faroe",
@@ -1200,12 +1200,12 @@ const timezones=[
         text: "Atlantic/Reykjavik"
     },
     {
-        value: "Atlantic/South",
-        text: "Atlantic/South"
+        value: "Atlantic/South_Georgia",
+        text: "Atlantic/South_Georgia"
     },
     {
-        value: "Atlantic/St",
-        text: "Atlantic/St"
+        value: "Atlantic/St_Helena",
+        text: "Atlantic/St_Helena"
     },
     {
         value: "Atlantic/Stanley",
@@ -1220,8 +1220,8 @@ const timezones=[
         text: "Australia/Brisbane"
     },
     {
-        value: "Australia/Broken",
-        text: "Australia/Broken"
+        value: "Australia/Broken_Hill",
+        text: "Australia/Broken_Hill"
     },
     {
         value: "Australia/Currie",
@@ -1244,8 +1244,8 @@ const timezones=[
         text: "Australia/Lindeman"
     },
     {
-        value: "Australia/Lord",
-        text: "Australia/Lord"
+        value: "Australia/Lord_Howe",
+        text: "Australia/Lord_Howe"
     },
     {
         value: "Australia/Melbourne",
@@ -1328,8 +1328,8 @@ const timezones=[
         text: "Europe/Helsinki"
     },
     {
-        value: "Europe/Isle",
-        text: "Europe/Isle"
+        value: "Europe/Isle_of_Man",
+        text: "Europe/Isle_of_Man"
     },
     {
         value: "Europe/Istanbul",
@@ -1420,8 +1420,8 @@ const timezones=[
         text: "Europe/Samara"
     },
     {
-        value: "Europe/San",
-        text: "Europe/San"
+        value: "Europe/San_Marino",
+        text: "Europe/San_Marino"
     },
     {
         value: "Europe/Sarajevo",
@@ -1648,8 +1648,8 @@ const timezones=[
         text: "Pacific/Noumea"
     },
     {
-        value: "Pacific/Pago",
-        text: "Pacific/Pago"
+        value: "Pacific/Pago_Pago",
+        text: "Pacific/Pago_Pago"
     },
     {
         value: "Pacific/Palau",
@@ -1664,8 +1664,8 @@ const timezones=[
         text: "Pacific/Pohnpei"
     },
     {
-        value: "Pacific/Port",
-        text: "Pacific/Port"
+        value: "Pacific/Port_Moresby",
+        text: "Pacific/Port_Moresby"
     },
     {
         value: "Pacific/Rarotonga",
@@ -1698,6 +1698,5 @@ const timezones=[
     {
         value: "UTC",
         text: "UTC"
-    }
-]
+    }]
 export default timezones
