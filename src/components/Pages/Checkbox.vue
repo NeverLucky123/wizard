@@ -41,6 +41,11 @@
                 }
                 this.update()
             }
+        },
+        computed: {
+            nolabel: function(){
+                return this.label===undefined
+            }
         }
     }
 
@@ -53,6 +58,10 @@
     label{
         width:60%;
         cursor: pointer;
+    }
+    .no-gutters {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
     }
 
 </style>

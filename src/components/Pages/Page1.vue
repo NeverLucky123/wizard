@@ -2,23 +2,53 @@
     <div class="page1">
         <form>
             <div class="form-group">
-                <label for="formControlRange">Business hours</label>
-                <TimeInput class="timeinput" v-on:update="fields.opening=$event" v-bind:time="fields.opening" label="Opening time"></TimeInput>
-                <TimeInput class="timeinput" v-on:update="fields.closing=$event" v-bind:time="fields.closing" label="Closing time"></TimeInput>
+                <label>Regional Settings</label>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="currency_name" label="Currency Name"></Toggle>
+                </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="currency_symbol" label="Currency Symbol"></Toggle>
+                </div>
+                 <div class="row">
+                    <Toggle class="input" v-bind:options="timezone" label="Timezone"></Toggle>
+                </div>
+                <label>Business Hours</label>
+                <TextField class="input" v-on:update="opening=$event" type="time" v-bind:value="opening" label="Opening time"></TextField>
+                <TextField class="input" v-on:update="closing=$event" type="time" v-bind:value="closing" label="Closing time"></TextField>
+                <label>Business Open On</label>
+                <div class="row flex-nowrap">
+                    <div class="days col">Sun</div>
+                    <div class="days col">Mon</div>
+                    <div class="days col">Tues</div>
+                    <div class="days col">Wed</div>
+                    <div class="days col">Thur</div>
+                    <div class="days col">Fri</div>
+                    <div class="days col">Sat</div>
+                </div>
+                <div class="row flex-nowrap">
+                    <CheckBox v-for="(day, index) in days" v-bind:key="index" v-bind:options="day"></CheckBox>
+                </div>
+                <br>
+                <label for="formControlRange">Site Url</label>
+                <TextField class="input" v-on:update="url=$event" type="url" v-bind:value="url"></TextField>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    import TimeInput from './TimeInput.vue'
+    import CheckBox from './Checkbox.vue'
+    import Toggle from './Toggle.vue'
+    import TextField from './TextField.vue'
     export default {
         name: 'Page1',
         components: {
-            TimeInput
+            CheckBox,
+            TextField,
+            Toggle
         },
         data: function() {
-            return this.$root.$children[0].pages[0];
+            return this.$root.$children[0].pages[0].fields;
         }
 
     }
@@ -29,12 +59,16 @@
 <style scoped>
     page1 {}
 
-    label {
-        font-weight: bold;
-        margin-bottom: 2em;
+    .days {
+        text-align: center;
     }
 
-    .timeinput {
+    label {
+        font-weight: bold;
+        margin-bottom: 1em;
+    }
+
+    .input {
         margin-bottom: 1em;
     }
 
