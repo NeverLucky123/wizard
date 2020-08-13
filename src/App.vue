@@ -102,74 +102,19 @@
                     {
                         name: "Activity Settings",
                         icon: "snowboarding",
-                        fields: {
-                            auto_create_invoice: {
-                                options: [{
-                                    value: "0",
-                                    text: "Show Finish Page"
-                                }, {
-                                    value: "1",
-                                    text: "Preview Invoice"
-                                }],
-                                current: "1"
-                            },
-                            address_required: {
-                                options: [{
-                                    value: "0",
-                                    text: "No"
-                                }, {
-                                    value: "1",
-                                    text: "Yes"
-                                }],
-                                current: "0"
-                            },
-                            //single renter only
-                            customer_input: {
-                                options: [{
-                                    value: "order_page",
-                                    text: "At Beginning"
-                                }, {
-                                    value: "checkout_page",
-                                    text: "At Checkout"
-                                }],
-                                current: "checkout_page"
-                            },
-                            //sign_box if false, advanced waiver if true
-                            waiver: {
-                                options: [{
-                                    value: "enhanced_waiver",
-                                    text: "Advanced Waiver"
-                                }, {
-                                    value: "sign",
-                                    text: "Sign Box"
-                                }],
-                                current: "enhanced_waiver"
-                            },
-                            //when doing inventory checks
-                            consider_size: {
-                                options: [{
-                                    value: "yes",
-                                    text: "no"
-                                }, {
-                                    value: "size",
-                                    text: "yes"
-                                }],
-                                current: "size"
-                            },
-                            //allow customers to see availibility calendar
-                            avail_cal: {
-                                options: [{
-                                    value: "0",
-                                    text: "No"
-                                }, {
-                                    value: "1",
-                                    text: "Yes"
-                                }],
-                                current: "1"
-                            },
-                            //multi_setting
-                            reorder: {
-                                online: {
+                        fields: [{
+                                activity_name: "Biking",
+                                auto_create_invoice: {
+                                    options: [{
+                                        value: "0",
+                                        text: "Show Finish Page"
+                                    }, {
+                                        value: "1",
+                                        text: "Preview Invoice"
+                                    }],
+                                    current: "1"
+                                },
+                                address_required: {
                                     options: [{
                                         value: "0",
                                         text: "No"
@@ -179,7 +124,41 @@
                                     }],
                                     current: "0"
                                 },
-                                walk_in: {
+                                //single renter only
+                                customer_input: {
+                                    options: [{
+                                        value: "order_page",
+                                        text: "At Beginning"
+                                    }, {
+                                        value: "checkout_page",
+                                        text: "At Checkout"
+                                    }],
+                                    current: "checkout_page"
+                                },
+                                //sign_box if false, advanced waiver if true
+                                waiver: {
+                                    options: [{
+                                        value: "enhanced_waiver",
+                                        text: "Advanced Waiver"
+                                    }, {
+                                        value: "sign",
+                                        text: "Sign Box"
+                                    }],
+                                    current: "enhanced_waiver"
+                                },
+                                //when doing inventory checks
+                                consider_size: {
+                                    options: [{
+                                        value: "yes",
+                                        text: "no"
+                                    }, {
+                                        value: "size",
+                                        text: "yes"
+                                    }],
+                                    current: "size"
+                                },
+                                //allow customers to see availibility calendar
+                                avail_cal: {
                                     options: [{
                                         value: "0",
                                         text: "No"
@@ -187,105 +166,311 @@
                                         value: "1",
                                         text: "Yes"
                                     }],
-                                    current: "0"
+                                    current: "1"
                                 },
-                                backend: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "0"
-                                },
-                                phone: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "0"
-                                },
-                            },
-                            //per piece of equipment;
-                            //multi_setting
-                            multi_participant: {
-                                online: {
-                                    options: [{
-                                            value: "no",
-                                            text: "Single Renter"
+                                //multi_setting
+                                reorder: {
+                                    online: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
                                         }, {
-                                            value: "yes",
-                                            text: "Multiple Renters"
-                                        },
-                                        {
-                                            value: "waiver",
-                                            text: "Multiple Participants (Waiver)"
-                                        },
-                                        {
-                                            value: "both",
-                                            text: "Multiple Renters/Participants"
-                                        }
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                    walk_in: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                    backend: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                    phone: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                },
+                                //per piece of equipment;
+                                //multi_setting
+                                multi_participant: {
+                                    online: {
+                                        options: [{
+                                                value: "no",
+                                                text: "Single Renter"
+                                            }, {
+                                                value: "yes",
+                                                text: "Multiple Renters"
+                                            },
+                                            {
+                                                value: "waiver",
+                                                text: "Multiple Participants (Waiver)"
+                                            },
+                                            {
+                                                value: "both",
+                                                text: "Multiple Renters/Participants"
+                                            }
 
-                                    ],
-                                    current: "yes"
-                                },
-                                walk_in: {
-                                    options: [{
-                                            value: "no",
-                                            text: "Single Renter"
-                                        }, {
-                                            value: "yes",
-                                            text: "Multiple Renters"
-                                        },
-                                        {
-                                            value: "waiver",
-                                            text: "Multiple Participants (Waiver)"
-                                        },
-                                        {
-                                            value: "both",
-                                            text: "Multiple Renters/Participants"
-                                        }
+                                        ],
+                                        current: "yes"
+                                    },
+                                    walk_in: {
+                                        options: [{
+                                                value: "no",
+                                                text: "Single Renter"
+                                            }, {
+                                                value: "yes",
+                                                text: "Multiple Renters"
+                                            },
+                                            {
+                                                value: "waiver",
+                                                text: "Multiple Participants (Waiver)"
+                                            },
+                                            {
+                                                value: "both",
+                                                text: "Multiple Renters/Participants"
+                                            }
 
-                                    ],
-                                    current: "yes"
-                                },
-                                backend: {
-                                    options: [{
-                                            value: "no",
-                                            text: "Single Renter"
-                                        }, {
-                                            value: "yes",
-                                            text: "Multiple Renters"
-                                        },
-                                        {
-                                            value: "waiver",
-                                            text: "Multiple Participants (Waiver)"
-                                        },
-                                        {
-                                            value: "both",
-                                            text: "Multiple Renters/Participants"
-                                        }
+                                        ],
+                                        current: "yes"
+                                    },
+                                    backend: {
+                                        options: [{
+                                                value: "no",
+                                                text: "Single Renter"
+                                            }, {
+                                                value: "yes",
+                                                text: "Multiple Renters"
+                                            },
+                                            {
+                                                value: "waiver",
+                                                text: "Multiple Participants (Waiver)"
+                                            },
+                                            {
+                                                value: "both",
+                                                text: "Multiple Renters/Participants"
+                                            }
 
-                                    ],
-                                    current: "yes"
-                                },
-                                phone: {
-                                    options: [{
+                                        ],
+                                        current: "yes"
+                                    },
+                                    phone: {
+                                        options: [{
                                             value: "no",
                                             text: "Single Renter"
                                         }, {
                                             value: "yes",
                                             text: "Multiple Renters"
-                                        }
-                                    ],
-                                    current: "yes"
+                                        }],
+                                        current: "yes"
+                                    }
                                 }
-                            }
-                        }
+                            },
+                            {
+                                activity_name: "Skiing",
+                                auto_create_invoice: {
+                                    options: [{
+                                        value: "0",
+                                        text: "Show Finish Page"
+                                    }, {
+                                        value: "1",
+                                        text: "Preview Invoice"
+                                    }],
+                                    current: "1"
+                                },
+                                address_required: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "0"
+                                },
+                                //single renter only
+                                customer_input: {
+                                    options: [{
+                                        value: "order_page",
+                                        text: "At Beginning"
+                                    }, {
+                                        value: "checkout_page",
+                                        text: "At Checkout"
+                                    }],
+                                    current: "checkout_page"
+                                },
+                                //sign_box if false, advanced waiver if true
+                                waiver: {
+                                    options: [{
+                                        value: "enhanced_waiver",
+                                        text: "Advanced Waiver"
+                                    }, {
+                                        value: "sign",
+                                        text: "Sign Box"
+                                    }],
+                                    current: "enhanced_waiver"
+                                },
+                                //when doing inventory checks
+                                consider_size: {
+                                    options: [{
+                                        value: "yes",
+                                        text: "no"
+                                    }, {
+                                        value: "size",
+                                        text: "yes"
+                                    }],
+                                    current: "size"
+                                },
+                                //allow customers to see availibility calendar
+                                avail_cal: {
+                                    options: [{
+                                        value: "0",
+                                        text: "No"
+                                    }, {
+                                        value: "1",
+                                        text: "Yes"
+                                    }],
+                                    current: "1"
+                                },
+                                //multi_setting
+                                reorder: {
+                                    online: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                    walk_in: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                    backend: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                    phone: {
+                                        options: [{
+                                            value: "0",
+                                            text: "No"
+                                        }, {
+                                            value: "1",
+                                            text: "Yes"
+                                        }],
+                                        current: "0"
+                                    },
+                                },
+                                //per piece of equipment;
+                                //multi_setting
+                                multi_participant: {
+                                    online: {
+                                        options: [{
+                                                value: "no",
+                                                text: "Single Renter"
+                                            }, {
+                                                value: "yes",
+                                                text: "Multiple Renters"
+                                            },
+                                            {
+                                                value: "waiver",
+                                                text: "Multiple Participants (Waiver)"
+                                            },
+                                            {
+                                                value: "both",
+                                                text: "Multiple Renters/Participants"
+                                            }
+
+                                        ],
+                                        current: "yes"
+                                    },
+                                    walk_in: {
+                                        options: [{
+                                                value: "no",
+                                                text: "Single Renter"
+                                            }, {
+                                                value: "yes",
+                                                text: "Multiple Renters"
+                                            },
+                                            {
+                                                value: "waiver",
+                                                text: "Multiple Participants (Waiver)"
+                                            },
+                                            {
+                                                value: "both",
+                                                text: "Multiple Renters/Participants"
+                                            }
+
+                                        ],
+                                        current: "yes"
+                                    },
+                                    backend: {
+                                        options: [{
+                                                value: "no",
+                                                text: "Single Renter"
+                                            }, {
+                                                value: "yes",
+                                                text: "Multiple Renters"
+                                            },
+                                            {
+                                                value: "waiver",
+                                                text: "Multiple Participants (Waiver)"
+                                            },
+                                            {
+                                                value: "both",
+                                                text: "Multiple Renters/Participants"
+                                            }
+
+                                        ],
+                                        current: "yes"
+                                    },
+                                    phone: {
+                                        options: [{
+                                            value: "no",
+                                            text: "Single Renter"
+                                        }, {
+                                            value: "yes",
+                                            text: "Multiple Renters"
+                                        }],
+                                        current: "yes"
+                                    }
+                                }
+                            },
+                        ]
                     },
                     {
                         name: "Payment",

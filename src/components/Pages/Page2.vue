@@ -1,76 +1,32 @@
 <template>
     <div class="page2">
-        <form>
-            <div class="form-group">
-                <label for="formControlRange">Customer Information</label>
-            </div>
-            <div class="form-row align-items-center">
-                <Checkbox v-bind:options="fields.auto_create_invoice" label="Auto-create invoice"></Checkbox>
-            </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" v-on:click="tab=0" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" v-on:click="tab=1" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
+            </li>
+        </ul>
+        <br>
+        <Activity v-bind:index='0' v-show="tab===0"></Activity>
+        <Activity v-bind:index='1' v-show="tab===1"></Activity>
 
-            <div class="form-row align-items-center">
-                <Checkbox v-bind:options="fields.consider_size" label="Customer Choose Equipment Size"></Checkbox>
-            </div>
-            <div class="form-row align-items-center">
-                <Checkbox v-bind:options="fields.address_required" label="Require Customer address"></Checkbox>
-            </div>
-            <div class="form-row align-items-center">
-                <Checkbox v-bind:options="fields.avail_cal" label="Show availibility calendar"></Checkbox>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.customer_input" label="Customer Input"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.waiver" label="Sign with"></Toggle>
-            </div>
-            <div class="form-group">
-                <label for="formControlRange">Offer Reorder</label>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.reorder.online" label="Online"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.reorder.walk_in" label="Walk In"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.reorder.backend" label="Backend"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.reorder.phone" label="Phone"></Toggle>
-            </div>
-            <div class="form-group">
-                <label for="formControlRange">Multiple Renters</label>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.multi_participant.online" label="Online"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.multi_participant.walk_in" label="Walk In"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.multi_participant.backend" label="Backend"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="fields.multi_participant.phone" label="Phone"></Toggle>
-            </div>
-        </form>
     </div>
 </template>
 
 <script>
-    import Checkbox from "./Checkbox.vue"
-    import Toggle from "./Toggle.vue"
+    import Activity from './Activity.vue'
     export default {
         name: 'Page2',
         components: {
-            Checkbox,
-            Toggle
-        },
-        methods: {
-
+            Activity
         },
         data: function() {
-            return this.$root.$children[0].pages[1];
+            return {
+                activities: this.$root.$children[0].pages[1],
+                tab: 0
+            }
         }
     }
 
@@ -79,6 +35,14 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     page2 {}
+
+    a {
+        color: gray
+    }
+
+    a:hover {
+        color: gray
+    }
 
     label {
         font-weight: bold;

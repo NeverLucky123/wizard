@@ -34,7 +34,7 @@
         components: {},
         computed: {
             Sign_Tab_Name: function() {
-                if (this.$root.$children[0].pages[1].fields.waiver.current === "enhanced_waiver") {
+                if (this.$root.$children[0].pages[1].fields[0].waiver.current === "enhanced_waiver") {
                     return "Enhanced Waiver"
                 } else {
                     return "Terms and Conditions"
