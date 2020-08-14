@@ -1,5 +1,5 @@
 <template>
-    <div class="activity">
+    <div class="Page2Settings">
         <form>
             <div class="form-group">
                 <label for="formControlRange">General Settings</label>
@@ -14,7 +14,7 @@
                 <Toggle v-bind:options="confirm_res" label="How To Confirm Reservation"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="confirm_res" label="How to Close Reservation"></Toggle>
+                <Toggle v-bind:options="close_res" label="How to Close Reservation"></Toggle>
             </div>
             <div class="form-group">
                 <label for="formControlRange">Order Settings</label>
@@ -23,7 +23,7 @@
                 <Checkbox v-bind:options="avail_cal" label="Show Availability Calendar"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <CheckBox v-bind:options="product_option" label="Show Product Option in Order"></CheckBox>
+                <Checkbox v-bind:options="product_option" label="Show Product Option in Order"></Checkbox>
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="check_product_avail" label="Check Product Availability"></Toggle>
@@ -69,7 +69,7 @@
     import Checkbox from "./Checkbox.vue"
     import Toggle from "./Toggle.vue"
     export default {
-        name: 'activity',
+        name: 'Page2Settings',
         components: {
             Checkbox,
             Toggle
@@ -86,7 +86,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    activity {}
+    Page2Settings {}
 
     label {
         font-weight: bold;

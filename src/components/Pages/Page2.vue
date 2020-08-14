@@ -2,30 +2,38 @@
     <div class="page2">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" v-on:click="tab=0" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
+                <a class="nav-link" v-on:click="set(0)" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" v-on:click="tab=1" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
+                <a class="nav-link" v-on:click="set(1)" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
             </li>
         </ul>
         <br>
-        <Activity v-bind:index='0' v-show="tab===0"></Activity>
-        <Activity v-bind:index='1' v-show="tab===1"></Activity>
-
+        <Page2Settings v-bind:index='0' v-show="tab===0"></Page2Settings>
+        <Page2Settings v-bind:index='1' v-show="tab===1"></Page2Settings>
     </div>
 </template>
 
 <script>
-    import Activity from './Activity.vue'
+    import Page2Settings from './Page2Settings.vue'
     export default {
         name: 'Page2',
         components: {
-            Activity
+            Page2Settings
         },
         data: function() {
             return {
-                activities: this.$root.$children[0].pages[1],
-                tab: 0
+                activities: this.$root.$children[0].pages[1]
+            }
+        },
+        methods: {
+            set(i) {
+                this.$root.$children[0].tab = i
+            }
+        },
+        computed: {
+            tab: function() {
+                return this.$root.$children[0].tab
             }
         }
     }
