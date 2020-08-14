@@ -20,14 +20,15 @@ import {
     faCalendarAlt,
     faPlusCircle,
     faChevronRight,
-    faChevronLeft
+    faChevronLeft,
+    faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
     FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faChartPie, faSnowboarding, faCalculator, faPen, faSitemap, faMoneyCheckAlt, faShoppingCart, faCogs, faHome, faCog, faSave, faMoneyBillAlt, faCalendarAlt, faPlusCircle, faChevronRight, faChevronLeft)
+library.add(faChartPie, faSnowboarding, faCalculator, faPen, faSitemap, faMoneyCheckAlt, faShoppingCart, faCogs, faHome, faCog, faSave, faMoneyBillAlt, faCalendarAlt, faPlusCircle, faChevronRight, faChevronLeft, faExternalLinkAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false

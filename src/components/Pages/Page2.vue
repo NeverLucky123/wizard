@@ -1,68 +1,78 @@
 <template>
-    <div class="page2">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" v-on:click="set(0)" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" v-on:click="set(1)" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
-            </li>
-        </ul>
-        <br>
-        <Page2Settings v-bind:index='0' v-show="tab===0"></Page2Settings>
-        <Page2Settings v-bind:index='1' v-show="tab===1"></Page2Settings>
+    <div class="">
+        <form>
+            <div class="form-group">
+                <label>Regional Settings</label>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="currency_name" label="Currency Name"></Toggle>
+                </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="currency_symbol" label="Currency Symbol"></Toggle>
+                </div>
+                 <div class="row">
+                    <Toggle class="input" v-bind:options="timezone" label="Timezone"></Toggle>
+                </div>
+                <label>Business Hours</label>
+                <TextField class="input" v-on:update="opening=$event" type="time" v-bind:value="opening" label="Opening time"></TextField>
+                <TextField class="input" v-on:update="closing=$event" type="time" v-bind:value="closing" label="Closing time"></TextField>
+                <label>Business Open On</label>
+                <div class="row flex-nowrap">
+                    <div class="days col">Sun</div>
+                    <div class="days col">Mon</div>
+                    <div class="days col">Tues</div>
+                    <div class="days col">Wed</div>
+                    <div class="days col">Thur</div>
+                    <div class="days col">Fri</div>
+                    <div class="days col">Sat</div>
+                </div>
+                <div class="row flex-nowrap">
+                    <CheckBox v-for="(day, index) in days" v-bind:key="index" v-bind:options="day"></CheckBox>
+                </div>
+                <br>
+                <label for="formControlRange">Site Url</label>
+                <TextField class="input" v-on:update="url=$event" type="url" v-bind:value="url"></TextField>
+            </div>
+        </form>
     </div>
 </template>
 
 <script>
-    import Page2Settings from './Page2Settings.vue'
+    import CheckBox from './Inputs/Checkbox.vue'
+    import Toggle from './Inputs/Toggle.vue'
+    import TextField from './Inputs/TextField.vue'
     export default {
         name: 'Page2',
         components: {
-            Page2Settings
+            CheckBox,
+            TextField,
+            Toggle
         },
         data: function() {
-            return {
-                activities: this.$root.$children[0].pages[1]
-            }
-        },
-        methods: {
-            set(i) {
-                this.$root.$children[0].tab = i
-            }
-        },
-        computed: {
-            tab: function() {
-                return this.$root.$children[0].tab
-            }
+            return this.$root.$children[0].pages[1].fields;
         }
+
     }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    page2 {}
 
-    a {
-        color: gray
-    }
-
-    a:hover {
-        color: gray
+    .days {
+        text-align: center;
     }
 
     label {
         font-weight: bold;
+        margin-bottom: 1em;
     }
 
-    h3 {
-        margin-top: 40px;
-        margin-bottom: 40px;
+    .input {
+        margin-bottom: 1em;
     }
 
     .form-row {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
     }
 
 </style>

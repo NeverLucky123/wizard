@@ -1,58 +1,68 @@
 <template>
-    <div class="page4">
-        <label>The following settings cannot be changed in the wizard. Navigate to the rentrax control panel and follow the instructions.</label>
+    <div class="Page4">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" v-on:click="set(0)" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" v-on:click="set(1)" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
+            </li>
+        </ul>
         <br>
-        <br>
-        <ol>
-
-            <li>Begin from the <a class="btn btn-dark" href="/admin/dashboard" target="_blank" role="button">
-                    <font-awesome-icon size="xs" icon="home"></font-awesome-icon> Dashboard
-                </a></li>
-            <li>Click on <a class="btn btn-dark" href="/admin/rental-types" target="_blank" role="button">
-                    <font-awesome-icon size="xs" icon="cogs"></font-awesome-icon>
-                    Activity Settings </a>, then click <a class="btn btn-dark" href="#" role="button">
-                        <font-awesome-icon size="xs" icon="cog"></font-awesome-icon>
-                        settings
-                    </a> on one of the activities.
-               </li>
-            <li>Navigate to <a class="btn btn-dark" href="#" role="button">
-                    <font-awesome-icon size="xs" icon="pen"></font-awesome-icon>Terms and Conditions
-                </a></li>
-            <li>Paste in your waiver (.docs or .text). Feel free to press <a class="btn btn-dark" href="#" role="button">></a> in the wizard if you don't have it on hand.</li>
-            <li>Move your mouse to where the initials field should be on the waiver.</li>
-            <li>Type in <a class="btn btn-dark" href="#" role="button">@initials</a></li>
-            <li>Move your mouse to where the signature field should be on the waiver.</li>
-            <li>Type in <a class="btn btn-dark" href="#" role="button">@signature</a></li>
-        </ol>
+        <Page4Settings v-bind:index='0' v-show="tab===0"></Page4Settings>
+        <Page4Settings v-bind:index='1' v-show="tab===1"></Page4Settings>
     </div>
 </template>
 
 <script>
+    import Page4Settings from './Page4Settings.vue'
     export default {
         name: 'Page4',
-        components: {}
+        components: {
+            Page4Settings
+        },
+        data: function() {
+            return {
+                activities: this.$root.$children[0].pages[3]
+            }
+        },
+        methods: {
+            set(i) {
+                this.$root.$children[0].tab = i
+            }
+        },
+        computed: {
+            tab: function() {
+                return this.$root.$children[0].tab
+            }
+        }
     }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    page4 {}
+    Page4 {}
 
-    .btn-dark {
-        font-size: 14 !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        padding-left: 0.25rem !important;
-        padding-right: 0.25rem !important;
+    a {
+        color: gray
     }
 
-    ol {
-        line-height: 2em;
+    a:hover {
+        color: gray
     }
 
     label {
         font-weight: bold;
+    }
+
+    h3 {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .form-row {
+        margin-bottom: 1em;
     }
 
 </style>

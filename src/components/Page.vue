@@ -16,9 +16,6 @@
         <Page3 v-show="$parent.index===3"></Page3>
         <Page4 v-show="$parent.index===4"></Page4>
         <Page5 v-show="$parent.index===5"></Page5>
-        <Page6 v-show="$parent.index===6"></Page6>
-        <Page7 v-show="$parent.index===7"></Page7>
-
 
     </div>
 </template>
@@ -29,8 +26,6 @@
     import Page3 from './Pages/Page3.vue'
     import Page4 from './Pages/Page4.vue'
     import Page5 from './Pages/Page5.vue'
-    import Page6 from './Pages/Page6.vue'
-    import Page7 from './Pages/Page7.vue'
 
 
     export default {
@@ -40,12 +35,13 @@
             Page2,
             Page3,
             Page4,
-            Page5,
-            Page6,
-            Page7
+            Page5
         },
         computed: {
             title: function() {
+                if (this.$parent.index == 1) {
+                    return "Welcome to the Rentrax Setup Wizard"
+                }
                 return this.$parent.pages[this.$parent.index - 1].name
             },
             icon: function() {

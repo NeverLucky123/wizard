@@ -1,5 +1,5 @@
 <template>
-    <div class="Page3">
+    <div class="page3">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link" v-on:click="set(0)" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
@@ -23,7 +23,7 @@
         },
         data: function() {
             return {
-                activities: this.$root.$children[0].pages[1]
+                activities: this.$root.$children[0].pages[2]
             }
         },
         methods: {
@@ -42,7 +42,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    Page3 {}
+    page3 {}
 
     a {
         color: gray

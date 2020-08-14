@@ -1,79 +1,104 @@
 <template>
-    <div class="page1">
-        <form>
-            <div class="form-group">
-                <label>Regional Settings</label>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="currency_name" label="Currency Name"></Toggle>
+    <div class="Page1">
+        <div class="row">
+            <div class="col">
+                <div class="card simple" v-on:click="$root.$children[0].advanced=false" v-bind:class="{simple_active:!advanced}">
+                    <font-awesome-icon class="card-img" size="6x" icon="cog" inverse />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Simple Setup</h5>
+                        <ul>
+                            <li>Configure necessary settings</li>
+                            <li>Get up and running</li>
+                            <li>Recommended for new clients</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="currency_symbol" label="Currency Symbol"></Toggle>
-                </div>
-                 <div class="row">
-                    <Toggle class="input" v-bind:options="timezone" label="Timezone"></Toggle>
-                </div>
-                <label>Business Hours</label>
-                <TextField class="input" v-on:update="opening=$event" type="time" v-bind:value="opening" label="Opening time"></TextField>
-                <TextField class="input" v-on:update="closing=$event" type="time" v-bind:value="closing" label="Closing time"></TextField>
-                <label>Business Open On</label>
-                <div class="row flex-nowrap">
-                    <div class="days col">Sun</div>
-                    <div class="days col">Mon</div>
-                    <div class="days col">Tues</div>
-                    <div class="days col">Wed</div>
-                    <div class="days col">Thur</div>
-                    <div class="days col">Fri</div>
-                    <div class="days col">Sat</div>
-                </div>
-                <div class="row flex-nowrap">
-                    <CheckBox v-for="(day, index) in days" v-bind:key="index" v-bind:options="day"></CheckBox>
-                </div>
-                <br>
-                <label for="formControlRange">Site Url</label>
-                <TextField class="input" v-on:update="url=$event" type="url" v-bind:value="url"></TextField>
             </div>
-        </form>
+            <div class="col">
+                <div class="card advanced" v-on:click="$root.$children[0].advanced=true" v-bind:class="{advanced_active:advanced}" inverse>
+                    <font-awesome-icon class="card-img" size="6x" icon="cogs" inverse />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Advanced Setup</h5>
+                        <ul>
+                            <li>Configure all settings</li>
+                            <li>See configuration at a glance</li>
+                            <li>Recommended for existing clients </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="padding-left:25px; padding-top:20px">
+                <div class="spinner-border spinner-border-sm" role="status">
+                </div>
+                <span> Changes are automatically saved</span>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import CheckBox from './Checkbox.vue'
-    import Toggle from './Toggle.vue'
-    import TextField from './TextField.vue'
     export default {
         name: 'Page1',
-        components: {
-            CheckBox,
-            TextField,
-            Toggle
-        },
-        data: function() {
-            return this.$root.$children[0].pages[0].fields;
+        computed: {
+            advanced: function() {
+                return this.$root.$children[0].advanced;
+            }
         }
-
     }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    page1 {}
-
-    .days {
-        text-align: center;
+    .Page1 {
+        line-height: 2em;
     }
 
-    label {
+    h5 {
         font-weight: bold;
-        margin-bottom: 1em;
+        text-align: center
     }
 
-    .input {
-        margin-bottom: 1em;
+    .card {
+        margin: 10px;
+        height: 98%;
     }
 
-    .form-row {
-        margin-bottom: 2em;
+    .card-img {
+        margin-top: 2rem;
+        align-self: center;
+    }
+
+    .simple {
+        color: white;
+        background-color: #E26A6A;
+    }
+
+    .advanced {
+        color: white;
+        background-color: #1bb1b1;
+    }
+
+    .simple_active {
+        box-shadow: 0 0 20px #ff4d4d;
+        background-color: #ff4d4d;
+    }
+
+    .advanced_active {
+        box-shadow: 0 0 20px #00CCCC;
+        background-color: #00CCCC;
+    }
+
+    .simple:hover {
+        cursor: pointer;
+        background-color: #ff4d4d;
+    }
+
+    .advanced:hover {
+        cursor: pointer;
+        background-color: #00CCCC;
     }
 
 </style>

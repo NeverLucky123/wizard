@@ -84,12 +84,12 @@
 
     .node_link {
         margin: auto;
-        height: 40px;
-        width: 3px;
+        height: 70px;
+        width: 6px;
         background-color: #EBEBEB;
     }
-    
-    
+
+
     .active_link {
         background-color: #44B6AE;
     }
