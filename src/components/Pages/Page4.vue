@@ -45,7 +45,8 @@
     Page4 {}
 
     a {
-        color: gray
+        color: gray;
+        cursor: pointer;
     }
 
     a:hover {

@@ -6,12 +6,12 @@
                     <div class="node" v-bind:class="{active:index==active, complete:index<active}" v-on:click="$emit('goto', index)">{{index}}</div>
                 </span>
                 <span class="col align-self-center">
-                    <a class="node_label" v-bind:class="{active_label:active==index, complete_label:index<active}" v-on:click="$emit('goto', index)">{{title}}</a>
+                    <a class="node_label" v-bind:class="{active_label:active==index, complete_label:index<active}" v-on:click="$emit('goto', index)">{{page.name}}</a>
                 </span>
             </div>
             <div class="row no-gutters">
                 <div class="col-4">
-                    <div class="node_link" v-bind:class="{active_link:index<active}" v-if="!last"></div>
+                    <NodeLink v-bind:index="index" v-bind:page="page"></NodeLink>
                 </div>
                 <div class="col"></div>
             </div>
@@ -20,17 +20,24 @@
 </template>
 
 <script>
+    import NodeLink from './NodeLink.vue'
     export default {
-        name: 'Page',
-        components: {},
-        methods: {
-
+        name: 'ProgressNode',
+        components: {
+            NodeLink
+        },
+        computed: {
+            advanced: function() {
+                return this.$root.$children[0].advanced;
+            },
+            active: function() {
+                return this.$root.$children[0].index;
+            }
         },
         props: {
-            title: String,
-            active: Number,
             last: Boolean,
-            index: Number
+            index: Number,
+            page: Object
         }
     }
 
@@ -82,16 +89,6 @@
         background-color: transparent;
     }
 
-    .node_link {
-        margin: auto;
-        height: 70px;
-        width: 6px;
-        background-color: #EBEBEB;
-    }
-
-
-    .active_link {
-        background-color: #44B6AE;
-    }
+    
 
 </style>

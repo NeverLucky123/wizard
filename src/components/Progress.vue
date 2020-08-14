@@ -3,7 +3,7 @@
         <div class="container" style="height:100%">
             <div class="row align-items-center" style="height:100%">
                 <div class="col">
-                    <ProgressNode v-for="(item, index) in $parent.pages" v-bind:title="item.name" v-bind:index="index+1" v-bind:key="item.name" v-bind:last="index+1===$parent.pages.length" v-bind:active="$parent.index" v-on:goto="$emit('goto', index+1)">
+                    <ProgressNode v-for="(item, index) in $parent.pages" v-bind:title="item.name" v-bind:index="index+1" v-bind:page="item" v-bind:key="item.name" v-bind:last="index+1===$parent.pages.length" v-on:goto="$emit('goto', index+1)">
                     </ProgressNode>
                 </div>
             </div>

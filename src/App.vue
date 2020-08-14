@@ -52,26 +52,57 @@
             PageNav
         },
         methods: {
-            skip: function() {
-                this.index++;
-                if (this.index > this.pages.length) {
-                    this.index = this.pages.length;
-                }
-            },
             next: function() {
-                this.index++;
-                if (this.index > this.pages.length) {
-                    this.index = this.pages.length;
+                if (this.advanced) {
+                    if (this.index === 1) {
+                        this.index=2.1
+                    } else if (this.index.toPrecision(3) == 2.3) {
+                        this.index = 3.1
+                    } else if (this.index.toPrecision(3) == 3.2) {
+                        this.index = 4.1
+                    } else if (this.index.toPrecision(3) == 4.3) {
+                        this.index = 5
+                    } else {
+                        this.index += 0.1
+                    }
+                } else {
+                    this.index++;
                 }
             },
             back: function() {
-                this.index--;
-                if (this.index < 1) {
-                    this.index = 1;
+                if (this.advanced) {
+                    if (this.index.toPrecision(3) == 2.1) {
+                        this.index=1
+                    } else if (this.index.toPrecision(3)==3.1) {
+                        this.index = 2.3
+                    } else if (this.index.toPrecision(3) == 4.1) {
+                        this.index = 3.2
+                    } else if (this.index.toPrecision(3) == 5) {
+                        this.index = 4.3
+                    } else {
+                        this.index -= 0.1
+                    }
+                } else {
+                    this.index--;
+                    if (this.index < 1) {
+                        this.index = 1;
+                    }
                 }
             },
             goto: function(index) {
-                this.index = index
+                if (this.advanced) {
+                    if (index === 2) {
+                        this.index = 2.1;
+                    } else if (index === 3) {
+                        this.index = 3.1;
+                    } else if (index === 4) {
+                        this.index = 4.1;
+                    } else {
+                        this.index=index
+                    }
+                } else {
+                    this.index = index
+                }
             },
             done: function() {
                 this.close_modal()
@@ -103,17 +134,44 @@
                     {
                         name: "Business Settings",
                         icon: "chart-pie",
-                        fields: business
+                        fields: business,
+                        advanced: [{
+                            name: "Information",
+                            icon: "chart-pie",
+                        }, {
+                            name: "Region",
+                            icon: "chart-pie",
+                        }, {
+                            name: "Other",
+                            icon: "chart-pie",
+                        }]
                     },
                     {
                         name: "Activity Settings",
                         icon: "snowboarding",
-                        fields: activity
+                        fields: activity,
+                        advanced: [{
+                            name: "General",
+                            icon: "snowboarding",
+                        }, {
+                            name: "Delivery",
+                            icon: "snowboarding",
+                        }]
                     },
                     {
-                        name: "Payment",
+                        name: "Order Settings",
                         icon: "calculator",
-                        fields: payment
+                        fields: payment,
+                        advanced: [{
+                            name: "Product",
+                            icon: "calculator",
+                        }, {
+                            name: "Customer",
+                            icon: "snowboarding",
+                        }, {
+                            name: "Payment",
+                            icon: "snowboarding",
+                        }]
                     },
                     {
                         name: "Get Started",

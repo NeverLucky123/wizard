@@ -45,6 +45,7 @@
     page3 {}
 
     a {
+        cursor: pointer;
         color: gray
     }
 

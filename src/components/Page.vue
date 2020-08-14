@@ -12,11 +12,10 @@
             </div>
         </div>
         <Page1 v-show="$parent.index===1"></Page1>
-        <Page2 v-show="$parent.index===2"></Page2>
-        <Page3 v-show="$parent.index===3"></Page3>
-        <Page4 v-show="$parent.index===4"></Page4>
+        <Page2 v-if="!$parent.advanced" v-show="$parent.index===2"></Page2>
+        <Page3 v-if="!$parent.advanced" v-show="$parent.index===3"></Page3>
+        <Page4 v-if="!$parent.advanced" v-show="$parent.index===4"></Page4>
         <Page5 v-show="$parent.index===5"></Page5>
-
     </div>
 </template>
 
@@ -42,10 +41,18 @@
                 if (this.$parent.index == 1) {
                     return "Welcome to the Rentrax Setup Wizard"
                 }
-                return this.$parent.pages[this.$parent.index - 1].name
+                if (this.$parent.advanced) {
+                    return "In Progress"
+                } else {
+                    return this.$parent.pages[this.$parent.index - 1].name
+                }
             },
             icon: function() {
-                return this.$parent.pages[this.$parent.index - 1].icon
+                if (this.$parent.advanced) {
+                    return "In Progress"
+                } else {
+                    return this.$parent.pages[this.$parent.index - 1].icon
+                }
             }
         }
     }
