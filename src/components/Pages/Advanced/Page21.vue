@@ -2,6 +2,7 @@
     <div class="">
         <form>
             <div class="form-group">
+                <label>Contact</label>
                 <TextField class="input" v-on:update="legal_name=$event" type="text" v-bind:value="legal_name" label="Legal Name"></TextField>
                 <TextField class="input" v-on:update="site_title=$event" type="text" v-bind:value="site_title" label="Closing time"></TextField>
                 <TextField class="input" v-on:update="site_url=$event" type="text" v-bind:value="site_url" label="Site URL"></TextField>

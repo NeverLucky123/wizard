@@ -3,8 +3,7 @@
         <div v-if="!nolabel" class="col-6">
             <label>{{label}}</label>
         </div>
-        <div class="col">
-            <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
+        <div class="col"> <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
         </div>
     </div>
 </template>

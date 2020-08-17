@@ -61,12 +61,4 @@
         margin-bottom: 1em;
     }
 
-    .input {
-        margin-bottom: 1em;
-    }
-
-    .form-row {
-        margin-bottom: 2em;
-    }
-
 </style>

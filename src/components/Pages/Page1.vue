@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center" style="padding-left:25px; padding-top:20px">
+            <div class="text-center" style="padding-left:25px; padding-top:5em">
                 <div class="spinner-border spinner-border-sm" role="status">
                 </div>
                 <span> Changes are automatically saved</span>
@@ -54,6 +54,7 @@
 <style scoped>
     .Page1 {
         line-height: 2em;
+        margin-top: 1em;
     }
 
     h5 {

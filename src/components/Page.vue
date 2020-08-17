@@ -1,16 +1,6 @@
 <template>
     <div class="page">
-        <div class="container title">
-            <div class="row align-items-center">
-                <div class="col-auto no-gutters">
-                    <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
-                    </font-awesome-icon>
-                </div>
-                <div class="col no-gutters">
-                    <h4>{{title}}</h4>
-                </div>
-            </div>
-        </div>
+        <br>
         <Page1 v-show="$parent.index===1"></Page1>
         <Page2 v-if="!$parent.advanced" v-show="$parent.index===2"></Page2>
         <Page21 v-if="$parent.advanced" v-show="$parent.index.toPrecision(2)==2.1"></Page21>
@@ -71,16 +61,6 @@
                 } else {
                     return this.$parent.pages[this.$parent.index - 1].name
                 }
-            },
-            console: () => console,
-            icon: function() {
-                if (this.$parent.advanced && (this.$parent.index != 5 && this.$parent.index != 1)) {
-                    var mainnode = parseInt(this.$parent.index)
-                    var decimal = this.$parent.index - mainnode
-                    return this.$parent.pages[mainnode - 1].advanced[Math.round((decimal - 0.1) * 10)].icon
-                } else {
-                    return this.$parent.pages[this.$parent.index - 1].icon
-                }
             }
         }
     }
@@ -91,25 +71,14 @@
 <style scoped>
     .page {
         height: 100%;
-        padding-right: 20px !important;
-        padding-left: 10px !important;
     }
 
-    .icon {
-        color: #44B6AE;
-    }
 
     .no-gutters {
         padding: 0 !important;
     }
 
 
-    h4 {
-        margin-left: 10px;
-        margin-bottom: 0;
-        color: #44B6AE;
-
-    }
 
     .title {
         padding-top: 30px;

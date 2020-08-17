@@ -8,7 +8,7 @@
         <br>
         <form v-for="(activity, index) in this.activities" v-bind:key=activity.name v-show="tab===index">
             <div class="form-group">
-                <div class="row" v-bind:key="field" v-for="field in activities[index].general">
+                <div class="row" v-bind:key="field.label" v-for="field in activities[index].general">
                     <Toggle class="input" v-bind:options="field" v-bind:label="field.label"></Toggle>
                 </div>
             </div>

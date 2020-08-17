@@ -1,54 +1,47 @@
 <template>
     <div class="">
         <form>
-            <div class="form-group">
-                <TextField class="input" v-on:update="site_url=$event" type="text" v-bind:value="site_url" label="Site URL"></TextField>
-                <TextField class="input" v-on:update="contact_email=$event" type="text" v-bind:value="contact_email" label="Contact Email"></TextField>
-                <TextField class="input" v-on:update="tel=$event" type="text" v-bind:value="tel" label="Telephone Number"></TextField>
-                <TextField class="input" v-on:update="ZipCode=$event" type="text" v-bind:value="ZipCode" label="Zip Code"></TextField>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="back_to_client_website" label="back_to_client_website"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="print_setup" label="print_setup"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="show_deposit_items" label="show_deposit_items"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="use_new_invenotry" label="use_new_invenotry"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="can_edit_product_sku" label="can_edit_product_sku"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="show_customer_address_in_orders_list" label="show_customer_address_in_orders_list"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="amendments_history" label="amendments_history"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="show_tab_to_be_started" label="show_tab_to_be_started"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="show_tab_to_be_returned" label="show_tab_to_be_returned"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="link_to_edit_customer" label="link_to_edit_customer"></Toggle>
-                </div>
-
+            <br>
+            <div class="row">
+                <Toggle class="input" v-bind:options="back_to_client_website" label=" After order is placed go to this link "></Toggle>
             </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="print_setup" label=" Print Setup "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_deposit_items" label=" Show deposit items in custody "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="use_new_invenotry" label=" Switch to new inventory system "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="can_edit_product_sku" label=" Edit Product SKU "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_customer_address_in_orders_list" label="Customer Address in Order List"></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="amendments_history" label=" Invoice Amendments Tracking "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_tab_to_be_started" label=" Show To Be Started Tab in Order List "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label=" Show To Be Returned Tab in Order List "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="link_to_edit_customer" label=" When Click on Customer Link Go to "></Toggle>
+            </div>
+
         </form>
     </div>
 </template>
 
 <script>
     import Toggle from '../Inputs/Toggle.vue'
-    import TextField from '../Inputs/TextField.vue'
     export default {
-        name: 'Page21',
+        name: 'Page23',
         components: {
-            TextField,
             Toggle
         },
         data: function() {

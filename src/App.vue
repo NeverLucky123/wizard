@@ -10,9 +10,23 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><img src="./assets/site_logo.png" style="width:auto; height:40px"></h5>
-                        <button type="button" class="close" v-on:click="close_modal">
-                        </button>
+                        <div class="container title">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <h5 class="modal-title"><img src="./assets/site_logo.png" style="width:auto; height:40px"></h5>
+                                </div>
+                                <div class="col-1 no-gutters" style="text-align:center">
+                                    <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
+                                    </font-awesome-icon>
+                                </div>
+                                <div class="col-6 no-gutters" style="text-align:left">
+                                    <h4>{{title}}</h4>
+                                </div>
+                                <div class="col-1" style="text-align:right"><button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert" type="button" data-close>
+                                        <span aria-hidden="true">&times;</span>
+                                    </button></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
@@ -20,7 +34,7 @@
                                 <div class="col-sm-auto no-gutters">
                                     <Progress v-on:goto="goto"></Progress>
                                 </div>
-                                <div class="col page">
+                                <div class="col no-gutters page">
                                     <Page class="w-100"></Page>
                                 </div>
                             </div>
@@ -129,6 +143,28 @@
                 document.getElementById("Modal").className.replace("show", "");
             }
         },
+        computed: {
+            title: function() {
+                if (this.index == 1) {
+                    return "Welcome to the Rentrax Setup Wizard"
+                } else if (this.advanced && (this.index != 5 && this.index != 1)) {
+                    var mainnode = parseInt(this.index)
+                    var decimal = this.index - mainnode
+                    return this.pages[mainnode - 1].name + " - " + this.pages[mainnode - 1].advanced[Math.round((decimal - 0.1) * 10)].name
+                } else {
+                    return this.pages[this.index - 1].name
+                }
+            },
+            icon: function() {
+                if (this.advanced && (this.index != 5 && this.index != 1)) {
+                    var mainnode = parseInt(this.index)
+                    var decimal = this.index - mainnode
+                    return this.pages[mainnode - 1].advanced[Math.round((decimal - 0.1) * 10)].icon
+                } else {
+                    return this.pages[this.index - 1].icon
+                }
+            }
+        },
         data: function() {
             return {
                 index: 1,
@@ -232,12 +268,21 @@
 
 <style>
     .close {
-        transform: translateY(12%);
+        margin: 0px;
     }
 
     .no-gutters {
         padding-right: 0 !important;
         padding-left: 0 ! important;
+    }
+
+    .icon {
+        color: #44B6AE;
+    }
+
+    h4 {
+        margin: 0 !important;
+        color: #44B6AE;
     }
 
     #app {
@@ -249,7 +294,8 @@
     }
 
     .page {
-        padding-right: 0px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
         height: 600px;
         overflow-x: hidden;
         background-color: #F8F8F8;

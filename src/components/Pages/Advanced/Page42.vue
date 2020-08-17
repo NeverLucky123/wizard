@@ -30,7 +30,7 @@
             return {
                 activities: this.$root.$children[0].fields.activity,
                 labels: ["Credit Card Action", "Can Skip Credit Card",
-                    "Show Borrow Items", "Show Sale Items", "Accept Coupon", "Send Confimration Email",
+                    "Show Borrow Items", "Show Sale Items", "Accept Coupon", "Send Confirmation Email",
                     "Color Theme"
                 ]
             }
@@ -60,14 +60,6 @@
     label {
         font-weight: bold;
         margin-bottom: 1em;
-    }
-
-    .input {
-        margin-bottom: 1em;
-    }
-
-    .form-row {
-        margin-bottom: 2em;
     }
 
 </style>
