@@ -17,8 +17,8 @@
             type: String
         },
         computed: {
-            nolabel: function(){
-                return this.label===undefined
+            nolabel: function() {
+                return this.label === undefined
             }
         }
     }

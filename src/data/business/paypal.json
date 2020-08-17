@@ -1,0 +1,32 @@
+{
+    "paypal_live_client_id": "",
+    "paypal_sandbox_client_id": "",
+    "paypal_live_secret": "",
+    "paypal_sandbox_secret": "",
+    "paypal_is_enabled": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "paypal_mode": {
+        "options": [
+            {
+                "text": "Sandbox (test)",
+                "value": "sandbox"
+      },
+            {
+                "text": "Live",
+                "value": "live"
+      }
+    ],
+        "current": "sandbox"
+    }
+}

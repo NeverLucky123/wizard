@@ -10,10 +10,9 @@
                 </span>
             </div>
             <div class="row no-gutters">
-                <div class="col-4">
-                    <NodeLink v-bind:index="index" v-bind:page="page"></NodeLink>
+                <div class="col">
+                    <NodeLink v-bind:index="index" v-bind:page="page" v-on:goto="goto($event)"></NodeLink>
                 </div>
-                <div class="col"></div>
             </div>
         </div>
     </div>
@@ -32,12 +31,20 @@
             },
             active: function() {
                 return this.$root.$children[0].index;
-            }
+            },
+            console: () => console,
+            window: () => window,
         },
         props: {
             last: Boolean,
             index: Number,
             page: Object
+        },
+        methods: {
+            goto: function(sub_index) {
+                var a = parseInt(this.active) + sub_index * 0.1;
+                this.$root.$children[0].index = a;
+            }
         }
     }
 
@@ -88,7 +95,5 @@
         color: #44B6AE;
         background-color: transparent;
     }
-
-    
 
 </style>

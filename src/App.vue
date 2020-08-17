@@ -1,18 +1,17 @@
 <template>
     <div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" v-on:click="open_modal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" v-on:click="open_modal">
             Setup
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><img src="./assets/site_logo.png" style="width:auto; height:40px"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close_modal">
-                            <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title"><img src="./assets/site_logo.png" style="width:auto; height:40px"></h5>
+                        <button type="button" class="close" v-on:click="close_modal">
                         </button>
                     </div>
                     <div class="modal-body">
@@ -28,7 +27,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <PageNav v-on:skip="skip" v-on:back="back" v-on:next="next" v-on:done="done"></PageNav>
+                        <PageNav v-on:back="back" v-on:next="next" v-on:done="done"></PageNav>
                     </div>
                 </div>
             </div>
@@ -44,6 +43,20 @@
     import activity from './data/activity.js'
     import payment from './data/payment.js'
 
+    import bus_information from './data/business/information.json'
+    import bus_other from './data/business/other.json'
+    import bus_payment from './data/business/payment.json'
+    import bus_paypal from './data/business/paypal.json'
+    import bus_region from './data/business/region.json'
+
+    import act_general from './data/activity/general.json'
+    import act_order from './data/activity/order.json'
+    import act_customer from './data/activity/customer.json'
+    import act_payment from './data/activity/payment.json'
+
+
+    import tour_general from './data/tour/general.json'
+
     export default {
         name: 'App',
         components: {
@@ -55,7 +68,7 @@
             next: function() {
                 if (this.advanced) {
                     if (this.index === 1) {
-                        this.index=2.1
+                        this.index = 2.1
                     } else if (this.index.toPrecision(3) == 2.3) {
                         this.index = 3.1
                     } else if (this.index.toPrecision(3) == 3.2) {
@@ -72,8 +85,8 @@
             back: function() {
                 if (this.advanced) {
                     if (this.index.toPrecision(3) == 2.1) {
-                        this.index=1
-                    } else if (this.index.toPrecision(3)==3.1) {
+                        this.index = 1
+                    } else if (this.index.toPrecision(3) == 3.1) {
                         this.index = 2.3
                     } else if (this.index.toPrecision(3) == 4.1) {
                         this.index = 3.2
@@ -98,7 +111,7 @@
                     } else if (index === 4) {
                         this.index = 4.1;
                     } else {
-                        this.index=index
+                        this.index = index
                     }
                 } else {
                     this.index = index
@@ -113,7 +126,7 @@
             },
             close_modal: function() {
                 document.getElementById("Modal").style.display = "none";
-                document.getElementById("exampleModal").className.replace("show", "");
+                document.getElementById("Modal").className.replace("show", "");
             }
         },
         data: function() {
@@ -127,22 +140,53 @@
                 item as first member of array, [0].
                 ---------------------------------------------------
                 */
+                fields: {
+                    business: {
+                        information: {
+                            ...bus_information,
+                            ...bus_region
+                        },
+                        other: bus_other,
+                        payment: {
+                            ...bus_payment,
+                            ...bus_paypal
+                        }
+                    },
+                    activity: [{
+                            general: act_general,
+                            customer: act_customer,
+                            order: act_order,
+                            payment: act_payment,
+                            name: "bike"
+                        },
+                        {
+                            general: act_general,
+                            customer: act_customer,
+                            order: act_order,
+                            payment: act_payment,
+                            name: "ski"
+                        }
+                    ],
+                    tour: {
+                        general: tour_general
+                    }
+                },
                 pages: [{
                         name: "Welcome",
-                        icon: null
+                        icon: "chart-pie"
                     },
                     {
                         name: "Business Settings",
                         icon: "chart-pie",
                         fields: business,
                         advanced: [{
-                            name: "Information",
+                            name: "Information", //info and region
                             icon: "chart-pie",
                         }, {
-                            name: "Region",
+                            name: "Payment Processor", //Payment, Paypal, QuickBooks
                             icon: "chart-pie",
                         }, {
-                            name: "Other",
+                            name: "Other", //Other
                             icon: "chart-pie",
                         }]
                     },
@@ -154,7 +198,7 @@
                             name: "General",
                             icon: "snowboarding",
                         }, {
-                            name: "Delivery",
+                            name: "Customer", //Order Settings part one
                             icon: "snowboarding",
                         }]
                     },
@@ -163,13 +207,13 @@
                         icon: "calculator",
                         fields: payment,
                         advanced: [{
-                            name: "Product",
+                            name: "Order",
                             icon: "calculator",
                         }, {
-                            name: "Customer",
+                            name: "Payment",
                             icon: "snowboarding",
                         }, {
-                            name: "Payment",
+                            name: "Tour Settings",
                             icon: "snowboarding",
                         }]
                     },

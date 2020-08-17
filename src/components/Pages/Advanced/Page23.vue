@@ -2,37 +2,41 @@
     <div class="">
         <form>
             <div class="form-group">
-                <TextField class="input" v-on:update="legal_name=$event" type="text" v-bind:value="legal_name" label="Legal Name"></TextField>
-                <TextField class="input" v-on:update="site_title=$event" type="text" v-bind:value="site_title" label="Closing time"></TextField>
                 <TextField class="input" v-on:update="site_url=$event" type="text" v-bind:value="site_url" label="Site URL"></TextField>
                 <TextField class="input" v-on:update="contact_email=$event" type="text" v-bind:value="contact_email" label="Contact Email"></TextField>
                 <TextField class="input" v-on:update="tel=$event" type="text" v-bind:value="tel" label="Telephone Number"></TextField>
                 <TextField class="input" v-on:update="ZipCode=$event" type="text" v-bind:value="ZipCode" label="Zip Code"></TextField>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="locale" label=" Locale"></Toggle>
-                </div>
-                <label>Region</label>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="currency_name" label="Currency Name"></Toggle>
+                    <Toggle class="input" v-bind:options="back_to_client_website" label="back_to_client_website"></Toggle>
                 </div>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="currency_symbol" label="Currency Symbol"></Toggle>
+                    <Toggle class="input" v-bind:options="print_setup" label="print_setup"></Toggle>
                 </div>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="app_view_timezone" label="Time Zone"></Toggle>
+                    <Toggle class="input" v-bind:options="show_deposit_items" label="show_deposit_items"></Toggle>
                 </div>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="calendar_time_intervals" label="Calendar Time Intervals"></Toggle>
+                    <Toggle class="input" v-bind:options="use_new_invenotry" label="use_new_invenotry"></Toggle>
                 </div>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="calendar_time_format" label="Calendar Time Format"></Toggle>
+                    <Toggle class="input" v-bind:options="can_edit_product_sku" label="can_edit_product_sku"></Toggle>
                 </div>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="datetime_format" label="Datetime Format"></Toggle>
+                    <Toggle class="input" v-bind:options="show_customer_address_in_orders_list" label="show_customer_address_in_orders_list"></Toggle>
                 </div>
                 <div class="row">
-                    <Toggle class="input" v-bind:options="default_country_for_reservation" label="Default Country for Reservation"></Toggle>
+                    <Toggle class="input" v-bind:options="amendments_history" label="amendments_history"></Toggle>
                 </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="show_tab_to_be_started" label="show_tab_to_be_started"></Toggle>
+                </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="show_tab_to_be_returned" label="show_tab_to_be_returned"></Toggle>
+                </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="link_to_edit_customer" label="link_to_edit_customer"></Toggle>
+                </div>
+
             </div>
         </form>
     </div>
@@ -48,7 +52,7 @@
             Toggle
         },
         data: function() {
-            return this.$root.$children[0].fields.business.information;
+            return this.$root.$children[0].fields.business.other;
         }
 
     }

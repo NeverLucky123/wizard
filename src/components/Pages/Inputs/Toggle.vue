@@ -14,12 +14,15 @@
             options: Object
         }
     }
+
 </script>
 <style scoped>
     select {
         width: 50% !important;
     }
-    label{
+
+    label {
         width: 50%;
     }
+
 </style>

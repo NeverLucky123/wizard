@@ -1,0 +1,386 @@
+{
+    "accept_order_web": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Online "
+    },
+    "accept_order_walk_in": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Walk In "
+    },
+    "accept_order_back_end": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Back-End "
+    },
+    "accept_order_phone": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Phone "
+    },
+    "offer_reorder_web": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": "Online"
+    },
+    "offer_reorder_walk_in": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Walk In "
+    },
+    "offer_reorder_back_end": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Back-End "
+    },
+    "offer_reorder_phone": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": "Phone"
+    },
+    "multiple_rentersweb": {
+        "options": [
+            {
+                "text": "Single Renter",
+                "value": "no"
+      },
+            {
+                "text": "Multiple Renters",
+                "value": "yes"
+      },
+            {
+                "text": "Multiple Participants (Waiver)",
+                "value": "waiver"
+      },
+            {
+                "text": "Multiple Renters/Participants",
+                "value": "both"
+      }
+    ],
+        "current": "no",
+        "label": "Online"
+    },
+    "multiple_renterswalk_in": {
+        "options": [
+            {
+                "text": "Single Renter",
+                "value": "no"
+      },
+            {
+                "text": "Multiple Renters",
+                "value": "yes"
+      },
+            {
+                "text": "Multiple Participants (Waiver)",
+                "value": "waiver"
+      },
+            {
+                "text": "Multiple Renters/Participants",
+                "value": "both"
+      }
+    ],
+        "current": "no",
+        "label": " Walk In "
+    },
+    "multiple_rentersback_end": {
+        "options": [
+            {
+                "text": "Single Renter",
+                "value": "no"
+      },
+            {
+                "text": "Multiple Renters",
+                "value": "yes"
+      },
+            {
+                "text": "Multiple Participants (Waiver)",
+                "value": "waiver"
+      },
+            {
+                "text": "Multiple Renters/Participants",
+                "value": "both"
+      }
+    ],
+        "current": "no",
+        "label": "Back-End"
+    },
+    "multiple_rentersphone": {
+        "options": [
+            {
+                "text": "Single Renter",
+                "value": "no"
+      },
+            {
+                "text": "Multiple Renters",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Phone "
+    },
+    "renters_attribute_web": {
+        "options": [
+            {
+                "text": "Disabled",
+                "value": "disabled"
+      },
+            {
+                "text": "Optional",
+                "value": "optional"
+      },
+            {
+                "text": "Required",
+                "value": "required"
+      }
+    ],
+        "current": "disabled",
+        "label": "Online"
+    },
+    "renters_attribute_walk_in": {
+        "options": [
+            {
+                "text": "Disabled",
+                "value": "disabled"
+      },
+            {
+                "text": "Optional",
+                "value": "optional"
+      },
+            {
+                "text": "Required",
+                "value": "required"
+      }
+    ],
+        "current": "disabled",
+        "label": " Walk In "
+    },
+    "renters_attribute_back_end": {
+        "options": [
+            {
+                "text": "Disabled",
+                "value": "disabled"
+      },
+            {
+                "text": "Optional",
+                "value": "optional"
+      },
+            {
+                "text": "Required",
+                "value": "required"
+      }
+    ],
+        "current": "disabled",
+        "label": " Back-End "
+    },
+    "renters_attribute_phone": {
+        "options": [
+            {
+                "text": "Disabled",
+                "value": "disabled"
+      },
+            {
+                "text": "Optional",
+                "value": "optional"
+      },
+            {
+                "text": "Required",
+                "value": "required"
+      }
+    ],
+        "current": "disabled",
+        "label": " Phone "
+    },
+    "period_options_web": {
+        "options": [
+            {
+                "text": "Start &amp; Finish",
+                "value": "start_finish"
+      },
+            {
+                "text": "Start &amp; Duration",
+                "value": "start_duration"
+      }
+    ],
+        "current": "start_finish",
+        "label": "Online"
+    },
+    "period_options_walk_in": {
+        "options": [
+            {
+                "text": "Start &amp; Finish",
+                "value": "start_finish"
+      },
+            {
+                "text": "Start &amp; Duration",
+                "value": "start_duration"
+      },
+            {
+                "text": "Duration Only",
+                "value": "duration_only"
+      }
+    ],
+        "current": "start_finish",
+        "label": " Walk In "
+    },
+    "period_options_back_end": {
+        "options": [
+            {
+                "text": "Start &amp; Finish",
+                "value": "start_finish"
+      },
+            {
+                "text": "Start &amp; Duration",
+                "value": "start_duration"
+      },
+            {
+                "text": "Duration Only",
+                "value": "duration_only"
+      }
+    ],
+        "current": "start_finish",
+        "label": " Back-End "
+    },
+    "period_options_phone": {
+        "options": [
+            {
+                "text": "Start &amp; Finish",
+                "value": "start_finish"
+      },
+            {
+                "text": "Start &amp; Duration",
+                "value": "start_duration"
+      }
+    ],
+        "current": "start_finish",
+        "label": " Phone "
+    },
+    "show_product_info_web": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": "Online"
+    },
+    "show_product_info_walk_in": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Walk In "
+    },
+    "show_product_info_back_end": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Back-End "
+    },
+    "show_product_info_phone": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Phone "
+    }
+}
