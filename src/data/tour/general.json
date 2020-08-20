@@ -1,7 +1,7 @@
 {
-    "settings[customer_edit_timeout]": "",
+    "customer_edit_timeout": "",
     "site_background": "",
-    "settings[crumb_as_toolbar]": {
+    "crumb_as_toolbar": {
         "options": [
             {
                 "text": "No",
@@ -14,7 +14,7 @@
     ],
         "current": "0"
     },
-    "settings[confirm_by]": {
+    "confirm_by": {
         "options": [
             {
                 "text": "Manual",
@@ -27,7 +27,7 @@
     ],
         "current": "manual"
     },
-    "settings[partially_available]": {
+    "partially_available": {
         "options": [
             {
                 "text": "Accept",
@@ -40,7 +40,7 @@
     ],
         "current": "accept"
     },
-    "settings[manage_waiting_list]": {
+    "manage_waiting_list": {
         "options": [
             {
                 "text": "On",
@@ -53,7 +53,7 @@
     ],
         "current": "yes"
     },
-    "settings[collect_before]": {
+    "collect_before": {
         "options": [
             {
                 "text": "Check In",
@@ -70,7 +70,7 @@
     ],
         "current": "check_in"
     },
-    "settings[customer_can_edit]": {
+    "customer_can_edit": {
         "options": [
             {
                 "text": "None",
@@ -87,7 +87,7 @@
     ],
         "current": "never"
     },
-    "settings[accept_coupon_web]": {
+    "accept_coupon_web": {
         "options": [
             {
                 "text": "Yes",
@@ -100,7 +100,7 @@
     ],
         "current": "1"
     },
-    "settings[accept_coupon_walk_in]": {
+    "accept_coupon_walk_in": {
         "options": [
             {
                 "text": "Yes",
@@ -113,7 +113,7 @@
     ],
         "current": "1"
     },
-    "settings[accept_coupon_back_end]": {
+    "accept_coupon_back_end": {
         "options": [
             {
                 "text": "Yes",
@@ -126,7 +126,7 @@
     ],
         "current": "1"
     },
-    "settings[accept_coupon_phone]": {
+    "accept_coupon_phone": {
         "options": [
             {
                 "text": "Yes",
@@ -139,7 +139,7 @@
     ],
         "current": "1"
     },
-    "settings[terms_web]": {
+    "terms_web": {
         "options": [
             {
                 "text": "No",
@@ -156,7 +156,7 @@
     ],
         "current": "no"
     },
-    "settings[terms_walk_in]": {
+    "terms_walk_in": {
         "options": [
             {
                 "text": "No",
@@ -173,7 +173,7 @@
     ],
         "current": "no"
     },
-    "settings[terms_back_end]": {
+    "terms_back_end": {
         "options": [
             {
                 "text": "No",
@@ -190,7 +190,7 @@
     ],
         "current": "no"
     },
-    "settings[terms_phone]": {
+    "terms_phone": {
         "options": [
             {
                 "text": "No",
@@ -207,7 +207,7 @@
     ],
         "current": "no"
     },
-    "settings[cc_action_web]": {
+    "cc_action_web": {
         "options": [
             {
                 "text": "None",
@@ -228,7 +228,7 @@
     ],
         "current": "none"
     },
-    "settings[cc_action_walk_in]": {
+    "cc_action_walk_in": {
         "options": [
             {
                 "text": "None",
@@ -249,7 +249,7 @@
     ],
         "current": "none"
     },
-    "settings[cc_action_back_end]": {
+    "cc_action_back_end": {
         "options": [
             {
                 "text": "None",
@@ -270,7 +270,7 @@
     ],
         "current": "none"
     },
-    "settings[cc_action_phone]": {
+    "cc_action_phone": {
         "options": [
             {
                 "text": "None",
@@ -295,7 +295,7 @@
     ],
         "current": "none"
     },
-    "settings[cc_skip_web]": {
+    "cc_skip_web": {
         "options": [
             {
                 "text": "No",
@@ -312,7 +312,7 @@
     ],
         "current": "no"
     },
-    "settings[cc_skip_walk_in]": {
+    "cc_skip_walk_in": {
         "options": [
             {
                 "text": "No",
@@ -329,7 +329,7 @@
     ],
         "current": "no"
     },
-    "settings[cc_skip_back_end]": {
+    "cc_skip_back_end": {
         "options": [
             {
                 "text": "No",
@@ -346,7 +346,7 @@
     ],
         "current": "no"
     },
-    "settings[cc_skip_phone]": {
+    "cc_skip_phone": {
         "options": [
             {
                 "text": "No",
@@ -363,7 +363,7 @@
     ],
         "current": "no"
     },
-    "settings[accep_new_orders_web]": {
+    "accep_new_orders_web": {
         "options": [
             {
                 "text": "No",
@@ -376,7 +376,7 @@
     ],
         "current": "no"
     },
-    "settings[accep_new_orders_walk_in]": {
+    "accep_new_orders_walk_in": {
         "options": [
             {
                 "text": "No",
@@ -389,7 +389,7 @@
     ],
         "current": "no"
     },
-    "settings[accep_new_orders_back_end]": {
+    "accep_new_orders_back_end": {
         "options": [
             {
                 "text": "No",
@@ -402,7 +402,7 @@
     ],
         "current": "no"
     },
-    "settings[accep_new_orders_phone]": {
+    "accep_new_orders_phone": {
         "options": [
             {
                 "text": "No",

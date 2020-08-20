@@ -116,7 +116,6 @@
     }
 
     .btn-dark {
-        font-size: 14 !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         padding-left: 0.25rem !important;
@@ -127,7 +126,8 @@
     .btn-forward:hover,
     .btn-forward:active,
     .btn-forward:visited {
-        font-size: 14 !important;
+        width: 10em;
+        height: 2.3em;
         background-color: #44B6AE !important;
     }
 

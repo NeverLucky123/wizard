@@ -36,7 +36,7 @@
                     <div v-show="payment_provider.current=='Paragon'">
                         <TextField class="input" v-on:update="Paragon_hp_plus_key=$event" type="text" v-bind:value="Paragon_hp_plus_key" label="Paragon_hp_plus_key"></TextField>
                         <TextField class="input" v-on:update="Paragon_api_username=$event" type="text" v-bind:value="Paragon_api_username" label="Paragon_api_username"></TextField>
-                        <TextField class="input" v-on:update="Paragon_api_password=$event" type="text" v-bind:value="servicesParagon_api_password_cardconnect_apiPassword" label="Paragon_api_password"></TextField>
+                        <TextField class="input" v-on:update="Paragon_api_password=$event" type="text" v-bind:value="Paragon_api_password" label="Paragon_api_password"></TextField>
                         <TextField class="input" v-on:update="Paragon_gateway_id=$event" type="text" v-bind:value="Paragon_gateway_id" label="Paragon_gateway_id"></TextField>
                     </div>
                     <div v-show="payment_provider.current=='Square'">

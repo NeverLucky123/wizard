@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label>Contact</label>
                 <TextField class="input" v-on:update="legal_name=$event" type="text" v-bind:value="legal_name" label="Legal Name"></TextField>
-                <TextField class="input" v-on:update="site_title=$event" type="text" v-bind:value="site_title" label="Closing time"></TextField>
+                <TextField class="input" v-on:update="site_title=$event" type="text" v-bind:value="site_title" label="Site Title"></TextField>
                 <TextField class="input" v-on:update="site_url=$event" type="text" v-bind:value="site_url" label="Site URL"></TextField>
                 <TextField class="input" v-on:update="contact_email=$event" type="text" v-bind:value="contact_email" label="Contact Email"></TextField>
                 <TextField class="input" v-on:update="tel=$event" type="text" v-bind:value="tel" label="Telephone Number"></TextField>

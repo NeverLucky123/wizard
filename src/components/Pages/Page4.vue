@@ -1,16 +1,12 @@
 <template>
     <div class="Page4">
         <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" v-on:click="set(0)" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" v-on:click="set(1)" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
+            <li class="nav-item" v-bind:key="activity.name" v-for="(activity, index) in activities">
+                <a class="nav-link" v-on:click="set(index)" v-bind:class="{active:tab===index}">{{activity.name}}</a>
             </li>
         </ul>
         <br>
-        <Page4Settings v-bind:index='0' v-show="tab===0"></Page4Settings>
-        <Page4Settings v-bind:index='1' v-show="tab===1"></Page4Settings>
+        <Page4Settings v-bind:key="activity.name"  v-for="(activity, index) in activities" v-bind:index="index" v-show="tab===index"></Page4Settings>
     </div>
 </template>
 
@@ -23,7 +19,7 @@
         },
         data: function() {
             return {
-                activities: this.$root.$children[0].pages[3]
+                activities: this.$root.$children[0].fields.activity
             }
         },
         methods: {

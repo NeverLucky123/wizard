@@ -9,9 +9,10 @@
                 <div class="row">
                     <Toggle class="input" v-bind:options="currency_symbol" label="Currency Symbol"></Toggle>
                 </div>
-                 <div class="row">
-                    <Toggle class="input" v-bind:options="timezone" label="Timezone"></Toggle>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="app_view_timezone" label="Timezone"></Toggle>
                 </div>
+                <!--
                 <label>Business Hours</label>
                 <TextField class="input" v-on:update="opening=$event" type="time" v-bind:value="opening" label="Opening time"></TextField>
                 <TextField class="input" v-on:update="closing=$event" type="time" v-bind:value="closing" label="Closing time"></TextField>
@@ -28,27 +29,28 @@
                 <div class="row flex-nowrap">
                     <CheckBox v-for="(day, index) in days" v-bind:key="index" v-bind:options="day"></CheckBox>
                 </div>
+                -->
                 <br>
                 <label for="formControlRange">Site Url</label>
-                <TextField class="input" v-on:update="url=$event" type="url" v-bind:value="url"></TextField>
+                <TextField class="input" v-on:update="site_url=$event" type="url" v-bind:value="site_url"></TextField>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    import CheckBox from './Inputs/Checkbox.vue'
+    //import CheckBox from './Inputs/Checkbox.vue'
     import Toggle from './Inputs/Toggle.vue'
     import TextField from './Inputs/TextField.vue'
     export default {
         name: 'Page2',
         components: {
-            CheckBox,
+            //CheckBox,
             TextField,
             Toggle
         },
         data: function() {
-            return this.$root.$children[0].pages[1].fields;
+            return this.$root.$children[0].fields.business.information;
         }
 
     }
@@ -57,7 +59,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
     .days {
         text-align: center;
     }
