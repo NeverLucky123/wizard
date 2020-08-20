@@ -39,7 +39,7 @@
       }
     ],
         "current": "no",
-        "label": " Back-End "
+        "label": " Backend "
     },
     "accept_order_phone": {
         "options": [
@@ -266,11 +266,11 @@
     "period_options_web": {
         "options": [
             {
-                "text": "Start &amp; Finish",
+                "text": "Start & Finish",
                 "value": "start_finish"
       },
             {
-                "text": "Start &amp; Duration",
+                "text": "Start & Duration",
                 "value": "start_duration"
       }
     ],
@@ -280,11 +280,11 @@
     "period_options_walk_in": {
         "options": [
             {
-                "text": "Start &amp; Finish",
+                "text": "Start & Finish",
                 "value": "start_finish"
       },
             {
-                "text": "Start &amp; Duration",
+                "text": "Start & Duration",
                 "value": "start_duration"
       },
             {
@@ -298,11 +298,11 @@
     "period_options_back_end": {
         "options": [
             {
-                "text": "Start &amp; Finish",
+                "text": "Start & Finish",
                 "value": "start_finish"
       },
             {
-                "text": "Start &amp; Duration",
+                "text": "Start & Duration",
                 "value": "start_duration"
       },
             {
@@ -316,11 +316,11 @@
     "period_options_phone": {
         "options": [
             {
-                "text": "Start &amp; Finish",
+                "text": "Start & Finish",
                 "value": "start_finish"
       },
             {
-                "text": "Start &amp; Duration",
+                "text": "Start & Duration",
                 "value": "start_duration"
       }
     ],

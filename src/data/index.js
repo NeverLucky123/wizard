@@ -14,28 +14,24 @@ import tour_general from './tour/general.json'
 
 var field = {
     business: {
-        information: {
             ...bus_information,
-            ...bus_region
-        },
-        other: bus_other,
-        payment: {
+            ...bus_region,
+            ...bus_other,
             ...bus_payment,
             ...bus_paypal
-        }
     },
     activity: [{
-        general: act_general,
-        customer: act_customer,
-        order: act_order,
-        payment: act_payment,
+        ...act_general,
+        ...act_customer,
+        ...act_order,
+        ...act_payment,
         name: "bike"
     },
         {
-            general: act_general,
-            customer: act_customer,
-            order: act_order,
-            payment: act_payment,
+            ...act_general,
+            ...act_customer,
+            ...act_order,
+            ...act_payment,
             name: "ski"
         }
     ],

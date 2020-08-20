@@ -1,13 +1,13 @@
 <template>
     <div>
-
-        <div v-if="!advanced||active===1||active===5">
+        <div>
             <div class="row no-gutters flex-nowrap">
                 <span class="col-4 align-self-center">
                     <div class="simple_link" v-bind:class="{active:index<active}" v-if="!last"></div>
                 </span>
             </div>
         </div>
+        <!---
         <div v-else>
             <div class="row no-gutters flex-nowrap">
                 <span class="col-4 align-self-center">
@@ -32,6 +32,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </template>
 

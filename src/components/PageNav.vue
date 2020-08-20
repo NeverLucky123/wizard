@@ -3,11 +3,14 @@
         <div class="container-fluid">
             <div class="row-md-auto">
             </div>
-            <div class="row justify-content-between">
+            <div class="row align-items-center justify-content-between">
                 <div class="col">
                     <button type="button" class="btn btn-secondary btn-lg" v-on:click="save">
                         <font-awesome-icon size="lg" icon="save"></font-awesome-icon>
                     </button>
+                </div>
+                <div class="col">
+                    <h4>{{business_name}}</h4>
                 </div>
                 <div class="col-md-auto">
                     <button type="button" class="btn btn-secondary btn-lg" v-on:click="back">
@@ -27,8 +30,10 @@
 <script>
     export default {
         name: 'PageNav',
-        components: {
-
+        computed: {
+            business_name: function() {
+                return this.$parent.fields.business.legal_name
+            }
         },
         methods: {
             back: function() {
@@ -51,6 +56,9 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .btn {
+        font-weight: bold;
+        color: white;
+        height: 44.6666667px;
         line-height: 100%;
         margin: 5px;
     }

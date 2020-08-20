@@ -12,20 +12,22 @@
                     <div class="modal-header">
                         <div class="container title">
                             <div class="row align-items-center">
-                                <div class="col-4">
-                                    <h5 class="modal-title"><img src="./assets/site_logo.png"
-                                                                 style="width:auto; height:40px" alt="Site Logo"></h5>
+                                <div class="col-3">
+                                    <h5 class="modal-title"><img src="./assets/site_logo.png" style="width:auto; height:40px" alt="Site Logo"></h5>
                                 </div>
-                                <div class="col-1 no-gutters" style="text-align:center">
-                                    <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
-                                    </font-awesome-icon>
+                                <div class="col-6 no-gutters">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-auto">
+                                            <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
+                                            </font-awesome-icon>
+                                        </div>
+                                        <div class="col-auto">
+                                            <h4>{{title}}</h4>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6 no-gutters" style="text-align:left">
-                                    <h4>{{title}}</h4>
-                                </div>
-                                <div class="col-1" style="text-align:right">
-                                    <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert"
-                                            type="button" data-close>
+                                <div class="col-3" style="text-align:right">
+                                    <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert" type="button" data-close>
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -58,7 +60,9 @@
     import Progress from './components/Progress.vue'
     import PageNav from './components/PageNav.vue'
 
-    import {field, update_act} from './data/index'
+    import {
+        field
+    } from './data/index'
 
     export default {
         name: 'App',
@@ -68,39 +72,39 @@
             PageNav
         },
         methods: {
-            next: function () {
-                    this.index++;
+            next: function() {
+                this.index++;
             },
-            back: function () {
-                    this.index--;
-                    if (this.index < 1) {
-                        this.index = 1;
-                    }
+            back: function() {
+                this.index--;
+                if (this.index < 1) {
+                    this.index = 1;
+                }
             },
-            goto: function (index) {
-                    this.index = index
+            goto: function(index) {
+                this.index = index
             },
-            done: function () {
+            done: function() {
                 this.close_modal()
             },
-            open_modal: function () {
+            open_modal: function() {
                 document.getElementById("Modal").style.display = "block";
                 document.getElementById("Modal").className += "show"
             },
-            close_modal: function () {
+            close_modal: function() {
                 document.getElementById("Modal").style.display = "none";
                 document.getElementById("Modal").className.replace("show", "");
             }
         },
         computed: {
-            title: function () {
-                    return this.pages[this.index - 1].name
+            title: function() {
+                return this.pages[this.index - 1].name
             },
-            icon: function () {
+            icon: function() {
                 return this.pages[this.index - 1].icon
             }
         },
-        data: function () {
+        data: function() {
             return {
                 index: 1,
                 tab: 0,
@@ -113,44 +117,20 @@
                 */
                 fields: field,
                 pages: [{
-                    name: "Welcome",
-                    icon: "chart-pie"
-                },
+                        name: "Welcome",
+                        icon: "chart-pie"
+                    },
                     {
                         name: "Business Settings",
-                        icon: "chart-pie",
-                        advanced: [{
-                            name: "Information", //info and region
-                            icon: "chart-pie",
-                        }, {
-                            name: "Payment Processor", //Payment, Paypal, QuickBooks
-                            icon: "chart-pie",
-                        }, {
-                            name: "Other", //Other
-                            icon: "chart-pie",
-                        }]
+                        icon: "chart-pie"
                     },
                     {
                         name: "Activity Settings",
-                        icon: "snowboarding",
-                        advanced: [{
-                            name: "General",
-                            icon: "snowboarding",
-                        }, {
-                            name: "Customer", //Order Settings part one
-                            icon: "snowboarding",
-                        }]
+                        icon: "snowboarding"
                     },
                     {
                         name: "Order Settings",
-                        icon: "calculator",
-                        advanced: [{
-                            name: "Order",
-                            icon: "calculator",
-                        }, {
-                            name: "Payment",
-                            icon: "snowboarding",
-                        }]
+                        icon: "calculator"
                     },
                     {
                         name: "Get Started",
@@ -161,8 +141,8 @@
             }
         },
         mounted() {
-            update_act()
-           // update_bus()
+            //update_act()
+            // update_bus()
         }
 
     }

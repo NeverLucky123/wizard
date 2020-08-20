@@ -2,51 +2,52 @@
     <div class="Page4Settings">
         <form>
             <div class="form-group">
-                <label>Credit Card Action</label>
+                <label>Offer Reorder</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="cc_action_web" label="Online"></Toggle>
+                <Checkbox v-bind:options="offer_reorder_web" label="Online"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="cc_action_walk_in" label="Walk In"></Toggle>
+                <Checkbox v-bind:options="offer_reorder_walk_in" label="Walk In"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="cc_action_back_end" label="Backend"></Toggle>
+                <Checkbox v-bind:options="offer_reorder_back_end" label="Backend"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="cc_action_phone" label="Phone"></Toggle>
+                <Checkbox v-bind:options="offer_reorder_phone" label="Phone"></Checkbox>
             </div>
-            <br>
             <div class="form-group">
-                <label>Can Skip Credit Card</label>
+                <label>Multiple Renters</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="can_skip_cc_web" label="Online"></Toggle>
+                <Toggle v-bind:options="multiple_rentersweb" label="Online"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="can_skip_cc_walk_in" label="Walk In"></Toggle>
+                <Toggle v-bind:options="multiple_renterswalk_in" label="Walk In"></Toggle>
             </div>
             <div class="form-row align-items-center">
-            <Toggle v-bind:options="can_skip_cc_back_end" label="Backend"></Toggle>
+                <Toggle v-bind:options="multiple_rentersback_end" label="Backend"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="can_skip_cc_phone" style="margin-bottom:0" label="Phone"></Toggle>
+                <Toggle v-bind:options="multiple_rentersphone" label="Phone"></Toggle>
             </div>
         </form>
     </div>
 </template>
 <script>
+    import Checkbox from "./Inputs/Checkbox";
     import Toggle from "./Inputs/Toggle.vue"
     export default {
         name: 'Page4Settings',
         components: {
-            Toggle
+            Toggle,
+            Checkbox
         },
         props: {
             index: Number
         },
         data: function() {
-            return this.$root.$children[0].fields.activity[this.index].payment;
+            return this.$root.$children[0].fields.activity[this.index];
         }
     }
 

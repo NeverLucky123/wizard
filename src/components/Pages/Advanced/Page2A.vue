@@ -1,6 +1,23 @@
 <template>
     <div class="">
         <form>
+            <div class="form-group">
+                <label>Contact</label>
+                <TextField class="input" v-on:update="ZipCode=$event" type="text" v-bind:value="ZipCode" label="Zip Code"></TextField>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="locale" label=" Locale"></Toggle>
+                </div>
+                <label>Region</label>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="calendar_time_format" label="Calendar Time Format"></Toggle>
+                </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="datetime_format" label="Datetime Format"></Toggle>
+                </div>
+                <div class="row">
+                    <Toggle class="input" v-bind:options="default_country_for_reservation" label="Default Country for Reservation"></Toggle>
+                </div>
+            </div>
             <label>Payment Processor</label>
             <div class="form-group">
                 <div class="row">
@@ -49,11 +66,42 @@
             <div class="row">
                 <Toggle class="input" v-bind:options="paypal_is_enabled" label="Enable Paypal Payments"></Toggle>
             </div>
-            <div v-if="paypal_is_enabled.current==1">
+            <label>Other</label>
+            <div v-if="paypal_is_enabled.current===1">
                 <TextField class="input" v-on:update="paypal_live_client_id=$event" type="text" v-bind:value="paypal_live_client_id" label="paypal_live_client_id"></TextField>
                 <TextField class="input" v-on:update="paypal_sandbox_client_id=$event" type="text" v-bind:value="paypal_sandbox_client_id" label="paypal_sandbox_client_id"></TextField>
                 <TextField class="input" v-on:update="paypal_live_secret=$event" type="text" v-bind:value="paypal_live_secret" label="paypal_live_secret"></TextField>
                 <TextField class="input" v-on:update="paypal_sandbox_secret=$event" type="text" v-bind:value="paypal_sandbox_secret" label="paypal_sandbox_secret"></TextField>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="back_to_client_website" label=" After order is placed go to this link "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="print_setup" label=" Print Setup "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_deposit_items" label=" Show deposit items in custody "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="use_new_invenotry" label=" Switch to new inventory system "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="can_edit_product_sku" label=" Edit Product SKU "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_customer_address_in_orders_list" label="Customer Address in Order List"></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="amendments_history" label=" Invoice Amendments Tracking "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_tab_to_be_started" label=" Show To Be Started Tab in Order List "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label=" Show To Be Returned Tab in Order List "></Toggle>
+            </div>
+            <div class="row">
+                <Toggle class="input" v-bind:options="link_to_edit_customer" label=" When Click on Customer Link Go to "></Toggle>
             </div>
         </form>
     </div>
@@ -63,14 +111,15 @@
     import Toggle from '../Inputs/Toggle.vue'
     import TextField from '../Inputs/TextField.vue'
     export default {
-        name: 'Page22',
+        name: 'Page2A',
         components: {
             TextField,
             Toggle
         },
         data: function() {
-            return this.$root.$children[0].fields.business.payment;
+            return this.$root.$children[0].fields.business;
         }
+
     }
 
 </script>
