@@ -66,13 +66,13 @@
             <div class="row">
                 <Toggle class="input" v-bind:options="paypal_is_enabled" label="Enable Paypal Payments"></Toggle>
             </div>
-            <label>Other</label>
             <div v-if="paypal_is_enabled.current===1">
                 <TextField class="input" v-on:update="paypal_live_client_id=$event" type="text" v-bind:value="paypal_live_client_id" label="paypal_live_client_id"></TextField>
                 <TextField class="input" v-on:update="paypal_sandbox_client_id=$event" type="text" v-bind:value="paypal_sandbox_client_id" label="paypal_sandbox_client_id"></TextField>
                 <TextField class="input" v-on:update="paypal_live_secret=$event" type="text" v-bind:value="paypal_live_secret" label="paypal_live_secret"></TextField>
                 <TextField class="input" v-on:update="paypal_sandbox_secret=$event" type="text" v-bind:value="paypal_sandbox_secret" label="paypal_sandbox_secret"></TextField>
             </div>
+            <label>Other</label>
             <div class="row">
                 <Toggle class="input" v-bind:options="back_to_client_website" label=" After order is placed go to this link "></Toggle>
             </div>
@@ -80,16 +80,7 @@
                 <Toggle class="input" v-bind:options="print_setup" label=" Print Setup "></Toggle>
             </div>
             <div class="row">
-                <Toggle class="input" v-bind:options="show_deposit_items" label=" Show deposit items in custody "></Toggle>
-            </div>
-            <div class="row">
-                <Toggle class="input" v-bind:options="use_new_invenotry" label=" Switch to new inventory system "></Toggle>
-            </div>
-            <div class="row">
                 <Toggle class="input" v-bind:options="can_edit_product_sku" label=" Edit Product SKU "></Toggle>
-            </div>
-            <div class="row">
-                <Toggle class="input" v-bind:options="show_customer_address_in_orders_list" label="Customer Address in Order List"></Toggle>
             </div>
             <div class="row">
                 <Toggle class="input" v-bind:options="amendments_history" label=" Invoice Amendments Tracking "></Toggle>
@@ -98,10 +89,7 @@
                 <Toggle class="input" v-bind:options="show_tab_to_be_started" label=" Show To Be Started Tab in Order List "></Toggle>
             </div>
             <div class="row">
-                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label=" Show To Be Returned Tab in Order List "></Toggle>
-            </div>
-            <div class="row">
-                <Toggle class="input" v-bind:options="link_to_edit_customer" label=" When Click on Customer Link Go to "></Toggle>
+                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label="Show To Be Returned Tab in Order List"></Toggle>
             </div>
         </form>
     </div>

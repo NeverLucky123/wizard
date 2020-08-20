@@ -90,7 +90,7 @@
     }
 
     .simple_pulltab {
-        bottom: 93%;
+        top: 93%;
     }
 
     .pulltab:active,

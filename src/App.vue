@@ -61,7 +61,8 @@
     import PageNav from './components/PageNav.vue'
 
     import {
-        field
+        field,
+        update_bus
     } from './data/index'
 
     export default {
@@ -142,7 +143,7 @@
         },
         mounted() {
             //update_act()
-            // update_bus()
+            update_bus()
         }
 
     }

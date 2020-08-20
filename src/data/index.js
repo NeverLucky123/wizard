@@ -14,11 +14,11 @@ import tour_general from './tour/general.json'
 
 var field = {
     business: {
-            ...bus_information,
-            ...bus_region,
-            ...bus_other,
-            ...bus_payment,
-            ...bus_paypal
+        ...bus_information,
+        ...bus_region,
+        ...bus_other,
+        ...bus_payment,
+        ...bus_paypal
     },
     activity: [{
         ...act_general,
@@ -60,35 +60,28 @@ function cors() {
 
 export function update(category, url) {
     let res;
-    for (let subcat in category) {
-        if (category[subcat] instanceof Object) {
-            //make payload
-            let payload = Object.keys(category[subcat])
-            for (let key in payload) {
-                payload[key] = lookup(payload[key])
-            }
-            payload = JSON.stringify(payload)
-            // console.log(payload)
-            let data = new FormData()
-            data.set('keys', payload)
-            //request
-            axios.post(url,
-                data
-            ).then(response => {
-                    res = response.data;
-                }
-            ).catch(err => console.log(err))
-                .then(() => {
-                    for (let i in category[subcat]) {
-                        if (category[subcat][i] instanceof Object) {
-                            category[subcat][i].current = res.find(({key}) => key === lookup(i)).value
-                        } else {
-                            category[subcat][i] = res.find(({key}) => key === lookup(i)).value
-                        }
-                    }
-                }).catch(err => console.log(err))
-        }
+    //make payload
+    let payload = Object.keys(category)
+    for (let key in payload) {
+        payload[key] = lookup(payload[key])
     }
+    payload = JSON.stringify(payload)
+    let data = new FormData()
+    data.set('keys', payload)
+    //request
+    axios.post(url,
+        data
+    ).then(response => {
+        res = response.data;
+    }).catch(err => console.log(err)).then(() => {
+        for(let option in category){
+            if(category[option] instanceof Object) {
+                category[option].current = res.find(field => field.key === lookup(option)).value
+            } else {
+                category[option] = res.find(({key}) => key === lookup(option)).value
+            }
+        }
+    }).catch(err => console.log(err))
 }
 
 export function update_bus() {
@@ -100,7 +93,7 @@ export function update_act() {
     let promises = [];
     for (let i = 0; i < field.activity.length; i++) {
         promises[i] = [];
-        res[i]=[]
+        res[i] = []
         for (let cat in field.activity[i]) {
             if (field.activity[i][cat] instanceof Object) {
                 //make payload
@@ -116,10 +109,9 @@ export function update_act() {
                     axios.post("http://localhost:4000/https://dev.rentrax.io/admin/setup-wizard/get/activity-settings/" + (i + 1),
                         data,
                     ).then(response => {
-                            res[i].push(response)
-                            //console.log(res.find(({key}) => key === "add_to_invoice"))
-                        }
-                    ))
+                        res[i].push(response)
+                        //console.log(res.find(({key}) => key === "add_to_invoice"))
+                    }))
             }
         }
     }
@@ -131,4 +123,6 @@ export function update_act() {
     }
 }
 
-export {field};
+export {
+    field
+};
