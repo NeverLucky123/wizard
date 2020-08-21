@@ -63,7 +63,7 @@
     import PageNav from './components/PageNav.vue'
 
     import {
-        field, pull,set
+        field, pull, push
     } from './data/index'
 
     export default {
@@ -84,8 +84,10 @@
                 }
             },
             save: function () {
-                set()
-                this.changed = false
+                push()
+                setTimeout(() => {
+                    this.changed= false
+                }, 1000)
             },
             goto: function (index) {
                 this.index = index

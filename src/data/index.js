@@ -65,13 +65,17 @@ export async function update(category, url) {
     //request
     return await axios.post(url, data)
 }
-export async function pull() {
-    await pull_bus()
-    await pull_act()
-}
 
 export async function pull_bus() {
-    const response = await update(field.business, cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/business-settings')
+    let payload = Object.keys(field.business)
+    for (let key in payload) {
+        payload[key] = lookup(payload[key])
+    }
+    payload = JSON.stringify(payload)
+    let data = new FormData()
+    data.set('keys', payload)
+    //request
+    const response = await axios.post(cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/business-settings', data)
     for (let option in field.business) {
         if (field.business[option] instanceof Object) {
             field.business[option].current = response.data.find(field => field.key === lookup(option)).value
@@ -79,6 +83,10 @@ export async function pull_bus() {
             field.business[option] = response.data.find(({key}) => key === lookup(option)).value
         }
     }
+}
+export async function pull() {
+    await pull_bus()
+    await pull_act()
 }
 export async function pull_act() {
     let response=[]
@@ -109,15 +117,25 @@ export async function pull_act() {
         field.activity[i]=JSON.parse(JSON.stringify(a))
     }
 }
-export async function set(){
+export async function push(){
+    await push_act()
+    await push_bus()
+}
+async function push_bus(){
     let keys = Object.keys(field.business)
     let payload=[]
     for (let key of keys){
         let val;
         if(field.business[key] instanceof Object){
             val=field.business[key].current
+            if(val==null){
+                val=field.business[key].options[0].value
+            }
         } else{
             val=field.business[key]
+            if(val==null){
+                val=""
+            }
         }
         payload.push({key: rev_lookup(key), value: val})
     }
@@ -126,7 +144,8 @@ export async function set(){
     let url=cors()+'https://dev.rentrax.io/admin/setup-wizard/business-settings'
     await axios.post(url, data).catch(err=>console.log(err))
 
-    // eslint-disable-next-line no-unused-vars
+}
+async function push_act(){
     for (const [i,activity] of field.activity.entries()) {
         console.log(i)
         console.log(activity)
@@ -136,8 +155,14 @@ export async function set(){
             let val;
             if (activity[key] instanceof Object) {
                 val = activity[key].current
+                if(val==null){
+                    val=activity[key].options[0].value
+                }
             } else {
                 val = activity[key]
+                if(val==null){
+                    val=""
+                }
             }
             payload.push({key: rev_lookup(key), value: val})
         }

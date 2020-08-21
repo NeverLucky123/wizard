@@ -23,42 +23,42 @@
                 <div class="row">
                     <Toggle class="input" v-bind:options="payment_is_enabled" label="Enable Payment Processor"></Toggle>
                 </div>
-                <div v-if="payment_is_enabled.current==1">
+                <div v-if="payment_is_enabled.current==='1'">
                     <div class="row">
                         <Toggle class="input" v-bind:options="payment_provider" label="Payment Provider"></Toggle>
                     </div>
-                    <div v-if="payment_provider.current=='Cardconnect'">
-                        <TextField class="input" v-on:update="services_cardconnect_merchantId=$event" type="text" v-bind:value="services_cardconnect_merchantId" label="services_cardconnect_merchantId"></TextField>
-                        <TextField class="input" v-on:update="services_cardconnect_apiUsername=$event" type="text" v-bind:value="services_cardconnect_apiUsername" label="services_cardconnect_apiUsername"></TextField>
-                        <TextField class="input" v-on:update="services_cardconnect_apiPassword=$event" type="text" v-bind:value="services_cardconnect_apiPassword" label="services_cardconnect_apiPassword"></TextField>
-                        <TextField class="input" v-on:update="services_cardconnect_devices=$event" type="text" v-bind:value="services_cardconnect_devices" label="services_cardconnect_devices"></TextField>
-                        <TextField class="input" v-on:update="services_cardconnect_default_device=$event" type="text" v-bind:value="services_cardconnect_default_device" label="services_cardconnect_default-device"></TextField>
+                    <div v-if="payment_provider.current==='Cardconnect'">
+                        <TextField class="input" v-on:update="services_cardconnect_merchantId=$event" type="text" v-bind:value="services_cardconnect_merchantId" label="Cardconnect MerchantId"></TextField>
+                        <TextField class="input" v-on:update="services_cardconnect_apiUsername=$event" type="text" v-bind:value="services_cardconnect_apiUsername" label="Cardconnect API Username"></TextField>
+                        <TextField class="input" v-on:update="services_cardconnect_apiPassword=$event" type="text" v-bind:value="services_cardconnect_apiPassword" label="Cardconnect API Password"></TextField>
+                        <TextField class="input" v-on:update="services_cardconnect_devices=$event" type="text" v-bind:value="services_cardconnect_devices" label="Cardconnect BOLT Devices"></TextField>
+                        <TextField class="input" v-on:update="services_cardconnect_default_device=$event" type="text" v-bind:value="services_cardconnect_default_device" label="Cardconnect Default Device"></TextField>
                     </div>
-                    <div v-show="payment_provider.current=='Stripe'">
-                        <TextField class="input" v-on:update="services_stripe_public_key=$event" type="text" v-bind:value="services_stripe_public_key" label="services_stripe_public_key"></TextField>
-                        <TextField class="input" v-on:update="services_stripe_secret=$event" type="text" v-bind:value="services_stripe_secret" label="services_stripe_secret"></TextField>
-                        <TextField class="input" v-on:update="services_stripe_public_testkey=$event" type="text" v-bind:value="services_stripe_public_testkey" label="services_stripe_public_testkey"></TextField>
-                        <TextField class="input" v-on:update="services_stripe_testsecret=$event" type="text" v-bind:value="services_stripe_testsecret" label="services_stripe_testsecret"></TextField>
+                    <div v-if="payment_provider.current==='Stripe'">
+                        <TextField class="input" v-on:update="services_stripe_public_key=$event" type="text" v-bind:value="services_stripe_public_key" label="Stripe Public Test Key"></TextField>
+                        <TextField class="input" v-on:update="services_stripe_secret=$event" type="text" v-bind:value="services_stripe_secret" label="Stripe Secret Test Key"></TextField>
+                        <TextField class="input" v-on:update="services_stripe_public_testkey=$event" type="text" v-bind:value="services_stripe_public_testkey" label="Stripe Public Key"></TextField>
+                        <TextField class="input" v-on:update="services_stripe_testsecret=$event" type="text" v-bind:value="services_stripe_testsecret" label="Stripe Secret Key"></TextField>
                     </div>
-                    <div v-show="payment_provider.current=='AuthorizeNet'">
-                        <TextField class="input" v-on:update="AuthorizeNet_clientKey=$event" type="text" v-bind:value="AuthorizeNet_clientKey" label="AuthorizeNet_clientKey"></TextField>
-                        <TextField class="input" v-on:update="AuthorizeNet_apiLoginID=$event" type="text" v-bind:value="AuthorizeNet_apiLoginID" label="AuthorizeNet_apiLoginID"></TextField>
-                        <TextField class="input" v-on:update="AuthorizeNet_TransactionKey=$event" type="text" v-bind:value="AuthorizeNet_TransactionKey" label="AuthorizeNet_TransactionKey"></TextField>
+                    <div v-if="payment_provider.current==='AuthorizeNet'">
+                        <TextField class="input" v-on:update="AuthorizeNet_clientKey=$event" type="text" v-bind:value="AuthorizeNet_clientKey" label="AuthorizeNet ClientKey"></TextField>
+                        <TextField class="input" v-on:update="AuthorizeNet_apiLoginID=$event" type="text" v-bind:value="AuthorizeNet_apiLoginID" label="AuthorizeNet APILoginID"></TextField>
+                        <TextField class="input" v-on:update="AuthorizeNet_TransactionKey=$event" type="text" v-bind:value="AuthorizeNet_TransactionKey" label="AuthorizeNet TransactionKey"></TextField>
                     </div>
-                    <div v-show="payment_provider.current=='Moneris'">
-                        <TextField class="input" v-on:update="Moneris_ht_id=$event" type="text" v-bind:value="Moneris_ht_id" label="Moneris_ht_id"></TextField>
-                        <TextField class="input" v-on:update="Moneris_store_id=$event" type="text" v-bind:value="Moneris_store_id" label="Moneris_store_id"></TextField>
-                        <TextField class="input" v-on:update="Moneris_api_token=$event" type="text" v-bind:value="Moneris_api_token" label="Moneris_api_token"></TextField>
+                    <div v-if="payment_provider.current==='Moneris'">
+                        <TextField class="input" v-on:update="Moneris_ht_id=$event" type="text" v-bind:value="Moneris_ht_id" label="Moneris HT ID"></TextField>
+                        <TextField class="input" v-on:update="Moneris_store_id=$event" type="text" v-bind:value="Moneris_store_id" label="Moneris Store ID"></TextField>
+                        <TextField class="input" v-on:update="Moneris_api_token=$event" type="text" v-bind:value="Moneris_api_token" label="Moneris API Token"></TextField>
                     </div>
-                    <div v-show="payment_provider.current=='Paragon'">
-                        <TextField class="input" v-on:update="Paragon_hp_plus_key=$event" type="text" v-bind:value="Paragon_hp_plus_key" label="Paragon_hp_plus_key"></TextField>
-                        <TextField class="input" v-on:update="Paragon_api_username=$event" type="text" v-bind:value="Paragon_api_username" label="Paragon_api_username"></TextField>
-                        <TextField class="input" v-on:update="Paragon_api_password=$event" type="text" v-bind:value="Paragon_api_password" label="Paragon_api_password"></TextField>
-                        <TextField class="input" v-on:update="Paragon_gateway_id=$event" type="text" v-bind:value="Paragon_gateway_id" label="Paragon_gateway_id"></TextField>
+                    <div v-if="payment_provider.current==='Paragon'">
+                        <TextField class="input" v-on:update="Paragon_hp_plus_key=$event" type="text" v-bind:value="Paragon_hp_plus_key" label="Paragon HP Plus Key"></TextField>
+                        <TextField class="input" v-on:update="Paragon_api_username=$event" type="text" v-bind:value="Paragon_api_username" label="Paragon API Username"></TextField>
+                        <TextField class="input" v-on:update="Paragon_api_password=$event" type="text" v-bind:value="Paragon_api_password" label="Paragon API Password"></TextField>
+                        <TextField class="input" v-on:update="Paragon_gateway_id=$event" type="text" v-bind:value="Paragon_gateway_id" label="Paragon Gateway ID"></TextField>
                     </div>
-                    <div v-show="payment_provider.current=='Square'">
-                        <TextField class="input" v-on:update="services_square_application_id=$event" type="text" v-bind:value="services_square_application_id" label="services_square_application_id"></TextField>
-                        <TextField class="input" v-on:update="services_square_access_token=$event" type="text" v-bind:value="services_square_access_token" label="services_square_access_token"></TextField>
+                    <div v-if="payment_provider.current==='Square'">
+                        <TextField class="input" v-on:update="services_square_application_id=$event" type="text" v-bind:value="services_square_application_id" label="Square Application Id"></TextField>
+                        <TextField class="input" v-on:update="services_square_access_token=$event" type="text" v-bind:value="services_square_access_token" label="Square Access Token"></TextField>
                     </div>
                 </div>
             </div>
@@ -66,11 +66,11 @@
             <div class="row">
                 <Toggle class="input" v-bind:options="paypal_is_enabled" label="Enable Paypal Payments"></Toggle>
             </div>
-            <div v-if="paypal_is_enabled.current===1">
-                <TextField class="input" v-on:update="paypal_live_client_id=$event" type="text" v-bind:value="paypal_live_client_id" label="paypal_live_client_id"></TextField>
-                <TextField class="input" v-on:update="paypal_sandbox_client_id=$event" type="text" v-bind:value="paypal_sandbox_client_id" label="paypal_sandbox_client_id"></TextField>
-                <TextField class="input" v-on:update="paypal_live_secret=$event" type="text" v-bind:value="paypal_live_secret" label="paypal_live_secret"></TextField>
-                <TextField class="input" v-on:update="paypal_sandbox_secret=$event" type="text" v-bind:value="paypal_sandbox_secret" label="paypal_sandbox_secret"></TextField>
+            <div v-if="paypal_is_enabled.current==='1'">
+                <TextField class="input" v-on:update="paypal_live_client_id=$event" type="text" v-bind:value="paypal_live_client_id" label="Paypal Live Client id"></TextField>
+                <TextField class="input" v-on:update="paypal_sandbox_client_id=$event" type="text" v-bind:value="paypal_sandbox_client_id" label="Paypal Sandbox Client id"></TextField>
+                <TextField class="input" v-on:update="paypal_live_secret=$event" type="text" v-bind:value="paypal_live_secret" label="Paypal Live Secret"></TextField>
+                <TextField class="input" v-on:update="paypal_sandbox_secret=$event" type="text" v-bind:value="paypal_sandbox_secret" label="Paypal Sandbox Secret"></TextField>
             </div>
             <label>Other</label>
             <div class="row">
