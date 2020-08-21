@@ -1,7 +1,7 @@
 <template>
     <div class="Page4">
         <ul class="nav nav-tabs">
-            <li class="nav-item" v-bind:key="activity.name" v-for="(activity, index) in activities">
+            <li class="nav-item" v-bind:key="activity.id" v-for="(activity, index) in activity_names">
                 <a class="nav-link" v-on:click="set(index)" v-bind:class="{active:tab===index}">{{activity.name}}</a>
             </li>
         </ul>
@@ -30,6 +30,9 @@
         computed: {
             tab: function() {
                 return this.$root.$children[0].tab
+            },
+            activity_names: function () {
+                return this.$root.$children[0].fields.activity_names
             }
         }
     }

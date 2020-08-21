@@ -10,9 +10,8 @@ import act_general from './activity/general.json'
 import act_order from './activity/order.json'
 import act_customer from './activity/customer.json'
 import act_payment from './activity/payment.json'
-import tour_general from './tour/general.json'
 
-var field = {
+export var field = {
     business: {
         ...bus_information,
         ...bus_region,
@@ -25,24 +24,20 @@ var field = {
         ...act_customer,
         ...act_order,
         ...act_payment,
-        name: "bike"
-    },
-        {
-            ...act_general,
-            ...act_customer,
-            ...act_order,
-            ...act_payment,
-            name: "ski"
-        }
-    ],
-    tour: {
-        general: tour_general
     }
+    ],
+    activity_names: []
 };
 
 function lookup(i) {
     if (i === 'app_view_timezone') {
         return "app.view_timezone"
+    }
+    return i;
+}
+function rev_lookup(i){
+    if (i === 'app.view_timezone') {
+        return "app_view_timezone"
     }
     return i;
 }
@@ -58,8 +53,7 @@ function cors() {
     }
 }
 
-export function update(category, url) {
-    let res;
+export async function update(category, url) {
     //make payload
     let payload = Object.keys(category)
     for (let key in payload) {
@@ -69,60 +63,88 @@ export function update(category, url) {
     let data = new FormData()
     data.set('keys', payload)
     //request
-    axios.post(url,
-        data
-    ).then(response => {
-        res = response.data;
-    }).catch(err => console.log(err)).then(() => {
-        for(let option in category){
-            if(category[option] instanceof Object) {
-                category[option].current = res.find(field => field.key === lookup(option)).value
+    return await axios.post(url, data)
+}
+export async function pull() {
+    await pull_bus()
+    await pull_act()
+}
+
+export async function pull_bus() {
+    const response = await update(field.business, cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/business-settings')
+    for (let option in field.business) {
+        if (field.business[option] instanceof Object) {
+            field.business[option].current = response.data.find(field => field.key === lookup(option)).value
+        } else {
+            field.business[option] = response.data.find(({key}) => key === lookup(option)).value
+        }
+    }
+}
+export async function pull_act() {
+    let response=[]
+    const activities=await axios.get(cors() + 'https://dev.rentrax.io/admin/setup-wizard/activities')
+    for (let i = 0; i < activities.data.length; i++) {
+        field.activity_names[i] = activities.data[i];
+        //make payload
+        let payload = Object.keys(field.activity[0])
+        for (let key of payload) {
+            key = lookup(key)
+        }
+        payload = JSON.stringify(payload)
+        let data = new FormData()
+        data.set('keys', payload)
+        //request
+        let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/activity-settings/' + (Number(i) + 1)
+        response[i] = (await axios.post(url, data)).data
+    }
+    for (let i = 0; i < activities.data.length; i++) {
+        let a=JSON.parse(JSON.stringify(field.activity[0]));
+        for (let option in a) {
+            if (a[option] instanceof Object) {
+                a[option].current = response[i].find(field => field.key === lookup(option)).value
             } else {
-                category[option] = res.find(({key}) => key === lookup(option)).value
+                a[option] = response[i].find(({key}) => key === lookup(option)).value
             }
         }
-    }).catch(err => console.log(err))
+        field.activity[i]=JSON.parse(JSON.stringify(a))
+    }
 }
-
-export function update_bus() {
-    update(field.business, cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/business-settings')
-}
-
-export function update_act() {
-    let res = [];
-    let promises = [];
-    for (let i = 0; i < field.activity.length; i++) {
-        promises[i] = [];
-        res[i] = []
-        for (let cat in field.activity[i]) {
-            if (field.activity[i][cat] instanceof Object) {
-                //make payload
-                let payload = Object.keys(field.activity[i][cat])
-                for (let key in payload) {
-                    payload[key] = lookup(payload[key])
-                }
-                payload = JSON.stringify(payload)
-                let data = new FormData()
-                data.set('keys', payload)
-                //request
-                promises[i].push(
-                    axios.post("http://localhost:4000/https://dev.rentrax.io/admin/setup-wizard/get/activity-settings/" + (i + 1),
-                        data,
-                    ).then(response => {
-                        res[i].push(response)
-                        //console.log(res.find(({key}) => key === "add_to_invoice"))
-                    }))
-            }
+export async function set(){
+    let keys = Object.keys(field.business)
+    let payload=[]
+    for (let key of keys){
+        let val;
+        if(field.business[key] instanceof Object){
+            val=field.business[key].current
+        } else{
+            val=field.business[key]
         }
+        payload.push({key: rev_lookup(key), value: val})
     }
-    console.log(promises)
-    for (let i = 0; i < field.activity.length; i++) {
-        Promise.all(promises[i]).then(() => {
-            console.log(res[i])
-        })
+    let data=new FormData()
+    data.set('list', JSON.stringify(payload))
+    let url=cors()+'https://dev.rentrax.io/admin/setup-wizard/business-settings'
+    await axios.post(url, data).catch(err=>console.log(err))
+
+    // eslint-disable-next-line no-unused-vars
+    for (const [i,activity] of field.activity.entries()) {
+        console.log(i)
+        console.log(activity)
+        let keys = Object.keys(activity)
+        let payload = []
+        for (let key of keys) {
+            let val;
+            if (activity[key] instanceof Object) {
+                val = activity[key].current
+            } else {
+                val = activity[key]
+            }
+            payload.push({key: rev_lookup(key), value: val})
+        }
+        let data = new FormData()
+        data.set('list', JSON.stringify(payload))
+        let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/activity-settings/'+Number(field.activity_names[i].id)
+        console.log(url)
+        await axios.post(url, data).catch(err => console.log(err))
     }
 }
-
-export {
-    field
-};

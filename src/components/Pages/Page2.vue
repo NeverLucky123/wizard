@@ -29,9 +29,9 @@
                 <TextField class="input" v-on:update="contact_email=$event" type="email" v-bind:value="contact_email"
                            label="Store Email"></TextField>
                 <label>Business Hours</label>
-                <TextField class="input" v-on:update="opening=$event" type="time" v-bind:value="opening"
+                <TextField class="input" v-on:update="store_open=$event" type="time" v-bind:value="store_open"
                            label="Opening time"></TextField>
-                <TextField class="input" v-on:update="closing=$event" type="time" v-bind:value="closing"
+                <TextField class="input" v-on:update="store_close=$event" type="time" v-bind:value="store_close"
                            label="Closing time"></TextField>
                 <label>Regional Settings</label>
                 <div class="row">

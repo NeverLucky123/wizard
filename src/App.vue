@@ -13,7 +13,8 @@
                         <div class="container title">
                             <div class="row align-items-center">
                                 <div class="col-3">
-                                    <h5 class="modal-title"><img src="./assets/site_logo.png" style="width:auto; height:40px" alt="Site Logo"></h5>
+                                    <h5 class="modal-title"><img src="./assets/site_logo.png"
+                                                                 style="width:auto; height:40px" alt="Site Logo"></h5>
                                 </div>
                                 <div class="col-6 no-gutters">
                                     <div class="row justify-content-center align-items-center">
@@ -27,7 +28,8 @@
                                     </div>
                                 </div>
                                 <div class="col-3" style="text-align:right">
-                                    <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert" type="button" data-close>
+                                    <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert"
+                                            type="button" data-close>
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -47,7 +49,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <PageNav v-on:back="back" v-on:next="next" v-on:done="done"></PageNav>
+                        <PageNav v-on:back="back" v-on:save="save" v-on:next="next" v-on:done="done"></PageNav>
                     </div>
                 </div>
             </div>
@@ -61,8 +63,7 @@
     import PageNav from './components/PageNav.vue'
 
     import {
-        field,
-        update_bus
+        field, pull,set
     } from './data/index'
 
     export default {
@@ -73,54 +74,67 @@
             PageNav
         },
         methods: {
-            next: function() {
+            next: function () {
                 this.index++;
             },
-            back: function() {
+            back: function () {
                 this.index--;
                 if (this.index < 1) {
                     this.index = 1;
                 }
             },
-            goto: function(index) {
+            save: function () {
+                set()
+                this.changed = false
+            },
+            goto: function (index) {
                 this.index = index
             },
-            done: function() {
+            done: function () {
+                this.save()
                 this.close_modal()
             },
-            open_modal: function() {
+            open_modal: function () {
                 document.getElementById("Modal").style.display = "block";
                 document.getElementById("Modal").className += "show"
             },
-            close_modal: function() {
+            close_modal: function () {
+                if (this.changed) {
+                    let r = confirm("You have unsaved changes. Are you sure you want to leave?");
+                    if (!r) {
+                        return
+                    }
+                }
                 document.getElementById("Modal").style.display = "none";
                 document.getElementById("Modal").className.replace("show", "");
             }
         },
         computed: {
-            title: function() {
+            title: function () {
                 return this.pages[this.index - 1].name
             },
-            icon: function() {
+            icon: function () {
                 return this.pages[this.index - 1].icon
             }
         },
-        data: function() {
+        data: function () {
             return {
                 index: 1,
                 tab: 0,
                 advanced: false,
                 /*
                 ---------------------------------------------------
-                For attributes bound to Checkbox, always put the false  
+                For attributes bound to Checkbox, always put the false
                 item as first member of array, [0].
                 ---------------------------------------------------
                 */
+                loaded: false,
+                changed: false,
                 fields: field,
                 pages: [{
-                        name: "Welcome",
-                        icon: "chart-pie"
-                    },
+                    name: "Welcome",
+                    icon: "chart-pie"
+                },
                     {
                         name: "Business Settings",
                         icon: "chart-pie"
@@ -141,11 +155,34 @@
                 ]
             }
         },
-        mounted() {
-            //update_act()
-            update_bus()
+        beforeMount() {
+            pull().then(setTimeout(() => {
+                    this.loaded = true
+                }, 2000)
+            ).catch(err => {
+                console.log(err);
+            })
+        },
+        watch: {
+            fields: {
+                handler() {
+                    if (this.loaded === true) {
+                        this.changed = true;
+                    }
+                },
+                deep: true,
+                immediate: true,
+            },
+            changed: function(val){
+                if(val){
+                    window.onbeforeunload = function () {
+                        return 'Are you sure you want to leave?'
+                    }
+                } else{
+                    window.onbeforeunload=null;
+                }
+            }
         }
-
     }
 
 </script>

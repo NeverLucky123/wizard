@@ -23,7 +23,9 @@ import {
     faChevronLeft,
     faExternalLinkAlt,
     faChevronCircleUp,
-    faChevronCircleDown
+    faChevronCircleDown,
+    faExclamationTriangle,
+    faCheck
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -32,7 +34,7 @@ import {
 
 library.add(faChartPie, faSnowboarding, faCalculator, faPen, faSitemap, faMoneyCheckAlt, faShoppingCart, faCogs,
     faHome, faCog, faSave, faMoneyBillAlt, faCalendarAlt, faPlusCircle, faChevronRight, faChevronLeft, faExternalLinkAlt,
-    faChevronCircleUp, faChevronCircleDown)
+    faChevronCircleUp, faChevronCircleDown, faExclamationTriangle, faCheck)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false

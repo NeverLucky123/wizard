@@ -1,21 +1,21 @@
 <template>
     <div class="page4A">
         <ul class="nav nav-tabs">
-            <li class="nav-item" v-bind:key="activity.name" v-for="(activity, index) in activities">
+            <li class="nav-item" v-bind:key="activity.id" v-for="(activity, index) in activity_names">
                 <a class="nav-link" v-on:click="set(index)" v-bind:class="{active:tab===index}">{{activity.name}}</a>
             </li>
         </ul>
         <br>
-        <Page4ASettings v-bind:key="activity.name"  v-for="(activity, index) in activities" v-bind:index="index" v-show="tab===index"></Page4ASettings>
+        <PageA4Settings v-bind:key="activity.name"  v-for="(activity, index) in activities" v-bind:index="index" v-show="tab===index"></PageA4Settings>
     </div>
 </template>
 
 <script>
-    import Page4ASettings from './Page4ASettings.vue'
+    import PageA4Settings from './PageA4Settings.vue'
     export default {
         name: 'page4A',
         components: {
-            Page4ASettings
+            PageA4Settings
         },
         data: function() {
             return {
@@ -30,6 +30,9 @@
         computed: {
             tab: function() {
                 return this.$root.$children[0].tab
+            },
+            activity_names: function () {
+                return this.$root.$children[0].fields.activity_names
             }
         }
     }

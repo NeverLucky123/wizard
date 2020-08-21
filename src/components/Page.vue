@@ -2,15 +2,15 @@
     <div class="page">
         <div>
             <br>
-            <Page1 v-if="!$parent.advanced" v-show="$parent.index===1"></Page1>
-            <Page1A v-else v-show="$parent.index===1"></Page1A>
-            <Page2 v-if="!$parent.advanced" v-show="$parent.index===2"></Page2>
-            <Page2A v-else v-show="$parent.index===2"></Page2A>
-            <Page3 v-if="!$parent.advanced" v-show="$parent.index===3"></Page3>
-            <Page3A v-else v-show="$parent.index===3"></Page3A>
-            <Page4 v-if="!$parent.advanced" v-show="$parent.index===4"></Page4>
-            <Page4A v-else v-show="$parent.index===4"></Page4A>
-            <Page5 v-show="$parent.index===5"></Page5>
+            <Page1 v-if="!$parent.advanced&&$parent.index===1"></Page1>
+            <PageA1 v-if="$parent.advanced&&$parent.index===1"></PageA1>
+            <Page2 v-if="!$parent.advanced&&$parent.index===2"></Page2>
+            <PageA2 v-if="$parent.advanced&&$parent.index===2"></PageA2>
+            <Page3 v-if="!$parent.advanced&&$parent.index===3"></Page3>
+            <PageA3 v-if="$parent.advanced&&$parent.index===3"></PageA3>
+            <Page4 v-if="!$parent.advanced&&$parent.index===4"></Page4>
+            <PageA4 v-if="$parent.advanced&&$parent.index===4"></PageA4>
+            <Page5 v-if="$parent.index===5"></Page5>
         </div>
         <br>
         <div v-if="$parent.index<5">
@@ -31,10 +31,10 @@
     import Page4 from './Pages/Page4.vue'
     import Page5 from './Pages/Page5.vue'
 
-    import Page1A from './Pages/Advanced/Page1A.vue'
-    import Page2A from './Pages/Advanced/Page2A.vue'
-    import Page3A from './Pages/Advanced/Page3A.vue'
-    import Page4A from './Pages/Advanced/Page4A.vue'
+    import PageA1 from './Pages/Advanced/PageA1.vue'
+    import PageA2 from './Pages/Advanced/PageA2.vue'
+    import PageA3 from './Pages/Advanced/PageA3.vue'
+    import PageA4 from './Pages/Advanced/PageA4.vue'
     export default {
         name: 'Page',
         components: {
@@ -43,10 +43,10 @@
             Page3,
             Page4,
             Page5,
-            Page1A,
-            Page2A,
-            Page3A,
-            Page4A
+            PageA1,
+            PageA2,
+            PageA3,
+            PageA4
         },
         computed: {
             title: function() {
