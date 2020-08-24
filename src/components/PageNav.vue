@@ -6,7 +6,8 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col">
                     <button type="button" class="btn btn-secondary btn-lg" v-on:click="save">
-                        <font-awesome-icon size="lg" icon="save"></font-awesome-icon>
+                        <span  v-if="this.$parent.updating" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <font-awesome-icon v-else size="lg" icon="save"></font-awesome-icon>
                     </button>
                     <span class="change-warning" v-if="$parent.changed"><font-awesome-icon size="lg" icon="exclamation-triangle"></font-awesome-icon>
                      Unsaved changes

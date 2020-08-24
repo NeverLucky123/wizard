@@ -1,7 +1,7 @@
 <template>
     <div class="page3">
-        <ul class="nav nav-tabs">
-            <li class="nav-item" v-bind:key="activity.id" v-for="(activity, index) in activity_names">
+        <ul class="nav nav-tabs" v-if="$root.$children[0].loaded===true">
+            <li class="nav-item" v-bind:key="activity.name" v-for="(activity, index) in activity_names">
                 <a class="nav-link" v-on:click="set(index)" v-bind:class="{active:tab===index}">{{activity.name}}</a>
             </li>
         </ul>

@@ -1,16 +1,21 @@
 <template>
     <div class="page">
-        <div>
+        <div v-if="$parent.loaded">
             <br>
             <Page1 v-if="!$parent.advanced&&$parent.index===1"></Page1>
             <PageA1 v-if="$parent.advanced&&$parent.index===1"></PageA1>
             <Page2 v-if="!$parent.advanced&&$parent.index===2"></Page2>
             <PageA2 v-if="$parent.advanced&&$parent.index===2"></PageA2>
-            <Page3 v-if="!$parent.advanced&&$parent.index===3"></Page3>
-            <PageA3 v-if="$parent.advanced&&$parent.index===3"></PageA3>
-            <Page4 v-if="!$parent.advanced&&$parent.index===4"></Page4>
-            <PageA4 v-if="$parent.advanced&&$parent.index===4"></PageA4>
+            <Page3 v-if="!$parent.advanced&&$parent.index===3" :key="$parent.fields.activity_names[0].name"></Page3>
+            <PageA3 v-if="$parent.advanced&&$parent.index===3" :key="$parent.fields.activity_names[0].name"></PageA3>
+            <Page4 v-if="!$parent.advanced&&$parent.index===4" :key="$parent.fields.activity_names[0].name"></Page4>
+            <PageA4 v-if="$parent.advanced&&$parent.index===4" :key="$parent.fields.activity_names[0].name"></PageA4>
             <Page5 v-if="$parent.index===5"></Page5>
+        </div>
+        <div v-else class="text-center">
+            <div class="spinner-border" role="status" style="position:absolute;top:275px;width:50px;height:50px">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
         <br>
         <div v-if="$parent.index<5">

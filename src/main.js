@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VTooltip from 'v-tooltip'
+Vue.use(VTooltip)
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     library
