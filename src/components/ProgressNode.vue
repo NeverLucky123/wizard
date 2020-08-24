@@ -6,31 +6,45 @@
                     <div class="node" v-bind:class="{active:index==active, complete:index<active}" v-on:click="$emit('goto', index)">{{index}}</div>
                 </span>
                 <span class="col align-self-center">
-                    <a class="node_label" v-bind:class="{active_label:active==index, complete_label:index<active}" v-on:click="$emit('goto', index)">{{title}}</a>
+                    <a class="node_label" v-bind:class="{active_label:active==index, complete_label:index<active}" v-on:click="$emit('goto', index)">{{page.name}}</a>
                 </span>
             </div>
             <div class="row no-gutters">
-                <div class="col-4">
-                    <div class="node_link" v-bind:class="{active_link:index<active}" v-if="!last"></div>
+                <div class="col">
+                    <NodeLink v-bind:index="index" v-bind:page="page" v-on:goto="goto($event)"></NodeLink>
                 </div>
-                <div class="col"></div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import NodeLink from './NodeLink.vue'
     export default {
-        name: 'Page',
-        components: {},
-        methods: {
-
+        name: 'ProgressNode',
+        components: {
+            NodeLink
+        },
+        computed: {
+            advanced: function() {
+                return this.$root.$children[0].advanced;
+            },
+            active: function() {
+                return this.$root.$children[0].index;
+            },
+            console: () => console,
+            window: () => window,
         },
         props: {
-            title: String,
-            active: Number,
             last: Boolean,
-            index: Number
+            index: Number,
+            page: Object
+        },
+        methods: {
+            goto: function(sub_index) {
+                var a = parseInt(this.active) + sub_index * 0.1;
+                this.$root.$children[0].index = a;
+            }
         }
     }
 
@@ -80,18 +94,6 @@
     .active_label {
         color: #44B6AE;
         background-color: transparent;
-    }
-
-    .node_link {
-        margin: auto;
-        height: 40px;
-        width: 3px;
-        background-color: #EBEBEB;
-    }
-    
-    
-    .active_link {
-        background-color: #44B6AE;
     }
 
 </style>

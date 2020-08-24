@@ -1,0 +1,122 @@
+{
+    "AuthorizeNet_clientKey": "",
+    "AuthorizeNet_apiLoginID": "",
+    "AuthorizeNet_TransactionKey": "",
+    "Moneris_ht_id": "",
+    "Moneris_store_id": "",
+    "Moneris_api_token": "",
+    "Paragon_hp_plus_key": "",
+    "Paragon_api_username": "",
+    "Paragon_api_password": "",
+    "Paragon_gateway_id": "",
+    "services_square_application_id": "",
+    "services_square_access_token": "",
+    "services_stripe_public_key": "",
+    "services_stripe_secret": "",
+    "services_stripe_public_testkey": "",
+    "services_stripe_testsecret": "",
+    "services_cardconnect_merchantId": "",
+    "services_cardconnect_apiUsername": "",
+    "services_cardconnect_apiPassword": "",
+    "services_cardconnect_devices": "",
+    "services_cardconnect_default_device": "",
+    "payment_cards": "",
+    "payment_is_enabled": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "payment_provider": {
+        "options": [
+            {
+                "text": "Rentrax Test Payment",
+                "value": "Rentrax"
+      },
+            {
+                "text": "Cardconnect",
+                "value": "Cardconnect"
+      },
+            {
+                "text": "Stripe",
+                "value": "Stripe"
+      },
+            {
+                "text": "AuthorizeNet",
+                "value": "AuthorizeNet"
+      },
+            {
+                "text": "Moneris",
+                "value": "Moneris"
+      },
+            {
+                "text": "Paragon",
+                "value": "Paragon"
+      },
+            {
+                "text": "Square",
+                "value": "Square"
+      }
+    ],
+        "current": "Rentrax"
+    },
+    "services_payment_testmode": {
+        "options": [
+            {
+                "text": "Test",
+                "value": "1"
+      },
+            {
+                "text": "Live",
+                "value": "0"
+      }
+    ],
+        "current": "1"
+    },
+    "payment_pay_online_payment": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "payment_pay_device_present": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "show_add_credit_card_button": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    }
+}

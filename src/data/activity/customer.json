@@ -1,0 +1,214 @@
+{
+    "show_invoice_after_order": {
+        "options": [
+            {
+                "text": "Show Finish Page",
+                "value": "0"
+      },
+            {
+                "text": "Preview Invoice",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " After Online Orders "
+    },
+    "show_taxed_price": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Show Prices Including Tax "
+    },
+    "show_customer_form_at": {
+        "options": [
+            {
+                "text": "At Begining",
+                "value": "order_page"
+      },
+            {
+                "text": "At Checkout",
+                "value": "checkout_page"
+      }
+    ],
+        "current": "order_page",
+        "label": " Display Form (single renter) "
+    },
+    "customer_identification": {
+        "options": [
+            {
+                "text": "Email",
+                "value": "email"
+      },
+            {
+                "text": "Phone",
+                "value": "phone"
+      },
+            {
+                "text": "Both",
+                "value": "both"
+      }
+    ],
+        "current": "email",
+        "label": " Identification "
+    },
+    "address_is_required": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Address Is Required "
+    },
+    "terms_and_conditions": {
+        "options": [
+            {
+                "text": "None",
+                "value": "no"
+      },
+            {
+                "text": "Check",
+                "value": "check"
+      },
+            {
+                "text": "Sign",
+                "value": "sign"
+      },
+            {
+                "text": "Enhanced Waiver",
+                "value": "enhanced_waiver"
+      }
+    ],
+        "current": "no",
+        "label": " Terms and Conditions "
+    },
+    "show_customer_notes": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Accept Customer Notes "
+    },
+    "show_size": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Show Product Option in Order "
+    },
+    "check_availability": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      },
+            {
+                "text": "Yes (Considering Options)",
+                "value": "size"
+      }
+    ],
+        "current": "no",
+        "label": "Check Product Availability"
+    },
+    "show_availability_calendar_when_place_order": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Show Availability Calendar "
+    },
+    "time_unit": {
+        "options": [
+            {
+                "text": "Hour",
+                "value": "hour"
+      },
+            {
+                "text": "Day",
+                "value": "day"
+      }
+    ],
+        "current": "hour",
+        "label": "Order Time Unit"
+    },
+    "show_calculated_period": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no",
+        "label": " Show Calculated Period "
+    },
+    "show_catalogue_mode": {
+        "options": [
+            {
+                "text": "Compact",
+                "value": "small"
+      },
+            {
+                "text": "Normal",
+                "value": "normal"
+      }
+    ],
+        "current": "small",
+        "label": " Show Catalogue Mode "
+    },
+    "walk_in_visibility_like": {
+        "options": [
+            {
+                "text": "Online Orders",
+                "value": "web"
+      },
+            {
+                "text": "Back-end Orders",
+                "value": "back_end"
+      }
+    ],
+        "current": "web",
+        "label": " Walk-in Category Visibility Like "
+    }
+}

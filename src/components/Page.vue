@@ -1,25 +1,31 @@
 <template>
     <div class="page">
-        <div class="container title">
-            <div class="row align-items-center">
-                <div class="col-auto no-gutters">
-                    <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
-                    </font-awesome-icon>
-                </div>
-                <div class="col no-gutters">
-                    <h4>{{title}}</h4>
-                </div>
+        <div v-if="$parent.loaded">
+            <br>
+            <Page1 v-if="!$parent.advanced&&$parent.index===1"></Page1>
+            <PageA1 v-if="$parent.advanced&&$parent.index===1"></PageA1>
+            <Page2 v-if="!$parent.advanced&&$parent.index===2"></Page2>
+            <PageA2 v-if="$parent.advanced&&$parent.index===2"></PageA2>
+            <Page3 v-if="!$parent.advanced&&$parent.index===3" :key="$parent.fields.activity_names[0].name"></Page3>
+            <PageA3 v-if="$parent.advanced&&$parent.index===3" :key="$parent.fields.activity_names[0].name"></PageA3>
+            <Page4 v-if="!$parent.advanced&&$parent.index===4" :key="$parent.fields.activity_names[0].name"></Page4>
+            <PageA4 v-if="$parent.advanced&&$parent.index===4" :key="$parent.fields.activity_names[0].name"></PageA4>
+            <Page5 v-if="$parent.index===5"></Page5>
+        </div>
+        <div v-else class="text-center">
+            <div class="spinner-border" role="status" style="position:absolute;top:275px;width:50px;height:50px">
+                <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <Page1 v-show="$parent.index===1"></Page1>
-        <Page2 v-show="$parent.index===2"></Page2>
-        <Page3 v-show="$parent.index===3"></Page3>
-        <Page4 v-show="$parent.index===4"></Page4>
-        <Page5 v-show="$parent.index===5"></Page5>
-        <Page6 v-show="$parent.index===6"></Page6>
-        <Page7 v-show="$parent.index===7"></Page7>
-
-
+        <br>
+        <div v-if="$parent.index<5">
+            <button v-show="!$parent.advanced" class="btn pulltab advanced_pulltab" v-on:click="toggle">
+                <font-awesome-icon icon="chevron-circle-up"></font-awesome-icon> Advanced
+            </button>
+            <button v-show="$parent.advanced" class="btn pulltab simple_pulltab" v-on:click="toggle">
+                <font-awesome-icon icon="chevron-circle-down"></font-awesome-icon> Simple
+            </button>
+        </div>
     </div>
 </template>
 
@@ -29,10 +35,11 @@
     import Page3 from './Pages/Page3.vue'
     import Page4 from './Pages/Page4.vue'
     import Page5 from './Pages/Page5.vue'
-    import Page6 from './Pages/Page6.vue'
-    import Page7 from './Pages/Page7.vue'
 
-
+    import PageA1 from './Pages/Advanced/PageA1.vue'
+    import PageA2 from './Pages/Advanced/PageA2.vue'
+    import PageA3 from './Pages/Advanced/PageA3.vue'
+    import PageA4 from './Pages/Advanced/PageA4.vue'
     export default {
         name: 'Page',
         components: {
@@ -41,15 +48,23 @@
             Page3,
             Page4,
             Page5,
-            Page6,
-            Page7
+            PageA1,
+            PageA2,
+            PageA3,
+            PageA4
         },
         computed: {
             title: function() {
-                return this.$parent.pages[this.$parent.index - 1].name
-            },
-            icon: function() {
-                return this.$parent.pages[this.$parent.index - 1].icon
+                if (this.$parent.index === 1) {
+                    return "Welcome to the Rentrax Setup Wizard"
+                } else {
+                    return this.$parent.pages[this.$parent.index - 1].name
+                }
+            }
+        },
+        methods: {
+            toggle: function() {
+                this.$parent.advanced = !this.$parent.advanced;
             }
         }
     }
@@ -60,26 +75,38 @@
 <style scoped>
     .page {
         height: 100%;
-        padding-right: 20px !important;
-        padding-left: 10px !important;
     }
 
-    .icon {
-        color: #44B6AE;
+    .pulltab {
+        line-height: 7%;
+        position: absolute;
+        height: 7%;
+        width: 25%;
+        z-index: 1;
+        color: white;
+        font-size: 16px;
+        background-color: #1bb1b1;
+        left: 40%;
+
     }
 
+    .advanced_pulltab {
+        top: 93%;
+    }
+
+    .simple_pulltab {
+        top: 93%;
+    }
+
+    .pulltab:active,
+    .pulltab:hover,
+    .pulltab:visited {
+        color: white !important;
+        background-color: #00CCCC !important;
+    }
     .no-gutters {
         padding: 0 !important;
     }
-
-
-    h4 {
-        margin-left: 10px;
-        margin-bottom: 0;
-        color: #44B6AE;
-
-    }
-
     .title {
         padding-top: 30px;
         padding-bottom: 30px;

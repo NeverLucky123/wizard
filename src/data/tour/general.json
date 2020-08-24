@@ -1,0 +1,418 @@
+{
+    "customer_edit_timeout": "",
+    "site_background": "",
+    "crumb_as_toolbar": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "confirm_by": {
+        "options": [
+            {
+                "text": "Manual",
+                "value": "manual"
+      },
+            {
+                "text": "Auto (Threshold)",
+                "value": "auto"
+      }
+    ],
+        "current": "manual"
+    },
+    "partially_available": {
+        "options": [
+            {
+                "text": "Accept",
+                "value": "accept"
+      },
+            {
+                "text": "Reject",
+                "value": "reject"
+      }
+    ],
+        "current": "accept"
+    },
+    "manage_waiting_list": {
+        "options": [
+            {
+                "text": "On",
+                "value": "yes"
+      },
+            {
+                "text": "Off",
+                "value": "no"
+      }
+    ],
+        "current": "yes"
+    },
+    "collect_before": {
+        "options": [
+            {
+                "text": "Check In",
+                "value": "check_in"
+      },
+            {
+                "text": "Check Out",
+                "value": "check_out"
+      },
+            {
+                "text": "Close",
+                "value": "close"
+      }
+    ],
+        "current": "check_in"
+    },
+    "customer_can_edit": {
+        "options": [
+            {
+                "text": "None",
+                "value": "never"
+      },
+            {
+                "text": "Pending Order",
+                "value": "pending"
+      },
+            {
+                "text": "Confirmed Order",
+                "value": "confirmed"
+      }
+    ],
+        "current": "never"
+    },
+    "accept_coupon_web": {
+        "options": [
+            {
+                "text": "Yes",
+                "value": "1"
+      },
+            {
+                "text": "No",
+                "value": "0"
+      }
+    ],
+        "current": "1"
+    },
+    "accept_coupon_walk_in": {
+        "options": [
+            {
+                "text": "Yes",
+                "value": "1"
+      },
+            {
+                "text": "No",
+                "value": "0"
+      }
+    ],
+        "current": "1"
+    },
+    "accept_coupon_back_end": {
+        "options": [
+            {
+                "text": "Yes",
+                "value": "1"
+      },
+            {
+                "text": "No",
+                "value": "0"
+      }
+    ],
+        "current": "1"
+    },
+    "accept_coupon_phone": {
+        "options": [
+            {
+                "text": "Yes",
+                "value": "1"
+      },
+            {
+                "text": "No",
+                "value": "0"
+      }
+    ],
+        "current": "1"
+    },
+    "terms_web": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Check",
+                "value": "check"
+      },
+            {
+                "text": "Sign",
+                "value": "sign"
+      }
+    ],
+        "current": "no"
+    },
+    "terms_walk_in": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Check",
+                "value": "check"
+      },
+            {
+                "text": "Sign",
+                "value": "sign"
+      }
+    ],
+        "current": "no"
+    },
+    "terms_back_end": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Check",
+                "value": "check"
+      },
+            {
+                "text": "Sign",
+                "value": "sign"
+      }
+    ],
+        "current": "no"
+    },
+    "terms_phone": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Check",
+                "value": "check"
+      },
+            {
+                "text": "Sign",
+                "value": "sign"
+      }
+    ],
+        "current": "no"
+    },
+    "cc_action_web": {
+        "options": [
+            {
+                "text": "None",
+                "value": "none"
+      },
+            {
+                "text": "Validate",
+                "value": "validate"
+      },
+            {
+                "text": "Charge Reservation Fee",
+                "value": "charge_reservation"
+      },
+            {
+                "text": "Charge Full Amount",
+                "value": "charge_full"
+      }
+    ],
+        "current": "none"
+    },
+    "cc_action_walk_in": {
+        "options": [
+            {
+                "text": "None",
+                "value": "none"
+      },
+            {
+                "text": "Validate",
+                "value": "validate"
+      },
+            {
+                "text": "Charge Reservation Fee",
+                "value": "charge_reservation"
+      },
+            {
+                "text": "Charge Full Amount",
+                "value": "charge_full"
+      }
+    ],
+        "current": "none"
+    },
+    "cc_action_back_end": {
+        "options": [
+            {
+                "text": "None",
+                "value": "none"
+      },
+            {
+                "text": "Validate",
+                "value": "validate"
+      },
+            {
+                "text": "Charge Reservation Fee",
+                "value": "charge_reservation"
+      },
+            {
+                "text": "Charge Full Amount",
+                "value": "charge_full"
+      }
+    ],
+        "current": "none"
+    },
+    "cc_action_phone": {
+        "options": [
+            {
+                "text": "None",
+                "value": "none"
+      },
+            {
+                "text": "Validate",
+                "value": "validate"
+      },
+            {
+                "text": "Authorize",
+                "value": "authorize"
+      },
+            {
+                "text": "Charge Reservation Fee",
+                "value": "charge_reservation"
+      },
+            {
+                "text": "Charge Full Amount",
+                "value": "charge_full"
+      }
+    ],
+        "current": "none"
+    },
+    "cc_skip_web": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      },
+            {
+                "text": "Only Admin",
+                "value": "admin"
+      }
+    ],
+        "current": "no"
+    },
+    "cc_skip_walk_in": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      },
+            {
+                "text": "Only Admin",
+                "value": "admin"
+      }
+    ],
+        "current": "no"
+    },
+    "cc_skip_back_end": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      },
+            {
+                "text": "Only Admin",
+                "value": "admin"
+      }
+    ],
+        "current": "no"
+    },
+    "cc_skip_phone": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      },
+            {
+                "text": "Only Admin",
+                "value": "admin"
+      }
+    ],
+        "current": "no"
+    },
+    "accep_new_orders_web": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no"
+    },
+    "accep_new_orders_walk_in": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no"
+    },
+    "accep_new_orders_back_end": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no"
+    },
+    "accep_new_orders_phone": {
+        "options": [
+            {
+                "text": "No",
+                "value": "no"
+      },
+            {
+                "text": "Yes",
+                "value": "yes"
+      }
+    ],
+        "current": "no"
+    }
+}

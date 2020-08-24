@@ -1,0 +1,137 @@
+{
+    "invoice_time": {
+        "options": [
+            {
+                "text": "At Reservation (automated)",
+                "value": "reservation"
+      },
+            {
+                "text": "At Delivery (automated)",
+                "value": "delivery"
+      },
+            {
+                "text": "After Return",
+                "value": "return"
+      }
+    ],
+        "current": "reservation",
+        "label": " Create Invoice"
+    },
+    "add_to_invoice": {
+        "options": [
+            {
+                "text": "Manual",
+                "value": "manual"
+      },
+            {
+                "text": "Automated",
+                "value": "automatic"
+      }
+    ],
+        "current": "manual",
+        "label": "Add New Items To Invoice "
+    },
+    "max_order_items_selector": {
+        "options": [
+            {
+                "text": "Unlimited",
+                "value": "unlimited"
+      },
+            {
+                "text": "Limited To",
+                "value": "limited"
+      }
+    ],
+        "current": "unlimited",
+        "label": "Maximum Number Of Items Per Order"
+    },
+    "always_collect_wallet": {
+        "options": [
+            {
+                "text": "When there is no invoice",
+                "value": "0"
+      },
+            {
+                "text": "Always",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Display Collect Down Payment "
+    },
+    "preauth_security_deposit_at_delivery": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": " Pre-Auth Security Deposit at Delivery "
+
+    },
+    "reservation_confirmation": {
+        "options": [
+            {
+                "text": "Manually Confirm",
+                "value": "manual"
+      },
+            {
+                "text": "System Automatically Confirm",
+                "value": "automatic"
+      }
+    ],
+        "current": "manual",
+        "label": " How To Confirm Reservation "
+
+    },
+    "close_order": {
+        "options": [
+            {
+                "text": "Manually Close",
+                "value": "manual"
+      },
+            {
+                "text": "System Automatically Close",
+                "value": "automatic"
+      }
+    ],
+        "current": "manual",
+        "label": " How To Close Reservation "
+
+    },
+    "split_borrow_item_rows": {
+        "options": [
+            {
+                "text": "Combine",
+                "value": "0"
+      },
+            {
+                "text": "Split",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": "Split/combine Borrow Items"
+
+    },
+    "split_purchase_item_rows": {
+        "options": [
+            {
+                "text": "Combine",
+                "value": "0"
+      },
+            {
+                "text": "Split",
+                "value": "1"
+      }
+    ],
+        "current": "0",
+        "label": "Split/combine Purchase Items"
+
+    }
+}

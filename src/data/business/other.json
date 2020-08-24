@@ -1,0 +1,146 @@
+{
+    "late_2_deliver_before": "",
+    "late_2_deliver_after": "",
+    "back_to_client_website": {
+        "options": [
+            {
+                "text": "https://dev.rentrax.io",
+                "value": "0"
+      },
+            {
+                "text": "http://www.yescycle.com",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "print_setup": {
+        "options": [
+            {
+                "text": "Narrow",
+                "value": "narrow"
+      },
+            {
+                "text": "Normal",
+                "value": "normal"
+      },
+            {
+                "text": "Elo",
+                "value": "elo"
+      }
+    ],
+        "current": "narrow"
+    },
+    "show_deposit_items": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "use_new_invenotry": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "can_edit_product_sku": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "show_customer_address_in_orders_list": {
+        "options": [
+            {
+                "text": "default",
+                "value": "null"
+      },
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "null"
+    },
+    "amendments_history": {
+        "options": [
+            {
+                "text": "Off",
+                "value": "off"
+      },
+            {
+                "text": "On",
+                "value": "on"
+      },
+            {
+                "text": "On With Reports",
+                "value": "report"
+      }
+    ],
+        "current": "off"
+    },
+    "show_tab_to_be_started": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "show_tab_to_be_returned": {
+        "options": [
+            {
+                "text": "No",
+                "value": "0"
+      },
+            {
+                "text": "Yes",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    },
+    "link_to_edit_customer": {
+        "options": [
+            {
+                "text": "View Customer",
+                "value": "0"
+      },
+            {
+                "text": "Edit Customer",
+                "value": "1"
+      }
+    ],
+        "current": "0"
+    }
+}

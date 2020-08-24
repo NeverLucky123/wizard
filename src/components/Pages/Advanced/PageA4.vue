@@ -1,21 +1,21 @@
 <template>
-    <div class="Page4">
+    <div class="page4A">
         <ul class="nav nav-tabs">
-            <li class="nav-item" v-bind:key="activity.name" v-for="(activity, index) in activity_names">
+            <li class="nav-item" v-bind:key="activity.id" v-for="(activity, index) in activity_names">
                 <a class="nav-link" v-on:click="set(index)" v-bind:class="{active:tab===index}">{{activity.name}}</a>
             </li>
         </ul>
         <br>
-        <Page4Settings v-bind:key="activity.name"  v-for="(activity, index) in activities" v-bind:index="index" v-show="tab===index"></Page4Settings>
+        <PageA4Settings v-bind:key="activity.name"  v-for="(activity, index) in activities" v-bind:index="index" v-show="tab===index"></PageA4Settings>
     </div>
 </template>
 
 <script>
-    import Page4Settings from './Page4Settings.vue'
+    import PageA4Settings from './PageA4Settings.vue'
     export default {
-        name: 'Page4',
+        name: 'page4A',
         components: {
-            Page4Settings
+            PageA4Settings
         },
         data: function() {
             return {
@@ -41,11 +41,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    Page4 {}
+    page4A {}
 
     a {
-        color: gray;
         cursor: pointer;
+        color: gray
     }
 
     a:hover {

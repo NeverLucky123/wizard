@@ -1,19 +1,40 @@
 <template>
-    <div>
+    <div id="app">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" v-on:click="open_modal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" v-on:click="open_modal">
             Setup
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><img src="./assets/site_logo.png" style="width:auto; height:40px"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close_modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <div class="container title">
+                            <div class="row align-items-center">
+                                <div class="col-3">
+                                    <h5 class="modal-title"><img src="./assets/site_logo.png"
+                                                                 style="width:auto; height:40px" alt="Site Logo"></h5>
+                                </div>
+                                <div class="col-6 no-gutters">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-auto">
+                                            <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
+                                            </font-awesome-icon>
+                                        </div>
+                                        <div class="col-auto">
+                                            <h4>{{title}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3" style="text-align:right">
+                                    <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert"
+                                            type="button" data-close>
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
@@ -21,14 +42,14 @@
                                 <div class="col-sm-auto no-gutters">
                                     <Progress v-on:goto="goto"></Progress>
                                 </div>
-                                <div class="col page">
+                                <div class="col no-gutters page">
                                     <Page class="w-100"></Page>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <PageNav v-on:skip="skip" v-on:back="back" v-on:next="next" v-on:done="done"></PageNav>
+                        <PageNav v-on:back="back" v-on:save="save" v-on:next="next" v-on:done="done"></PageNav>
                     </div>
                 </div>
             </div>
@@ -40,7 +61,11 @@
     import Page from './components/Page.vue'
     import Progress from './components/Progress.vue'
     import PageNav from './components/PageNav.vue'
-    import timezones from './timezones.js'
+
+    import {
+        field, pull, push, pull_state, push_state
+    } from './data/index'
+
     export default {
         name: 'App',
         components: {
@@ -49,881 +74,266 @@
             PageNav
         },
         methods: {
-            skip: function() {
+            next: function () {
                 this.index++;
-                if (this.index > this.pages.length) {
-                    this.index = this.pages.length;
-                }
+                push_state(this.index, this.tab, this.advanced)
             },
-            next: function() {
-                this.index++;
-                if (this.index > this.pages.length) {
-                    this.index = this.pages.length;
-                }
-            },
-            back: function() {
+            back: function () {
                 this.index--;
                 if (this.index < 1) {
                     this.index = 1;
                 }
+                push_state(this.index, this.tab, this.advanced)
+
             },
-            goto: function(index) {
+            save: function () {
+                this.updating=true
+                push_state(this.index, this.tab, this.advanced)
+                push().then(()=>{this.changed=false; this.updating=false})
+            },
+            goto: function (index) {
                 this.index = index
+                push_state(this.index, this.tab, this.advanced)
             },
-            done: function() {
+            done: function () {
+                this.save()
                 this.close_modal()
             },
-            open_modal: function() {
+            open_modal: function () {
                 document.getElementById("Modal").style.display = "block";
                 document.getElementById("Modal").className += "show"
             },
-            close_modal: function() {
+            close_modal: function () {
+                if (this.changed) {
+                    let r = confirm("You have unsaved changes. Are you sure you want to leave?");
+                    if (!r) {
+                        return
+                    }
+                }
                 document.getElementById("Modal").style.display = "none";
-                document.getElementById("exampleModal").className.replace("show", "");
+                document.getElementById("Modal").className.replace("show", "");
             }
         },
-        data: function() {
+        computed: {
+            title: function () {
+                return this.pages[this.index - 1].name
+            },
+            icon: function () {
+                return this.pages[this.index - 1].icon
+            }
+        },
+        data: function () {
             return {
                 index: 1,
-                tab:0,
+                tab: 0,
+                advanced: false,
                 /*
                 ---------------------------------------------------
-                For attributes bound to Checkbox, always put the false  
+                For attributes bound to Checkbox, always put the false
                 item as first member of array, [0].
                 ---------------------------------------------------
                 */
+                //If loading data from api
+                loaded: false,
+                //If changes has been made to fields
+                changed: false,
+                //If pushing changes to api
+                updating: false,
+                fields: field,
                 pages: [{
+                    name: "Welcome",
+                    icon: "chart-pie"
+                },
+                    {
                         name: "Business Settings",
-                        icon: "chart-pie",
-                        fields: {
-                            currency_name: {
-                                options: [{
-                                    value: "CAD",
-                                    text: "Canadian Dollar"
-                                }, {
-                                    value: "USD",
-                                    text: "US Dollar"
-                                }, {
-                                    value: "EUR",
-                                    text: "Euro"
-                                }, {
-                                    value: "GBP",
-                                    text: "British Pound"
-                                }, {
-                                    value: "NZD",
-                                    text: "New Zealand Dollar"
-                                }, {
-                                    value: "JPY",
-                                    text: "Japanese Yen"
-                                }, {
-                                    value: "AUD",
-                                    text: "Australian Dollar"
-                                }, {
-                                    value: "CLP",
-                                    text: "Chile Peso"
-                                }, {
-                                    value: "ZAR",
-                                    text: "South Africa Rand"
-                                }, {
-                                    value: "CZK",
-                                    text: "Czech koruna"
-                                }, {
-                                    value: "SEK",
-                                    text: "Swedish krona"
-                                }],
-                                current: "CAD"
-                            },
-                            currency_symbol: {
-                                options: [{
-                                    value: "$",
-                                    text: "$ - Dollar Sign"
-                                }, {
-                                    value: "€",
-                                    text: "€ - Euro Sign"
-                                }, {
-                                    value: "£",
-                                    text: "£ - Pound Sign"
-                                }, {
-                                    value: "NZ$",
-                                    text: "NZ$ - New Zealand Dollar"
-                                }, {
-                                    value: "¥",
-                                    text: "¥ - Japanese Yen"
-                                }, {
-                                    value: "AU$",
-                                    text: "AU$ - Australian dollar"
-                                }, {
-                                    value: "R",
-                                    text: "R - South Africa Rand"
-                                }, {
-                                    value: "Kč",
-                                    text: "Kč - Czech koruna"
-                                }, {
-                                    value: "kr",
-                                    text: "kr - Swedish krona"
-                                }],
-                                current: "$"
-                            },
-                            timezone: {
-                                options: timezones,
-                                current: "America/Vancouver"
-                            },
-                            url: "",
-                            opening: "09:00",
-                            closing: "17:00",
-                            days: {
-                                Sun: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "0"
-                                },
-                                Mon: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "1"
-                                },
-                                Tue: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "1"
-                                },
-                                Wed: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "1"
-                                },
-                                Thur: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "1"
-                                },
-                                Fri: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "1"
-                                },
-                                Sat: {
-                                    options: [{
-                                        value: "0",
-                                        text: "Closed"
-                                    }, {
-                                        value: "1",
-                                        text: "Open"
-                                    }],
-                                    current: "0"
-                                }
-                            },
-                            taxes: [{
-                                name: "GST",
-                                amount: "12"
-                            }]
-                        }
+                        icon: "chart-pie"
                     },
                     {
                         name: "Activity Settings",
-                        icon: "snowboarding",
-                        fields: [{
-                                activity_name: "Biking",
-                                create_invoice: {
-                                    options: [{
-                                            value: "reservation",
-                                            text: "At Reservation (automated)"
-                                        }, {
-                                            value: "delivery",
-                                            text: "At Delivery (automated)"
-                                        },
-                                        {
-                                            value: "return",
-                                            text: "After Return"
-                                        }
-                                    ],
-                                    current: "return"
-                                },
-                                pre_auth: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "1"
-                                },
-                                confirm_res: {
-                                    options: [{
-                                        value: "manual",
-                                        text: "Manually Confirm"
-                                    }, {
-                                        value: "automatic",
-                                        text: "Automatically Confirm"
-                                    }],
-                                    current: "automatic"
-                                },
-                                close_res: {
-                                    options: [{
-                                        value: "manual",
-                                        text: "Manually Close"
-                                    }, {
-                                        value: "automatic",
-                                        text: "Automatically Close"
-                                    }],
-                                    current: "automatic"
-                                },
-                                product_option: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "1"
-                                },
-                                //single renter only
-                                check_product_avail: {
-                                    options: [{
-                                        value: "no",
-                                        text: "No"
-                                    }, {
-                                        value: "yes",
-                                        text: "Yes"
-                                    }, {
-                                        value: "size",
-                                        text: "Consider Size"
-                                    }],
-                                    current: "size"
-                                },
-                                //allow customers to see availibility calendar
-                                avail_cal: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "1"
-                                },
-                                order_time_unit: {
-                                    options: [{
-                                        value: "hour",
-                                        text: "Hour"
-                                    }, {
-                                        value: "day",
-                                        text: "Day"
-                                    }],
-                                    current: "hour"
-                                },
-                                //multi_setting
-                                reorder: {
-                                    online: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                    walk_in: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                    backend: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                    phone: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                },
-                                //per piece of equipment;
-                                //multi_setting
-                                multi_participant: {
-                                    online: {
-                                        options: [{
-                                                value: "no",
-                                                text: "Single Renter"
-                                            }, {
-                                                value: "yes",
-                                                text: "Multiple Renters"
-                                            },
-                                            {
-                                                value: "waiver",
-                                                text: "Multiple Participants (Waiver)"
-                                            },
-                                            {
-                                                value: "both",
-                                                text: "Multiple Renters/Participants"
-                                            }
-
-                                        ],
-                                        current: "yes"
-                                    },
-                                    walk_in: {
-                                        options: [{
-                                                value: "no",
-                                                text: "Single Renter"
-                                            }, {
-                                                value: "yes",
-                                                text: "Multiple Renters"
-                                            },
-                                            {
-                                                value: "waiver",
-                                                text: "Multiple Participants (Waiver)"
-                                            },
-                                            {
-                                                value: "both",
-                                                text: "Multiple Renters/Participants"
-                                            }
-
-                                        ],
-                                        current: "yes"
-                                    },
-                                    backend: {
-                                        options: [{
-                                                value: "no",
-                                                text: "Single Renter"
-                                            }, {
-                                                value: "yes",
-                                                text: "Multiple Renters"
-                                            },
-                                            {
-                                                value: "waiver",
-                                                text: "Multiple Participants (Waiver)"
-                                            },
-                                            {
-                                                value: "both",
-                                                text: "Multiple Renters/Participants"
-                                            }
-
-                                        ],
-                                        current: "yes"
-                                    },
-                                    phone: {
-                                        options: [{
-                                            value: "no",
-                                            text: "Single Renter"
-                                        }, {
-                                            value: "yes",
-                                            text: "Multiple Renters"
-                                        }],
-                                        current: "yes"
-                                    }
-                                }
-                            },
-                            {
-                                activity_name: "Skiing",
-                                create_invoice: {
-                                    options: [{
-                                            value: "reservation",
-                                            text: "At Reservation (automated)"
-                                        }, {
-                                            value: "delivery",
-                                            text: "At Delivery (automated)"
-                                        },
-                                        {
-                                            value: "return",
-                                            text: "After Return"
-                                        }
-                                    ],
-                                    current: "return"
-                                },
-                                pre_auth: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "1"
-                                },
-                                confirm_res: {
-                                    options: [{
-                                        value: "manual",
-                                        text: "Manually Confirm"
-                                    }, {
-                                        value: "automatic",
-                                        text: "Automatically Confirm"
-                                    }],
-                                    current: "automatic"
-                                },
-                                close_res: {
-                                    options: [{
-                                        value: "manual",
-                                        text: "Manually Close"
-                                    }, {
-                                        value: "automatic",
-                                        text: "Automatically Close"
-                                    }],
-                                    current: "automatic"
-                                },
-                                product_option: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "1"
-                                },
-                                //single renter only
-                                check_product_avail: {
-                                    options: [{
-                                        value: "no",
-                                        text: "No"
-                                    }, {
-                                        value: "yes",
-                                        text: "Yes"
-                                    }, {
-                                        value: "size",
-                                        text: "Consider Size"
-                                    }],
-                                    current: "size"
-                                },
-                                //allow customers to see availibility calendar
-                                avail_cal: {
-                                    options: [{
-                                        value: "0",
-                                        text: "No"
-                                    }, {
-                                        value: "1",
-                                        text: "Yes"
-                                    }],
-                                    current: "1"
-                                },
-                                order_time_unit: {
-                                    options: [{
-                                        value: "hour",
-                                        text: "Hour"
-                                    }, {
-                                        value: "day",
-                                        text: "Day"
-                                    }],
-                                    current: "hour"
-                                },
-                                //multi_setting
-                                reorder: {
-                                    online: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                    walk_in: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                    backend: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                    phone: {
-                                        options: [{
-                                            value: "0",
-                                            text: "No"
-                                        }, {
-                                            value: "1",
-                                            text: "Yes"
-                                        }],
-                                        current: "0"
-                                    },
-                                },
-                                //per piece of equipment;
-                                //multi_setting
-                                multi_participant: {
-                                    online: {
-                                        options: [{
-                                                value: "no",
-                                                text: "Single Renter"
-                                            }, {
-                                                value: "yes",
-                                                text: "Multiple Renters"
-                                            },
-                                            {
-                                                value: "waiver",
-                                                text: "Multiple Participants (Waiver)"
-                                            },
-                                            {
-                                                value: "both",
-                                                text: "Multiple Renters/Participants"
-                                            }
-
-                                        ],
-                                        current: "yes"
-                                    },
-                                    walk_in: {
-                                        options: [{
-                                                value: "no",
-                                                text: "Single Renter"
-                                            }, {
-                                                value: "yes",
-                                                text: "Multiple Renters"
-                                            },
-                                            {
-                                                value: "waiver",
-                                                text: "Multiple Participants (Waiver)"
-                                            },
-                                            {
-                                                value: "both",
-                                                text: "Multiple Renters/Participants"
-                                            }
-
-                                        ],
-                                        current: "yes"
-                                    },
-                                    backend: {
-                                        options: [{
-                                                value: "no",
-                                                text: "Single Renter"
-                                            }, {
-                                                value: "yes",
-                                                text: "Multiple Renters"
-                                            },
-                                            {
-                                                value: "waiver",
-                                                text: "Multiple Participants (Waiver)"
-                                            },
-                                            {
-                                                value: "both",
-                                                text: "Multiple Renters/Participants"
-                                            }
-
-                                        ],
-                                        current: "yes"
-                                    },
-                                    phone: {
-                                        options: [{
-                                            value: "no",
-                                            text: "Single Renter"
-                                        }, {
-                                            value: "yes",
-                                            text: "Multiple Renters"
-                                        }],
-                                        current: "yes"
-                                    }
-                                }
-                            }
-                        ]
+                        icon: "snowboarding"
                     },
                     {
-                        name: "Payment",
-                        icon: "calculator",
-                        fields: [{
-                                activity_name: "Biking",
-                                //0 full amount, 1 deposit, 2 delay payment
-                                credit_card: {
-                                    online: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    },
-                                    walk_in: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    },
-                                    backend: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    },
-                                    phone: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    }
-                                },
-                                delay_payment: {
-                                    walk_in: {
-                                        options: [{
-                                            value: "no",
-                                            text: "No"
-                                        }, {
-                                            value: "yes",
-                                            text: "Yes"
-                                        }, {
-                                            value: "admin",
-                                            text: "Require staff"
-                                        }],
-                                        current: "admin"
-                                    },
-                                    backend: {
-                                        options: [{
-                                            value: "no",
-                                            text: "No"
-                                        }, {
-                                            value: "yes",
-                                            text: "Yes"
-                                        }],
-                                        current: "yes"
-                                    }
-                                }
-                            },
-                            {
-                                activity_name: "Skiing",
-                                //0 full amount, 1 deposit, 2 delay payment
-                                credit_card: {
-                                    online: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    },
-                                    walk_in: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    },
-                                    backend: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    },
-                                    phone: {
-                                        options: [{
-                                            value: "none",
-                                            text: "None"
-                                        }, {
-                                            value: "validate",
-                                            text: "Validate"
-                                        }, {
-                                            value: "charge_reservation",
-                                            text: "Charge Reservation Fee"
-                                        }, {
-                                            value: "charge_full",
-                                            text: "Charge Full Amount"
-                                        }],
-                                        current: "charge_full"
-                                    }
-                                },
-                                delay_payment: {
-                                    walk_in: {
-                                        options: [{
-                                            value: "no",
-                                            text: "No"
-                                        }, {
-                                            value: "yes",
-                                            text: "Yes"
-                                        }, {
-                                            value: "admin",
-                                            text: "Require staff"
-                                        }],
-                                        current: "admin"
-                                    },
-                                    backend: {
-                                        options: [{
-                                            value: "no",
-                                            text: "No"
-                                        }, {
-                                            value: "yes",
-                                            text: "Yes"
-                                        }],
-                                        current: "yes"
-                                    }
-                                }
-                            }
-                        ]
+                        name: "Order Settings",
+                        icon: "calculator"
                     },
                     {
-                        name: "Terms and conditions",
-                        icon: "pen",
+                        name: "Get Started",
+                        icon: "external-link-alt",
                         fields: null
-                    },
-                    {
-                        name: "Subcategories",
-                        icon: "sitemap",
-                        //static link and images, no data
-                        fields: null
-
-                    },
-                    {
-                        name: "Pricing",
-                        icon: "money-check-alt",
-
-                        fields: null
-
-                    },
-                    {
-                        name: "Booking",
-                        icon: "shopping-cart",
-                        options: null
                     }
                 ]
             }
+        },
+        beforeMount() {
+            pull_state().then((setup_wizard)=>{
+                console.log(setup_wizard)
+                this.index=setup_wizard.index
+                this.tab=setup_wizard.tab
+                this.advanced=setup_wizard.advanced
+                pull().then(()=>{this.loaded=true}
+                ).catch(err => {
+                    console.log(err);
+                })
+            })
+        },
+        watch: {
+            fields: {
+                handler() {
+                    if (this.loaded === true) {
+                        this.changed = true;
+                    }
+                },
+                deep: true
+            },
+            changed: function(val){
+                if(val){
+                    window.onbeforeunload = function () {
+                        return 'Are you sure you want to leave?'
+                    }
+                } else{
+                    window.onbeforeunload=null;
+                }
+            }
         }
-
     }
 
 </script>
 
 <style>
     .close {
-        transform: translateY(12%);
+        margin: 0;
     }
 
     .no-gutters {
-        margin-right: 0 !important;
-        margin-left: 0;
+        padding-right: 0 !important;
+        padding-left: 0 ! important;
+    }
+
+    .icon {
+        color: #44B6AE;
+    }
+
+    h4 {
+        margin: 0 !important;
+        color: #44B6AE;
     }
 
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
     }
 
     .page {
-        padding-right: 0px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
         height: 600px;
         overflow-x: hidden;
         background-color: #F8F8F8;
     }
+    .tooltip {
+        display: block !important;
+        z-index: 10000;
+    }
 
+    .tooltip .tooltip-inner {
+        background: black;
+        color: white;
+        border-radius: 16px;
+        padding: 5px 10px 4px;
+    }
+
+    .tooltip .tooltip-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        position: absolute;
+        margin: 5px;
+        border-color: black;
+        z-index: 1;
+    }
+
+    .tooltip[x-placement^="top"] {
+        margin-bottom: 5px;
+    }
+
+    .tooltip[x-placement^="top"] .tooltip-arrow {
+        border-width: 5px 5px 0 5px;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
+        bottom: -5px;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .tooltip[x-placement^="bottom"] {
+        margin-top: 5px;
+    }
+
+    .tooltip[x-placement^="bottom"] .tooltip-arrow {
+        border-width: 0 5px 5px 5px;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-top-color: transparent !important;
+        top: -5px;
+        left: calc(50% - 5px);
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .tooltip[x-placement^="right"] {
+        margin-left: 5px;
+    }
+
+    .tooltip[x-placement^="right"] .tooltip-arrow {
+        border-width: 5px 5px 5px 0;
+        border-left-color: transparent !important;
+        border-top-color: transparent !important;
+        border-bottom-color: transparent !important;
+        left: -5px;
+        top: calc(50% - 5px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .tooltip[x-placement^="left"] {
+        margin-right: 5px;
+    }
+
+    .tooltip[x-placement^="left"] .tooltip-arrow {
+        border-width: 5px 0 5px 5px;
+        border-top-color: transparent !important;
+        border-right-color: transparent !important;
+        border-bottom-color: transparent !important;
+        right: -5px;
+        top: calc(50% - 5px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .tooltip.popover .popover-inner {
+        background: #f9f9f9;
+        color: black;
+        padding: 24px;
+        border-radius: 5px;
+        box-shadow: 0 5px 30px rgba(black, .1);
+    }
+
+    .tooltip.popover .popover-arrow {
+        border-color: #f9f9f9;
+    }
+
+    .tooltip[aria-hidden='true'] {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .15s, visibility .15s;
+    }
+
+    .tooltip[aria-hidden='false'] {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity .15s;
+    }
 </style>

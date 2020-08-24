@@ -1,10 +1,9 @@
 <template>
     <div class="row align-items-center">
         <div v-if="!nolabel" class="col-6">
-            <label>{{label}}</label>
+            <label v-tooltip="'hello'">{{label}}</label>
         </div>
-        <div class="col">
-            <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
+        <div class="col"> <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
         </div>
     </div>
 </template>
@@ -17,8 +16,8 @@
             type: String
         },
         computed: {
-            nolabel: function(){
-                return this.label===undefined
+            nolabel: function() {
+                return this.label === undefined
             }
         }
     }
@@ -30,5 +29,6 @@
     label {
         margin: 0 !important;
     }
+
 
 </style>

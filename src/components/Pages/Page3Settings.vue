@@ -2,46 +2,55 @@
     <div class="Page3Settings">
         <form>
             <div class="form-group">
-                <label for="formControlRange">Credit Card Action</label>
+                <label>General Settings</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="credit_card.online" label="Online"></Toggle>
+                <Checkbox v-bind:options="preauth_security_deposit_at_delivery" label=" Pre-Auth Security Deposit at Delivery "></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="credit_card.walk_in" label="Walk In"></Toggle>
+                <Toggle v-bind:options="invoice_time" label="Create Invoice"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="credit_card.backend" label="Backend"></Toggle>
+                <Toggle v-bind:options="reservation_confirmation" label="How To Confirm Reservation"></Toggle>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="credit_card.phone" label="Phone"></Toggle>
+                <Toggle v-bind:options="close_order" label="How to Close Order"></Toggle>
             </div>
-            <br>
             <div class="form-group">
-                <label for="formControlRange">Can Skip Credit Card</label>
+                <label>Order Settings</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="delay_payment.walk_in" label="Walk In"></Toggle>
+                <Checkbox v-bind:options="show_availability_calendar_when_place_order" label="Show Availability Calendar"></Checkbox>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="delay_payment.backend" style="margin-bottom:0" label="Backend"></Toggle>
+                <Checkbox v-bind:options="show_size" label="Show Product Option in Order"></Checkbox>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="check_availability" label="Check Product Availability"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="check_availability" label="Order Time Unit"></Toggle>
             </div>
         </form>
     </div>
 </template>
 
 <script>
-    import Toggle from "./Toggle.vue"
+    import Checkbox from "./Inputs/Checkbox.vue"
+    import Toggle from "./Inputs/Toggle.vue"
     export default {
         name: 'Page3Settings',
         components: {
+            Checkbox,
             Toggle
         },
         props: {
             index: Number
         },
         data: function() {
-            return this.$root.$children[0].pages[2].fields[this.index];
+            return {
+                ...this.$root.$children[0].fields.activity[this.index]
+            }
         }
     }
 
@@ -49,16 +58,17 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    Page3Settings {
-    }
-    label{
+    Page3Settings {}
+
+    label {
         font-weight: bold;
     }
+
     h3 {
         margin-top: 40px;
         margin-bottom: 40px;
     }
-    
+
     .form-row {
         margin-bottom: 1em;
     }

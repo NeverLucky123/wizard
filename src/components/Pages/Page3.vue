@@ -1,29 +1,27 @@
 <template>
-    <div class="Page3">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" v-on:click="set(0)" v-bind:class="{active:tab===0}">{{activities.fields[0].activity_name}}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" v-on:click="set(1)" v-bind:class="{active:tab===1}">{{activities.fields[1].activity_name}}</a>
+    <div class="page3">
+        <ul class="nav nav-tabs" v-if="$root.$children[0].loaded===true">
+            <li class="nav-item" v-bind:key="activity.name" v-for="(activity, index) in activity_names">
+                <a class="nav-link" v-on:click="set(index)" v-bind:class="{active:tab===index}">{{activity.name}}</a>
             </li>
         </ul>
         <br>
-        <Page3Settings v-bind:index='0' v-show="tab===0"></Page3Settings>
-        <Page3Settings v-bind:index='1' v-show="tab===1"></Page3Settings>
+        <Page3Settings v-bind:key="activity.name" v-for="(activity, index) in activities" v-bind:index="index"
+                       v-show="tab===index"></Page3Settings>
     </div>
 </template>
 
 <script>
     import Page3Settings from './Page3Settings.vue'
+
     export default {
         name: 'Page3',
         components: {
             Page3Settings
         },
-        data: function() {
+        data: function () {
             return {
-                activities: this.$root.$children[0].pages[1]
+                activities: this.$root.$children[0].fields.activity
             }
         },
         methods: {
@@ -32,8 +30,11 @@
             }
         },
         computed: {
-            tab: function() {
+            tab: function () {
                 return this.$root.$children[0].tab
+            },
+            activity_names: function () {
+                return this.$root.$children[0].fields.activity_names
             }
         }
     }
@@ -42,9 +43,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    Page3 {}
+    page3 {
+    }
 
     a {
+        cursor: pointer;
         color: gray
     }
 

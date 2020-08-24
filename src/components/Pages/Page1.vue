@@ -1,79 +1,41 @@
 <template>
-    <div class="page1">
-        <form>
-            <div class="form-group">
-                <label>Regional Settings</label>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="currency_name" label="Currency Name"></Toggle>
-                </div>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="currency_symbol" label="Currency Symbol"></Toggle>
-                </div>
-                 <div class="row">
-                    <Toggle class="input" v-bind:options="timezone" label="Timezone"></Toggle>
-                </div>
-                <label>Business Hours</label>
-                <TextField class="input" v-on:update="opening=$event" type="time" v-bind:value="opening" label="Opening time"></TextField>
-                <TextField class="input" v-on:update="closing=$event" type="time" v-bind:value="closing" label="Closing time"></TextField>
-                <label>Business Open On</label>
-                <div class="row flex-nowrap">
-                    <div class="days col">Sun</div>
-                    <div class="days col">Mon</div>
-                    <div class="days col">Tues</div>
-                    <div class="days col">Wed</div>
-                    <div class="days col">Thur</div>
-                    <div class="days col">Fri</div>
-                    <div class="days col">Sat</div>
-                </div>
-                <div class="row flex-nowrap">
-                    <CheckBox v-for="(day, index) in days" v-bind:key="index" v-bind:options="day"></CheckBox>
-                </div>
-                <br>
-                <label for="formControlRange">Site Url</label>
-                <TextField class="input" v-on:update="url=$event" type="url" v-bind:value="url"></TextField>
-            </div>
-        </form>
+    <div class="Page1">
+        <br>
+        <h4>Welcome to the Rentrax Setup Wizard</h4>
+        <br>
+        <hr />
+        <p>This will allow you to configure your business, activity, and order settings so you can begin using Rentrax.</p>
+        <p>The wizard is split between simple and advanced settings. Press <font-awesome-icon size="lg" icon="chevron-circle-up"></font-awesome-icon> to toggle to advanced settings.
+        </p>
+        <p>Press <font-awesome-icon size="lg" icon="save"></font-awesome-icon> to save your progress and come back later.
+        </p>
+        <p>Use <font-awesome-icon size="lg" icon="chevron-right"></font-awesome-icon> to advance the page</p>
+
     </div>
 </template>
 
 <script>
-    import CheckBox from './Checkbox.vue'
-    import Toggle from './Toggle.vue'
-    import TextField from './TextField.vue'
     export default {
-        name: 'Page1',
-        components: {
-            CheckBox,
-            TextField,
-            Toggle
-        },
-        data: function() {
-            return this.$root.$children[0].pages[0].fields;
-        }
-
+        name: 'Page1'
     }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    page1 {}
-
-    .days {
-        text-align: center;
+    .Page1 {
+        line-height: 2em;
+        margin-top: 1em;
     }
 
-    label {
+    p {
+        margin: 2em;
+        font-size: 18px;
+    }
+
+    h4 {
         font-weight: bold;
-        margin-bottom: 1em;
-    }
-
-    .input {
-        margin-bottom: 1em;
-    }
-
-    .form-row {
-        margin-bottom: 2em;
+        text-align: center
     }
 
 </style>

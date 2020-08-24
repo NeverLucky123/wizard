@@ -3,6 +3,7 @@
             <label v-on:click="invert" class="form-check-label">
                 {{label}}
             </label>
+            <label v-if="warning">warning warning warning warning warning warning</label>
             <input v-on:change="update" class="form-check-input" v-bind:value="options.current" type="checkbox" v-model="current_bool">
     </div>
 </template>
@@ -45,6 +46,9 @@
         computed: {
             nolabel: function(){
                 return this.label===undefined
+            },
+            warning: function(){
+                return this.options.options.length>2
             }
         }
     }
