@@ -45,12 +45,15 @@ function rev_lookup(i) {
 
 function cors() {
     const url = new URL(window.location.href)
-    const regex = /\w+\.\w+$/gm;
+    const regex = /\w+\.rentrax\.io$/gm;
     const matches = url.hostname.match(regex)
+    console.log(url.hostname)
+    console.log(matches)
     if (!matches) {
-        return 'http://localhost:4000/'
+        console.log('need proxy')
+        return 'http://localhost:4000/'+'https://dev.rentrax.io/admin/setup-wizard/'
     } else {
-        return ''
+        return 'https://' + url.hostname + '/admin/setup-wizard/'
     }
 }
 
@@ -63,7 +66,7 @@ async function pull_bus() {
     let data = new FormData()
     data.set('keys', payload)
     //request
-    const response = await axios.post(cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/business-settings', data)
+    const response = await axios.post(cors() + 'get/business-settings', data)
     for (let option in field.business) {
         if (field.business[option] instanceof Object) {
             field.business[option].current = response.data.find(field => field.key === lookup(option)).value
@@ -76,7 +79,7 @@ async function pull_bus() {
 
 async function pull_act() {
     let response = []
-    const activities = await axios.get(cors() + 'https://dev.rentrax.io/admin/setup-wizard/activities')
+    const activities = await axios.get(cors() + 'activities')
     for (let i = 0; i < activities.data.length; i++) {
         field.activity_names[i] = activities.data[i];
         //make payload
@@ -88,7 +91,7 @@ async function pull_act() {
         let data = new FormData()
         data.set('keys', payload)
         //request
-        let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/activity-settings/' + Number(field.activity_names[i].id)
+        let url = cors() + 'get/activity-settings/' + Number(field.activity_names[i].id)
         response[i] = (await axios.post(url, data)).data
     }
     for (let i = 0; i < activities.data.length; i++) {
@@ -106,7 +109,7 @@ async function pull_act() {
     console.log('pull_act')
 }
 export async function pull_state() {
-    let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/get/business-settings'
+    let url = cors() + 'get/business-settings'
     let data = new FormData()
     let payload = ["setup_wizard"]
     data.set('keys', JSON.stringify(payload))
@@ -124,7 +127,7 @@ export async function push() {
 }
 
 export async function push_state(index, tab, advanced) {
-    let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/business-settings'
+    let url = cors() + 'business-settings'
     let data = new FormData()
     let setup_wizard={
         index: index,
@@ -157,7 +160,7 @@ async function push_bus() {
     }
     let data = new FormData()
     data.set('list', JSON.stringify(payload))
-    let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/business-settings'
+    let url = cors() + 'business-settings'
     await axios.post(url, data).catch(err => console.log(err))
 }
 
@@ -184,7 +187,7 @@ async function push_act() {
         }
         let data = new FormData()
         data.set('list', JSON.stringify(payload))
-        let url = cors() + 'https://dev.rentrax.io/admin/setup-wizard/activity-settings/' + Number(field.activity_names[i].id)
+        let url = cors() + 'activity-settings/' + Number(field.activity_names[i].id)
         console.log(url)
         await axios.post(url, data).catch(err => console.log(err))
     }

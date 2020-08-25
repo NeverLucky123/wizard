@@ -68,9 +68,7 @@
             </div>
             <div v-if="paypal_is_enabled.current==='1'">
                 <TextField class="input" v-on:update="paypal_live_client_id=$event" type="text" v-bind:value="paypal_live_client_id" label="Paypal Live Client id"></TextField>
-                <TextField class="input" v-on:update="paypal_sandbox_client_id=$event" type="text" v-bind:value="paypal_sandbox_client_id" label="Paypal Sandbox Client id"></TextField>
                 <TextField class="input" v-on:update="paypal_live_secret=$event" type="text" v-bind:value="paypal_live_secret" label="Paypal Live Secret"></TextField>
-                <TextField class="input" v-on:update="paypal_sandbox_secret=$event" type="text" v-bind:value="paypal_sandbox_secret" label="Paypal Sandbox Secret"></TextField>
             </div>
             <label>Other</label>
             <div class="row">

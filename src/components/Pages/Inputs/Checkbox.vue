@@ -1,6 +1,6 @@
 <template>
     <div class="col">
-            <label v-on:click="invert" class="form-check-label">
+            <label v-tooltip="tooltip" v-on:click="invert" class="form-check-label">
                 {{label}}
             </label>
             <label v-if="warning">warning warning warning warning warning warning</label>
@@ -12,7 +12,8 @@
         name: 'Checkbox',
         props: {
             label: String,
-            options: Object
+            options: Object,
+            tooltip: String
         },
         data: function() {
             if (this.options.current === this.options.options[1].value) {
