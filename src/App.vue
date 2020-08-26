@@ -1,57 +1,48 @@
 <template>
     <div id="app">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" v-on:click="open_modal">
-            Setup
-        </button>
-
         <!-- Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="container title">
-                            <div class="row align-items-center">
-                                <div class="col-3">
-                                    <h5 class="modal-title"><img src="./assets/site_logo.png"
-                                                                 style="width:auto; height:40px" alt="Site Logo"></h5>
+        <div class="Modal modal-content">
+            <div class="modal-header">
+                <div class="container title">
+                    <div class="row align-items-center">
+                        <div class="col-3">
+                            <h5 class="modal-title"><img src="./assets/site_logo.png"
+                                                         style="width:auto; height:40px" alt="Site Logo"></h5>
+                        </div>
+                        <div class="col-6 no-gutters">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-auto">
+                                    <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
+                                    </font-awesome-icon>
                                 </div>
-                                <div class="col-6 no-gutters">
-                                    <div class="row justify-content-center align-items-center">
-                                        <div class="col-auto">
-                                            <font-awesome-icon class="icon" size="lg" v-bind:icon="icon">
-                                            </font-awesome-icon>
-                                        </div>
-                                        <div class="col-auto">
-                                            <h4>{{title}}</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3" style="text-align:right">
-                                    <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert"
-                                            type="button" data-close>
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                <div class="col-auto">
+                                    <h4>{{title}}</h4>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-auto no-gutters">
-                                    <Progress v-on:goto="goto"></Progress>
-                                </div>
-                                <div class="col no-gutters page">
-                                    <Page class="w-100"></Page>
-                                </div>
-                            </div>
+                        <div class="col-3" style="text-align:right">
+                            <button class="btn btn-secondary" v-on:click="close_modal" aria-label="Close alert"
+                                    type="button" data-close>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <PageNav v-on:back="back" v-on:save="save" v-on:next="next" v-on:done="done"></PageNav>
                     </div>
                 </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-auto no-gutters">
+                            <Progress v-on:goto="goto"></Progress>
+                        </div>
+                        <div class="col no-gutters page">
+                            <Page class="w-100"></Page>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <PageNav v-on:back="back" v-on:save="save" v-on:next="next" v-on:done="done"></PageNav>
             </div>
         </div>
     </div>
@@ -87,9 +78,12 @@
 
             },
             save: function () {
-                this.updating=true
+                this.updating = true
                 push_state(this.index, this.tab, this.advanced)
-                push().then(()=>{this.changed=false; this.updating=false})
+                push().then(() => {
+                    this.changed = false;
+                    this.updating = false
+                })
             },
             goto: function (index) {
                 this.index = index
@@ -110,8 +104,11 @@
                         return
                     }
                 }
-                document.getElementById("Modal").style.display = "none";
-                document.getElementById("Modal").className.replace("show", "");
+                // targetWindow.postMessage(message, targetOrigin, [transfer]);
+                let target = window.parent
+                target.postMessage("close", "*")
+                //document.getElementById("Modal").style.display = "none";
+                // document.getElementById("Modal").className.replace("show", "")
             }
         },
         computed: {
@@ -165,16 +162,21 @@
             }
         },
         beforeMount() {
-            pull_state().then((setup_wizard)=>{
+            pull_state().then((setup_wizard) => {
                 console.log(setup_wizard)
-                this.index=setup_wizard.index
-                this.tab=setup_wizard.tab
-                this.advanced=setup_wizard.advanced
-                pull().then(()=>{this.loaded=true}
+                this.index = setup_wizard.index
+                this.tab = setup_wizard.tab
+                this.advanced = setup_wizard.advanced
+                pull().then(() => {
+                        this.loaded = true
+                    }
                 ).catch(err => {
                     console.log(err);
                 })
             })
+        },
+        mounted() {
+            this.open_modal()
         },
         watch: {
             fields: {
@@ -185,13 +187,13 @@
                 },
                 deep: true
             },
-            changed: function(val){
-                if(val){
+            changed: function (val) {
+                if (val) {
                     window.onbeforeunload = function () {
                         return 'Are you sure you want to leave?'
                     }
-                } else{
-                    window.onbeforeunload=null;
+                } else {
+                    window.onbeforeunload = null;
                 }
             }
         }
@@ -218,6 +220,11 @@
         color: #44B6AE;
     }
 
+    .Modal {
+        height: 800px !important;
+        width: 800px !important;
+    }
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -231,6 +238,7 @@
         overflow-x: hidden;
         background-color: #F8F8F8;
     }
+
     .tooltip {
         display: block !important;
         z-index: 10000;
