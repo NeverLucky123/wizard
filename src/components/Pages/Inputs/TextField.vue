@@ -1,9 +1,9 @@
 <template>
     <div class="row align-items-center">
-        <div v-if="!nolabel" class="col-6">
+        <div v-if="!nolabel" class="col no-gutters col-6">
             <label v-tooltip="tooltip">{{label}}</label>
         </div>
-        <div class="col"> <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
+        <div class="col no-gutters"> <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@
     input {}
 
     label {
-        margin: 0 !important;
+        padding-left: 15px;
     }
 
 

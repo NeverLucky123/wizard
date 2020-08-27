@@ -61,7 +61,8 @@
         color: #9C9C9C;
     }
 
-    .node {
+    .node{
+        vertical-align: middle;
         color: #9C9C9C;
         margin: auto;
         line-height: 50px;

@@ -31,7 +31,7 @@
         "current": "manual",
         "label": "Add New Items To Invoice "
     },
-    "max_order_items_selector": {
+    "max_order_items": {
         "options": [
             {
                 "text": "Unlimited",

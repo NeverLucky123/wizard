@@ -5,7 +5,7 @@
                 <label>General Settings</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="max_order_items_selector" label="Max Items Per Order"></Toggle>
+                <Toggle v-bind:options="max_order_items" label="Max Items Per Order"></Toggle>
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="always_collect_wallet" label=" Display Collect Down Payment "></Toggle>

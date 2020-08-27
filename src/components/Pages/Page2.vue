@@ -18,7 +18,7 @@
                 </div>
                 -->
                 <label>Business Information</label>
-                <TextField tooltip="hello" class="input" v-on:update="site_title=$event" type="text" v-bind:value="site_title"
+                <TextField class="input" v-on:update="site_title=$event" type="text" v-bind:value="site_title"
                            label="Site Title"></TextField>
                 <TextField class="input" v-on:update="address=$event" type="text" v-bind:value="address"
                            label="Address"></TextField>

@@ -76,7 +76,7 @@
     }
     .change-saved{
         margin-left: 1em;
-        color: green;
+        color: #44B6AE;
     }
     .btn-forward,
     .btn-forward:hover,

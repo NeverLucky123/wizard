@@ -84,10 +84,10 @@
                 <Toggle class="input" v-bind:options="amendments_history" label=" Invoice Amendments Tracking "></Toggle>
             </div>
             <div class="row">
-                <Toggle class="input" v-bind:options="show_tab_to_be_started" label=" Show To Be Started Tab in Order List "></Toggle>
+                <Toggle class="input" v-bind:options="show_tab_to_be_started" label=" Show Started Tab in Order List "></Toggle>
             </div>
             <div class="row">
-                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label="Show To Be Returned Tab in Order List"></Toggle>
+                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label="Show Returned Tab in Order List"></Toggle>
             </div>
         </form>
     </div>
