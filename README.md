@@ -35,11 +35,11 @@ npm run build
 ```
 npm run build-report //report.html in build dir for build analysis
 ```
-##Current Build Configuration
+## Current Build Configuration
 + `Console.log()` dropped in production
 + Project to be served at ```/public/assets/wizard2/dist```
 
-##Directory Structure
+## Directory Structure
 + **main.js**
     + Font awesome icons registration
 + **App.vue**
@@ -56,7 +56,9 @@ npm run build-report //report.html in build dir for build analysis
             + Reusable Inputs used in Page components
 
             
-##Further Development
+## Further Development
++ Changing Advanced/Simple Toggle
+    + styled in **Page.vue** under `.pulltab`
 + Adding Tooltips
     + Each Input component has a prop named `tooltip`; Pass any string to display a tooltip
     + Alternatively, v-tooltip has been loaded and styled at **App.vue**
@@ -66,7 +68,7 @@ npm run build-report //report.html in build dir for build analysis
     + Configure in ```vue.config.json```
     + Vue Cli Docs: https://cli.vuejs.org/config/
 
-##Troubleshooting
+## Troubleshooting
 + Cors request blocked
     + Backend cannot handle cross-origin requests
     + Follow the setup instructions

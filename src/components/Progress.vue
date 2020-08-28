@@ -30,9 +30,4 @@
         height: 100%;
     }
 
-    .no-gutters {
-        padding-right: 0 !important;
-        padding-left: 0 ! important;
-    }
-
 </style>

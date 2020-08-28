@@ -104,9 +104,7 @@
         color: white !important;
         background-color: #00CCCC !important;
     }
-    .no-gutters {
-        padding: 0 !important;
-    }
+
     .title {
         padding-top: 30px;
         padding-bottom: 30px;

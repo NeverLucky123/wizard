@@ -6,6 +6,10 @@
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="max_order_state" label="Max Items Per Order"></Toggle>
+                <!---
+                Custom element to display max_order
+                If max_order_items=0, then max_order_items=unlimited
+                --->
                 <input v-if="max_order_state.current==='limited'"
                        style="width:50px;height:30.4px;margin-bottom:.4em;text-align:right"
                        v-on:change="max_order_items=$event.target.value;$root.$children[0].fields.activity[index].max_order_items=$event.target.value"
@@ -110,7 +114,6 @@
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .Page3ASettings {
     }
