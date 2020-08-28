@@ -3,7 +3,7 @@
         <div v-if="!nolabel" class="col no-gutters col-6">
             <label v-tooltip="tooltip">{{label}}</label>
         </div>
-        <div class="col no-gutters"> <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
+        <div class="text col no-gutters"> <input v-on:change="$emit('update',$event.target.value)" :value="value" v-bind:type="type" class="form-control">
         </div>
     </div>
 </template>
@@ -25,7 +25,7 @@
 
 </script>
 <style scoped>
-    input {}
+    .text {margin-right: 15px;}
 
     label {
         padding-left: 15px;

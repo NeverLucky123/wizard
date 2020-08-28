@@ -31,20 +31,7 @@
         "current": "manual",
         "label": "Add New Items To Invoice "
     },
-    "max_order_items": {
-        "options": [
-            {
-                "text": "Unlimited",
-                "value": "unlimited"
-      },
-            {
-                "text": "Limited To",
-                "value": "limited"
-      }
-    ],
-        "current": "unlimited",
-        "label": "Maximum Number Of Items Per Order"
-    },
+    "max_order_items": "",
     "always_collect_wallet": {
         "options": [
             {

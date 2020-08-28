@@ -4,9 +4,6 @@
             <div class="form-group">
                 <label>Contact</label>
                 <TextField class="input" v-on:update="ZipCode=$event" type="text" v-bind:value="ZipCode" label="Zip Code"></TextField>
-                <div class="row">
-                    <Toggle class="input" v-bind:options="locale" label=" Locale"></Toggle>
-                </div>
                 <label>Region</label>
                 <div class="row">
                     <Toggle class="input" v-bind:options="calendar_time_format" label="Calendar Time Format"></Toggle>
@@ -82,12 +79,6 @@
             </div>
             <div class="row">
                 <Toggle class="input" v-bind:options="amendments_history" label=" Invoice Amendments Tracking "></Toggle>
-            </div>
-            <div class="row">
-                <Toggle class="input" v-bind:options="show_tab_to_be_started" label=" Show Started Tab in Order List "></Toggle>
-            </div>
-            <div class="row">
-                <Toggle class="input" v-bind:options="show_tab_to_be_returned" label="Show Returned Tab in Order List"></Toggle>
             </div>
         </form>
     </div>

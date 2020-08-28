@@ -14,7 +14,7 @@
                         <li>Enter test payment info: <a class="btn btn-dark" href="#" role="button">411111111</a>, <a class="btn btn-dark" href="#" role="button">04/21</a> and <a class="btn btn-dark" href="#" role="button">111</a> </li>
                         <li>Pay full amount</li>
                     </ol>
-                    <a class="btn btn-forward" href="reservations/1?source=back_end" target="_blank" role="button">
+                    <a class="btn btn-forward" :href="'//'+domain+'/reservations/1?source=back_end'" target="_blank" role="button">
                         <font-awesome-icon size="xs" icon="external-link-alt" /> Rent Orders</a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         <li>Set <a class="btn btn-dark" href="#" role="button">Product Size Required</a> to <a class="btn btn-dark" href="#" role="button">Yes</a> if you want customers to be able to choose their size.</li>
                         <li>Check <a class="btn btn-dark" href="#" role="button">Is SKU-based?</a> if you want to keep track of inventory individually.</li>
                     </ol>
-                    <a class="btn btn-forward" href="/admin/products/categories" target="_blank" role="button">
+                    <a class="btn btn-forward" :href="'//'+domain+'/admin/products/categories'" target="_blank" role="button">
                         <font-awesome-icon size="xs" icon="external-link-alt" /> Categories</a>
                 </div>
             </div>
@@ -70,7 +70,7 @@
 
                         </li>
                     </ol>
-                    <a class="btn btn-forward" href="/admin/rental-types/1/edit" target="_blank" role="button">
+                    <a class="btn btn-forward" :href="'//'+domain+'/admin/prices'" target="_blank" role="button">
                         <font-awesome-icon size="xs" icon="external-link-alt" /> Pricings</a>
                 </div>
             </div>
@@ -101,7 +101,13 @@
         components: {},
         data: function() {
             return {
+                //the active card
                 active: 5
+            }
+        },
+        computed: {
+            domain: function () {
+                return window.location.host
             }
         }
     }

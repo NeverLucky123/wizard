@@ -5,16 +5,15 @@
                 <label>General Settings</label>
             </div>
             <div class="form-row align-items-center">
-                <Toggle v-bind:options="max_order_items" label="Max Items Per Order"></Toggle>
+                <Toggle v-bind:options="max_order_state" label="Max Items Per Order"></Toggle>
+                <input v-if="max_order_state.current==='limited'"
+                       style="width:50px;height:30.4px;margin-bottom:.4em;text-align:right"
+                       v-on:change="max_order_items=$event.target.value;$root.$children[0].fields.activity[index].max_order_items=$event.target.value"
+                       :value="max_order_items" type="number"
+                       class="form-control">
             </div>
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="always_collect_wallet" label=" Display Collect Down Payment "></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="split_borrow_item_rows" label="Split/combine Borrow Items"></Toggle>
-            </div>
-            <div class="form-row align-items-center">
-                <Toggle v-bind:options="split_purchase_item_rows" label="Split/combine Purchase Items"></Toggle>
             </div>
             <div class="form-group">
                 <label>Order Settings</label>
@@ -46,6 +45,9 @@
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="walk_in_visibility_like" label="Walk-in Category Visibility Like "></Toggle>
             </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="time_unit" label="Order Time Unit"></Toggle>
+            </div>
         </form>
     </div>
 </template>
@@ -58,17 +60,53 @@
         name: 'Page3ASettings',
         components: {
             Checkbox,
-            Toggle
+            Toggle,
         },
         props: {
             index: Number
         },
         data: function () {
+            let state;
+            if (this.$root.$children[0].fields.activity[this.index].max_order_items == '0') {
+                state = "unlimited"
+            } else {
+                state = "limited"
+            }
             return {
-                ...this.$root.$children[0].fields.activity[this.index]
+                ...this.$root.$children[0].fields.activity[this.index],
+                max_order_state: {
+                    options: [
+                        {
+                            "text": "Unlimited",
+                            "value": "unlimited"
+                        },
+                        {
+                            "text": "Limited To",
+                            "value": "limited"
+                        }
+                    ],
+                    current: state,
+                    label: "Maximum Number Of Items Per Order"
+                }
+            }
+        },
+        watch: {
+            max_order_state: {
+                handler(value) {
+                    if (value.current === "unlimited") {
+                        this.max_order_items = '0';
+                        this.$root.$children[0].fields.activity[this.index].max_order_items='0';
+                    }
+                    else if(value.current==="limited"){
+                        this.max_order_items='1';
+                        this.$root.$children[0].fields.activity[this.index].max_order_items='1';
+                    }
+                },
+                deep: true
             }
         }
     }
+
 
 </script>
 

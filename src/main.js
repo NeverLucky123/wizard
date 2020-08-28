@@ -11,32 +11,44 @@ import {
     faSnowboarding,
     faCalculator,
     faPen,
-    faSitemap,
-    faMoneyCheckAlt,
-    faShoppingCart,
     faCogs,
     faHome,
     faCog,
     faSave,
     faMoneyBillAlt,
-    faCalendarAlt,
-    faPlusCircle,
     faChevronRight,
     faChevronLeft,
     faExternalLinkAlt,
     faChevronCircleUp,
     faChevronCircleDown,
     faExclamationTriangle,
-    faCheck
+    faCheck,
+    faTimes,
+    faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
     FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faChartPie, faSnowboarding, faCalculator, faPen, faSitemap, faMoneyCheckAlt, faShoppingCart, faCogs,
-    faHome, faCog, faSave, faMoneyBillAlt, faCalendarAlt, faPlusCircle, faChevronRight, faChevronLeft, faExternalLinkAlt,
-    faChevronCircleUp, faChevronCircleDown, faExclamationTriangle, faCheck)
+library.add( faChartPie,
+    faSnowboarding,
+    faCalculator,
+    faPen,
+    faCogs,
+    faHome,
+    faCog,
+    faSave,
+    faMoneyBillAlt,
+    faChevronRight,
+    faChevronLeft,
+    faExternalLinkAlt,
+    faChevronCircleUp,
+    faChevronCircleDown,
+    faExclamationTriangle,
+    faCheck,
+    faTimes,
+    faCalendarAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
