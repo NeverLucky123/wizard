@@ -85,7 +85,7 @@
             save: function () {
                 this.updating = true
                 push_state(this.index, this.tab, this.advanced)
-                push().then(() => {
+                return push().then(() => {
                     this.changed = false;
                     this.updating = false
                 })
@@ -95,8 +95,7 @@
                 push_state(this.index, this.tab, this.advanced)
             },
             done: function () {
-                this.save()
-                this.close_modal()
+                this.save().then(()=>{this.close_modal()})
             },
             close_modal: function () {
                 if (this.changed) {
@@ -105,9 +104,10 @@
                         return
                     }
                 }
-                //tell laravel to close the wizard
+                //tell Laravel to close the wizard
                 let target = window.parent
                 target.postMessage("close", "*")
+                console.log('close')
             }
         },
         computed: {
@@ -234,6 +234,7 @@
         overflow-x: hidden;
         background-color: #F8F8F8;
     }
+
     /*
     v-tooltip styling below
      */

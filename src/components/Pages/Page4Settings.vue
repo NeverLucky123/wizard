@@ -31,6 +31,21 @@
             <div class="form-row align-items-center">
                 <Toggle v-bind:options="multiple_rentersphone" label="Phone"></Toggle>
             </div>
+            <div class="form-group">
+                <label>Credit Card Action</label>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="cc_action_web" label="Web"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="cc_action_walk_in" label="Walk In"></Toggle>
+            </div>
+            <div class="form-row align-items-center">
+                <Toggle v-bind:options="cc_action_back_end" label="Back-End"></Toggle>
+            </div>
+                <div class="form-row align-items-center">
+                <Toggle v-bind:options="cc_action_phone" label="Phone"></Toggle>
+            </div>
         </form>
     </div>
 </template>
